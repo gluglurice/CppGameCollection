@@ -8,10 +8,10 @@
 
 namespace tetris
 {
-	/* UI大小 */
+	/* UI size */
 	const int TIP_BAR_WIDTH = 200;
 
-	/* UI资产路径 */
+	/* UI assets */
 	const int UI_IMG_NUM = 6;
 	const std::wstring ui_img_paths[] = {
 		L"assets/Tetris/imgs/ui/ui_background.png",
@@ -21,8 +21,6 @@ namespace tetris
 		L"assets/Tetris/imgs/ui/keyboard_d.png",
 		L"assets/Tetris/imgs/ui/keyboard_space.png",
 	};
-
-	/* UI图片索引 */
 	enum UIImg
 	{
 		UII_BACKGROUND,
@@ -32,7 +30,5 @@ namespace tetris
 		UII_KEYBOARD_D,
 		UII_KEYBOARD_SPACE,
 	};
-
-	/* UI元素图片 */
 	extern IMAGE ui_imgs[UI_IMG_NUM];
 }

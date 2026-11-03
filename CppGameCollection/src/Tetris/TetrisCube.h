@@ -8,13 +8,9 @@
 
 namespace tetris
 {
-	/* 方块类型数量 */
 	const int CUBE_TYPE_NUM = 8;
-
-	/* 方块矩阵大小 */
 	const int CUBE_MATRIX_SIZE = 4;
 
-	/* 位置 */
 	struct Position
 	{
 		int x;
@@ -32,7 +28,6 @@ namespace tetris
 		}
 	};
 
-	/* 方块常量 */
 	enum CubeEnum
 	{
 		CE_EMPTY,
@@ -46,7 +41,6 @@ namespace tetris
 		CE_U,
 	};
 
-	/* 方块 */
 	struct Cube
 	{
 		CubeEnum type;
@@ -111,7 +105,7 @@ namespace tetris
 		}
 	};
 
-	/* 方块资产路径 */
+	/* Cube assets */
 	const int CUBE_IMG_NUM = 8;
 	const std::wstring cube_img_paths[] = {
 		L"assets/Tetris/imgs/cube/cell_red.png",
@@ -123,7 +117,5 @@ namespace tetris
 		L"assets/Tetris/imgs/cube/cell_blue.png",
 		L"assets/Tetris/imgs/cube/cell_purple.png",
 	};
-
-	/* 方块元素图片 */
 	extern IMAGE cube_imgs[CUBE_IMG_NUM];
 }

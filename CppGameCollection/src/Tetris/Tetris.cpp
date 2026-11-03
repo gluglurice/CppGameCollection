@@ -3,18 +3,20 @@
 namespace tetris
 {
 	bool should_generate_cube = true;
+	int score = 0;
 	Cube current_cube;
+	Cube next_cube;
 	bool game_finish = false;
 
 	void LoadMapAssets()
 	{
-		/* 加载地图图片 */
+		/* Load map images */
 		for (int i = 0; i < MAP_IMG_NUM; i++)
 		{
 			loadimage(&map_imgs[i], map_img_paths[i].c_str());
 		}
 
-		/* 加载地图原始状态数据 */
+		/* Load map original status data */
 		for (int row = 0; row < MAP_HEIGHT; row++)
 		{
 			for (int col = 0; col < MAP_WIDTH; col++)
@@ -33,7 +35,7 @@ namespace tetris
 
 	void LoadCubeAssets()
 	{
-		/* 加载方块的图片 */
+		/* Load cube images */
 		for (int i = 0; i < CUBE_IMG_NUM; i++)
 		{
 			loadimage(&cube_imgs[i], cube_img_paths[i].c_str());
@@ -42,7 +44,7 @@ namespace tetris
 
 	void LoadUIAssets()
 	{
-		/* 加载UI图片 */
+		/* Load UI images */
 		for (int i = 0; i < UI_IMG_NUM; i++)
 		{
 			loadimage(&ui_imgs[i], ui_img_paths[i].c_str());
@@ -58,28 +60,34 @@ namespace tetris
 
 	void InitGameStatus()
 	{
-		/* 初始化地图状态 **/
+		srand(static_cast<unsigned>(time(nullptr)));
+
+		/* Initialize map status */
 		memcpy(map_status, map_status_original, sizeof map_status_original);
+
+		/* Initialize the next cube */
+		CubeEnum cube_type = static_cast<CubeEnum>(rand() % CUBE_TYPE_NUM + 1);
+		next_cube = Cube(cube_type, MAP_WIDTH / 2 - 1, 0);
 	}
 
 	void  DrawUI()
 	{
-		/* 设置字体 */
+		/* Set font */
 		setbkmode(TRANSPARENT);
 		settextcolor(RGB(0x6D, 0x4B, 0x27));
 		settextstyle(20, 0, _T("微软雅黑"), 0, 0, FW_BOLD, FALSE, FALSE, FALSE);
 
-		/* 绘制UI背景 */
+		/* Draw UI background */
 		putimage(
 			MAP_WIDTH * TILE_SIZE * MAP_SCALE,
 			0,
 			&ui_imgs[UII_BACKGROUND]
 		);
 
-		/* 绘制下一个方块提示 */
+		/* Draw next cube hint */
 
 
-		/* 绘制UI按键 */
+		/* Draw UI keys */
 		const int UI_KEY_WIDTH_MID = 130;
 		const int UI_KEY_SIZE = 48;
 		const int UI_KEY_SCALE = 2;
@@ -95,7 +103,7 @@ namespace tetris
 		outtextxy(
 			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 16,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + 64,
-			_T("旋转")
+			_T("Rotate")
 		);
 
 		putimage_alpha_zoom(
@@ -123,7 +131,7 @@ namespace tetris
 		outtextxy(
 			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 16,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + UI_KEY_SIZE * UI_KEY_SCALE + 64,
-			_T("移动")
+			_T("Move")
 		);
 
 		putimage_alpha_zoom(
@@ -135,7 +143,7 @@ namespace tetris
 		outtextxy(
 			GRAPH_WIDTH - UI_KEY_WIDTH_MID,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + UI_KEY_SIZE * UI_KEY_SCALE * 2 + 64,
-			_T("快速下落")
+			_T("Drop")
 		);
 	}
 
@@ -191,7 +199,7 @@ namespace tetris
 		outtextxy(
 			GRAPH_WIDTH - UI_TIPS_WIDTH_MID,
 			GRAPH_HEIGHT * UI_TIPS_HEIGHT_FACTOR,
-			_T("到顶了...")
+			_T("You failed.")
 		);
 	}
 
@@ -222,10 +230,15 @@ namespace tetris
 		}
 	}
 
-	void GenerateCube(CubeEnum cube_type)
+	void GenerateCube()
 	{
-		current_cube = Cube(cube_type, MAP_WIDTH / 2 - 1, 0);
+		current_cube = next_cube;
 		PrintCubeOnMap(current_cube, PME_PRINT);
+
+		CubeEnum cube_type = static_cast<CubeEnum>(rand() % CUBE_TYPE_NUM + 1);
+		next_cube = Cube(cube_type, MAP_WIDTH / 2 - 1, 0);
+
+		should_generate_cube = false;
 	}
 
 	void MoveCube(int move_x, int move_y)
@@ -234,10 +247,8 @@ namespace tetris
 		int new_y = current_cube.position.y + move_y;
 
 		PrintCubeOnMap(current_cube, PME_ERASE);
-
 		current_cube.position.x = new_x;
 		current_cube.position.y = new_y;
-
 		PrintCubeOnMap(current_cube, PME_PRINT);
 	}
 
@@ -261,15 +272,8 @@ namespace tetris
 		return game_finish;
 	}
 
-	void Release()
-	{
-
-	}
-
 	void GameLoop()
 	{
-		srand(static_cast<unsigned>(time(nullptr)));
-
 		static unsigned tick_cube_move = clock();
 
 		while (!CheckGameFinish())
@@ -278,9 +282,7 @@ namespace tetris
 
 			if (should_generate_cube)
 			{
-				CubeEnum cube_type = static_cast<CubeEnum>(rand() % CUBE_TYPE_NUM + 1);
-				GenerateCube(cube_type);
-				should_generate_cube = false;
+				GenerateCube();
 			}
 
 			if (clock() - tick_cube_move >= REFRESH_TERMINAL)
