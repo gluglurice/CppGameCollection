@@ -66,7 +66,11 @@ namespace tetris
 
 	void GenerateCube();
 
+	bool CheckCubeCollision(int new_x, int new_y);
+
 	void MoveCube();
+
+	void DropCube();
 
 	void RotateCube();
 

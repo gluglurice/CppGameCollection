@@ -45,7 +45,7 @@ namespace tetris
 	{
 		CubeEnum type;
 		Position position;
-		int matrix[CUBE_MATRIX_SIZE][CUBE_MATRIX_SIZE];
+		int matrix[CUBE_MATRIX_SIZE][CUBE_MATRIX_SIZE] = { 0 };
 
 		Cube() {}
 		Cube(CubeEnum type, int x, int y) : type(type), position(x, y) 
@@ -95,11 +95,11 @@ namespace tetris
 				matrix[2][3] = 1;
 				break;
 			case CE_U:
+				matrix[1][0] = 1;
+				matrix[1][2] = 1;
 				matrix[2][0] = 1;
+				matrix[2][1] = 1;
 				matrix[2][2] = 1;
-				matrix[3][0] = 1;
-				matrix[3][1] = 1;
-				matrix[3][2] = 1;
 				break;
 			}
 		}

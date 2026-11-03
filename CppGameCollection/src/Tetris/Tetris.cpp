@@ -101,7 +101,7 @@ namespace tetris
 			&ui_imgs[UII_KEYBOARD_W]
 		);
 		outtextxy(
-			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 16,
+			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 8,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + 64,
 			_T("Rotate")
 		);
@@ -129,7 +129,7 @@ namespace tetris
 		);
 
 		outtextxy(
-			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 16,
+			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 10,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + UI_KEY_SIZE * UI_KEY_SCALE + 64,
 			_T("Move")
 		);
@@ -141,7 +141,7 @@ namespace tetris
 			&ui_imgs[UII_KEYBOARD_SPACE]
 		);
 		outtextxy(
-			GRAPH_WIDTH - UI_KEY_WIDTH_MID,
+			GRAPH_WIDTH - UI_KEY_WIDTH_MID + 12,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR + UI_KEY_SIZE * UI_KEY_SCALE * 2 + 64,
 			_T("Drop")
 		);
@@ -237,8 +237,25 @@ namespace tetris
 
 		CubeEnum cube_type = static_cast<CubeEnum>(rand() % CUBE_TYPE_NUM + 1);
 		next_cube = Cube(cube_type, MAP_WIDTH / 2 - 1, 0);
+	}
 
-		should_generate_cube = false;
+	bool CheckCubeCollision(int new_x, int new_y, int matrix[][CUBE_MATRIX_SIZE])
+	{
+		for (int i = 0; i < CUBE_MATRIX_SIZE; i++)
+		{
+			for (int j = 0; j < CUBE_MATRIX_SIZE; j++)
+			{
+				if ((new_x + j <= 0
+					|| new_x + j >= MAP_WIDTH - 1
+					|| new_y + i >= MAP_HEIGHT - 1
+					|| map_status[ML_CUBE][new_y + i][new_x + j] != CE_EMPTY)
+					&& matrix[i][j])
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	void MoveCube(int move_x, int move_y)
@@ -247,14 +264,82 @@ namespace tetris
 		int new_y = current_cube.position.y + move_y;
 
 		PrintCubeOnMap(current_cube, PME_ERASE);
-		current_cube.position.x = new_x;
+
+		if (CheckCubeCollision(new_x, new_y, current_cube.matrix))
+		{
+			if (move_y == 1)
+			{
+				PrintCubeOnMap(current_cube, PME_PRINT);
+				GenerateCube();
+				should_generate_cube = false;
+			}
+		}
+		else
+		{
+			current_cube.position.x = new_x;
+			current_cube.position.y = new_y;
+		}
+
+		PrintCubeOnMap(current_cube, PME_PRINT);
+	}
+
+	void DropCube()
+	{
+		PrintCubeOnMap(current_cube, PME_ERASE);
+
+		int new_y = current_cube.position.y;
+		while (!CheckCubeCollision(current_cube.position.x, new_y + 1, current_cube.matrix))
+		{
+			new_y++;
+		}
 		current_cube.position.y = new_y;
+
 		PrintCubeOnMap(current_cube, PME_PRINT);
 	}
 
 	void RotateCube()
 	{
+		int tmp_matrix[CUBE_MATRIX_SIZE][CUBE_MATRIX_SIZE] = { 0 };
 
+		switch (current_cube.type)
+		{
+		case CE_O:
+			return;
+		
+		case CE_I:
+			PrintCubeOnMap(current_cube, PME_ERASE);
+			for (int i = 0; i < CUBE_MATRIX_SIZE; i++)
+			{
+				for (int j = 0; j < CUBE_MATRIX_SIZE; j++)
+				{
+					tmp_matrix[i][j] = current_cube.matrix[CUBE_MATRIX_SIZE - 1 - j][CUBE_MATRIX_SIZE - 1 - i];
+				}
+			}
+			break;
+		
+		default:
+			PrintCubeOnMap(current_cube, PME_ERASE);
+			for (int i = 1; i < CUBE_MATRIX_SIZE; i++)
+			{
+				for (int j = 0; j < CUBE_MATRIX_SIZE - 1; j++)
+				{
+					tmp_matrix[i][j] = current_cube.matrix[3 - j][i - 1];
+				}
+			}
+			break;
+		}
+
+		if (!CheckCubeCollision(current_cube.position.x, current_cube.position.y, tmp_matrix))
+		{
+			for (int i = 0; i < CUBE_MATRIX_SIZE; i++)
+			{
+				for (int j = 0; j < CUBE_MATRIX_SIZE; j++)
+				{
+					current_cube.matrix[i][j] = tmp_matrix[i][j];
+				}
+			}
+		}
+		PrintCubeOnMap(current_cube, PME_PRINT);
 	}
 
 	bool CheckShouldEraseCube()
@@ -283,6 +368,7 @@ namespace tetris
 			if (should_generate_cube)
 			{
 				GenerateCube();
+				should_generate_cube = false;
 			}
 
 			if (clock() - tick_cube_move >= REFRESH_TERMINAL)
@@ -317,6 +403,9 @@ namespace tetris
 				case 'd':
 				case 'D':
 					MoveCube(1, 0);
+					break;
+				case ' ':
+					DropCube();
 					break;
 				}
 			}
