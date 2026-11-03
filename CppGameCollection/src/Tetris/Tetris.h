@@ -17,6 +17,9 @@ namespace tetris
 {
 	/* Global Variables */
 	const float REFRESH_TERMINAL = 500.0f;
+	const int SCORE_PER_LINE = 10;
+	const int SCORE_STR_LEN = 8;
+
 	extern int score;
 	extern bool should_generate_cube;
 	extern Cube current_cube;
@@ -68,15 +71,13 @@ namespace tetris
 
 	bool CheckCubeCollision(int new_x, int new_y);
 
+	void CheckAndEraseCube();
+
 	void MoveCube();
 
 	void DropCube();
 
 	void RotateCube();
-
-	bool CheckShouldEraseCube();
-
-	void EraseCube();
 
 	bool CheckGameFinish();
 

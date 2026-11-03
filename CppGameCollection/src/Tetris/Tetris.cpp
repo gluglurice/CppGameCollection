@@ -78,14 +78,68 @@ namespace tetris
 		settextstyle(20, 0, _T("微软雅黑"), 0, 0, FW_BOLD, FALSE, FALSE, FALSE);
 
 		/* Draw UI background */
-		putimage(
+		putimage_alpha_zoom(
 			MAP_WIDTH * TILE_SIZE * MAP_SCALE,
 			0,
+			1,
 			&ui_imgs[UII_BACKGROUND]
 		);
 
 		/* Draw next cube hint */
+		settextcolor(RGB(0x36, 0x40, 0x4A));
 
+		const int UI_CUBE_SIZE = 28;
+		putimage_alpha_zoom(
+			MAP_WIDTH * TILE_SIZE * MAP_SCALE + 20,
+			20,
+			1,
+			&ui_imgs[UII_NEXT_CUBE]
+		);
+		for (int row = 0; row < CUBE_MATRIX_SIZE; row++)
+		{
+			for (int col = 0; col < CUBE_MATRIX_SIZE; col++)
+			{
+				if (next_cube.matrix[row][col] == 1)
+				{
+					putimage_alpha_zoom(
+						MAP_WIDTH * TILE_SIZE * MAP_SCALE + 46 + col * UI_CUBE_SIZE * MAP_SCALE,
+						20 + 24 + row * UI_CUBE_SIZE * MAP_SCALE,
+						UI_CUBE_SIZE * MAP_SCALE,
+						UI_CUBE_SIZE * MAP_SCALE,
+						&cube_imgs[next_cube.type - 1]
+					);
+				}
+			}
+		}
+		outtextxy(
+			MAP_WIDTH * TILE_SIZE* MAP_SCALE + 60,
+			190,
+			_T("Next cube")
+		);
+
+		/* Draw score */
+		putimage_alpha_zoom(
+			MAP_WIDTH * TILE_SIZE * MAP_SCALE + 20,
+			230,
+			1,
+			&ui_imgs[UII_SCORE]
+		);
+		outtextxy(
+			MAP_WIDTH * TILE_SIZE * MAP_SCALE + 80,
+			230 + 26,
+			_T("Score")
+		);
+		std::wstring score_str = std::to_wstring(score);
+		int score_str_len = score_str.length();
+		for (int i = 0; i < SCORE_STR_LEN - score_str_len; i++)
+		{
+			score_str.insert(i, L"0");
+		}
+		outtextxy(
+			MAP_WIDTH * TILE_SIZE * MAP_SCALE + 66,
+			230 + 26 + 20,
+			score_str.c_str()
+		);
 
 		/* Draw UI keys */
 		const int UI_KEY_WIDTH_MID = 130;
@@ -93,6 +147,7 @@ namespace tetris
 		const int UI_KEY_SCALE = 2;
 		const float UI_KEY_HEIGHT_FACTOR = 0.6f;
 
+		settextcolor(RGB(0x6D, 0x4B, 0x27));
 		putimage_alpha_zoom(
 			GRAPH_WIDTH - UI_KEY_WIDTH_MID,
 			GRAPH_HEIGHT * UI_KEY_HEIGHT_FACTOR,
@@ -189,17 +244,17 @@ namespace tetris
 
 	void DrawGameFinishUI()
 	{
-		const int UI_TIPS_WIDTH_MID = 150;
-		const float UI_TIPS_HEIGHT_FACTOR = 0.4f;
+		const int UI_TIPS_WIDTH_LEFT = 172;
+		const float UI_TIPS_HEIGHT_FACTOR = 0.45f;
 
 		setbkcolor(RGB(0xFF, 0xF1, 0xD2));
 		setbkmode(OPAQUE);
 		settextcolor(RGB(0x6D, 0x4B, 0x27));
 		settextstyle(20, 0, _T("微软雅黑"), 0, 0, FW_BOLD, FALSE, FALSE, FALSE);
 		outtextxy(
-			GRAPH_WIDTH - UI_TIPS_WIDTH_MID,
+			GRAPH_WIDTH - UI_TIPS_WIDTH_LEFT,
 			GRAPH_HEIGHT * UI_TIPS_HEIGHT_FACTOR,
-			_T("You failed.")
+			_T("The container is full.")
 		);
 	}
 
@@ -209,7 +264,7 @@ namespace tetris
 		DrawUI();
 		DrawMap();
 		DrawCube();
-		if (CheckGameFinish())
+		if (game_finish)
 		{
 			DrawGameFinishUI();
 		}
@@ -258,6 +313,42 @@ namespace tetris
 		return false;
 	}
 
+	void CheckAndEraseCube()
+	{
+		int top = WALL_ROW_INDEX;
+		int row = MAP_HEIGHT - 2;
+		int erase_row = -1;
+
+		while (row > top)
+		{
+			bool should_erase = true;
+
+			for (int col = 1; col < MAP_WIDTH - 1; col++)
+			{
+				if (map_status[ML_CUBE][row][col] == CE_EMPTY)
+				{
+					should_erase = false;
+					break;
+				}
+				erase_row = row;
+			}
+			if (should_erase)
+			{
+				score += SCORE_PER_LINE;
+				for (int i = erase_row; i > top; i--)
+				{
+					for (int j = 1; j < MAP_WIDTH - 1; j++)
+					{
+						map_status[ML_CUBE][i][j] = map_status[ML_CUBE][i - 1][j];
+					}
+				}
+				top--;
+				continue;
+			}
+			row--;
+		}
+	}
+
 	void MoveCube(int move_x, int move_y)
 	{
 		int new_x = current_cube.position.x + move_x;
@@ -270,8 +361,17 @@ namespace tetris
 			if (move_y == 1)
 			{
 				PrintCubeOnMap(current_cube, PME_PRINT);
+
+				CheckAndEraseCube();
+
+				if (CheckGameFinish())
+				{
+					return;
+				}
+
 				GenerateCube();
 				should_generate_cube = false;
+				return;
 			}
 		}
 		else
@@ -342,18 +442,19 @@ namespace tetris
 		PrintCubeOnMap(current_cube, PME_PRINT);
 	}
 
-	bool CheckShouldEraseCube()
-	{
-		return false;
-	}
-
-	void EraseCube()
-	{
-
-	}
-
 	bool CheckGameFinish()
 	{
+		for (int i = 0; i < CUBE_MATRIX_SIZE; i++)
+		{
+			for (int j = 0; j < CUBE_MATRIX_SIZE; j++)
+			{
+				if (current_cube.matrix[i][j] == 1 && current_cube.position.y + i <= WALL_ROW_INDEX)
+				{
+					game_finish = true;
+					return game_finish;
+				}
+			}
+		}
 		return game_finish;
 	}
 
@@ -361,7 +462,7 @@ namespace tetris
 	{
 		static unsigned tick_cube_move = clock();
 
-		while (!CheckGameFinish())
+		while (!game_finish)
 		{
 			DrawGame();
 
@@ -375,12 +476,6 @@ namespace tetris
 			{
 				MoveCube(0, 1);
 				tick_cube_move = clock();
-			}
-
-			if (CheckShouldEraseCube())
-			{
-				EraseCube();
-				should_generate_cube = true;
 			}
 
 			if (_kbhit())

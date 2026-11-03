@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CppGameCollection/CppGameCollection.vcxproj" />
+  <Project Path="CppGameCollection/CppGameCollection.vcxproj" Id="6ecf5527-3190-4552-b9d9-7bb7ac5f44b8" />
 </Solution>

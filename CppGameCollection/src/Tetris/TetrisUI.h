@@ -12,9 +12,11 @@ namespace tetris
 	const int TIP_BAR_WIDTH = 200;
 
 	/* UI assets */
-	const int UI_IMG_NUM = 6;
+	const int UI_IMG_NUM = 8;
 	const std::wstring ui_img_paths[] = {
 		L"assets/Tetris/imgs/ui/ui_background.png",
+		L"assets/Tetris/imgs/ui/ui_next_cube.png",
+		L"assets/Tetris/imgs/ui/ui_score.png",
 		L"assets/Tetris/imgs/ui/keyboard_w.png",
 		L"assets/Tetris/imgs/ui/keyboard_a.png",
 		L"assets/Tetris/imgs/ui/keyboard_s.png",
@@ -24,6 +26,8 @@ namespace tetris
 	enum UIImg
 	{
 		UII_BACKGROUND,
+		UII_NEXT_CUBE,
+		UII_SCORE,
 		UII_KEYBOARD_W,
 		UII_KEYBOARD_A,
 		UII_KEYBOARD_S,
