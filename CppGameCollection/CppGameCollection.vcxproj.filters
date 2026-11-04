@@ -75,7 +75,7 @@
     <ClCompile Include="src\Solution.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils.cpp">
+    <ClCompile Include="src\Utils\Utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,10 +140,10 @@
     <ClInclude Include="src\Solution.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tools.h">
+    <ClInclude Include="src\Utils\Tools.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils.h">
+    <ClInclude Include="src\Utils\Utils.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

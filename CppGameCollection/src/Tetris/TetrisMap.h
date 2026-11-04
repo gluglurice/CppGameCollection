@@ -7,7 +7,7 @@
 
 #include <graphics.h>
 
-#include "../Utils.h"
+#include "src/Utils/Utils.h"
 #include "TetrisUI.h"
 
 namespace tetris

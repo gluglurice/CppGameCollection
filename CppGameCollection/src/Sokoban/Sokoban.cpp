@@ -11,11 +11,13 @@ namespace sokoban
 	const int MAP_HEIGHT = 10;
 	const int IMG_NUM = 5;
 	const int IMG_PATH_LENGTH = 50;
-	const int TOTAL_LEVEL_NUM = 3;
+	const int TOTAL_LEVEL_NUM = 5;
 
 	/******************** 每关游戏获胜条件 *******************/
 	int current_level = 0;
-	int box_not_in_target[] = { 1, 2, 3 };
+	int box_not_in_target_original[] = { 1, 2, 3, 4, 5 };
+	int box_not_in_target[] = { 1, 2, 3, 4, 5 };
+	int role_start_pos[][2] = {{1, 1}, {1, 1}, {1, 1}, {4, 5}, {2, 4}};
 	bool game_finish = false;
 
 	#pragma endregion
@@ -91,6 +93,30 @@ namespace sokoban
 			0,2,1,1,1,2,0,0,0,0,
 			0,2,2,2,2,2,0,0,0,0
 		},
+		{
+			0,0,0,0,0,0,0,0,0,0,
+			0,0,2,2,2,0,0,0,0,0,
+			0,0,2,3,2,0,0,0,0,0,
+			0,0,2,1,2,2,2,2,0,0,
+			2,2,2,4,1,4,3,2,0,0,
+			2,3,1,4,1,2,2,2,0,0,
+			2,2,2,2,4,2,0,0,0,0,
+			0,0,0,2,3,2,0,0,0,0,
+			0,0,0,2,2,2,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0
+		},
+		{
+			0,0,0,0,0,0,0,0,0,0,
+			0,0,0,2,2,2,2,2,2,0,
+			0,0,0,2,1,1,1,1,2,0,
+			0,2,2,2,4,4,4,1,2,0,
+			0,2,1,1,4,3,3,1,2,0,
+			0,2,1,4,3,3,3,2,2,0,
+			0,2,2,2,2,1,1,2,0,0,
+			0,0,0,0,2,2,2,2,0,0,
+			0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0
+		},
 	};
 
 	#pragma endregion
@@ -150,8 +176,12 @@ namespace sokoban
 	 */
 	void InitGameStatus()
 	{
+		/* 初始化未就位的箱子数量 */
+		box_not_in_target[current_level] = box_not_in_target_original[current_level];
+
 		/********************* 初始化人物坐标 **********************/
-		role_x = 1, role_y = 1;
+		role_x = role_start_pos[current_level][0];
+		role_y = role_start_pos[current_level][1];
 		role_direction = RD_DOWN;
 
 		/********************* 初始化地图状态 **********************/

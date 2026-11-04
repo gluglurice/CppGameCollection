@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -10,7 +10,7 @@
 #include <windows.h>
 #include <graphics.h>
 
-#include "Tools.h"
+#include "src/Utils/Tools.h"
 
 namespace solution {
 

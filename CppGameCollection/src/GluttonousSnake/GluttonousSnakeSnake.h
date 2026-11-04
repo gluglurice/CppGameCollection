@@ -4,7 +4,7 @@
 
 #include <graphics.h>
 
-#include "../Utils.h"
+#include "src/Utils/Utils.h"
 #include "GluttonousSnakeActor.h"
 
 namespace gluttonous_snake

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <map>
@@ -6,7 +6,7 @@
 #include <conio.h>
 #include <graphics.h>
 
-#include "../Tools.h"
+#include "src/Utils/Tools.h"
 
 namespace sokoban
 {

@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <graphics.h>
 
-#include "../Utils.h"
+#include "src/Utils/Utils.h"
 #include "TetrisMap.h"
 #include "TetrisCube.h"
 #include "TetrisUI.h"

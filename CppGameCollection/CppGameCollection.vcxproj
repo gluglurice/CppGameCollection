@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -111,6 +114,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,7 +163,7 @@
     <ClCompile Include="src\Tetris\TetrisCube.cpp" />
     <ClCompile Include="src\Tetris\TetrisMap.cpp" />
     <ClCompile Include="src\Tetris\TetrisUI.cpp" />
-    <ClCompile Include="src\Utils.cpp" />
+    <ClCompile Include="src\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DrawDiamond\DrawDiamond.h" />
@@ -182,8 +186,8 @@
     <ClInclude Include="src\Tetris\TetrisCube.h" />
     <ClInclude Include="src\Tetris\TetrisMap.h" />
     <ClInclude Include="src\Tetris\TetrisUI.h" />
-    <ClInclude Include="src\Tools.h" />
-    <ClInclude Include="src\Utils.h" />
+    <ClInclude Include="src\Utils\Tools.h" />
+    <ClInclude Include="src\Utils\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

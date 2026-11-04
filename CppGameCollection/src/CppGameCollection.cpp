@@ -2,5 +2,5 @@
 
 int main()
 {
-	tetris::Tetris();
+	solution::Solution();
 }

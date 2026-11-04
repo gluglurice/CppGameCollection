@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <graphics.h>
 
-#include "../Utils.h"
+#include "src/Utils/Utils.h"
 #include "GluttonousSnakeMap.h"
 #include "GluttonousSnakeSnake.h"
 #include "GluttonousSnakeItem.h"
