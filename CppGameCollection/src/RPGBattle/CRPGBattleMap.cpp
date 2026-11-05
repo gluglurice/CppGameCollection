@@ -20,7 +20,7 @@ CRPGBattleMap::~CRPGBattleMap()
 	delete[] m_map_status_original;
 }
 
-void CRPGBattleMap::LoadMapOriginalStatus(const std::wstring map_path)
+CRPGBattleMap::CRPGBattleMap(const std::wstring map_path)
 {
 	std::ifstream battle_file(map_path, std::ios::in);
 	if (!battle_file.is_open())

@@ -1,13 +1,11 @@
 ﻿#include "CRPGBattle.h"
 
-CRPGBattle::CRPGBattle()
-{
-	SetGameFinish(false);
-	SetAssetsManager(CRPGBattleAssetsManager());
-	SetMap(CRPGBattleMap());
-	SetHero(CRPGBattleRole(CRPGBattleRole::RT_HERO, "Hero"));
-	SetEnemy(CRPGBattleRole(CRPGBattleRole::RT_ENEMY_SWORD, "Enemy Sword"));
-}
+CRPGBattle::CRPGBattle() :
+	m_game_finish(false),
+	m_assets_manager(CRPGBattleAssetsManager()),
+	m_map(CRPGBattleMap(CRPGBattleAssetsManager::MAP_BATTLE_PATH)),
+	m_hero(CRPGBattleRole(CRPGBattleRole::RT_HERO, "Hero")),
+	m_enemy(CRPGBattleRole(CRPGBattleRole::RT_ENEMY_SWORD, "Enemy Sword")) {}
 
 CRPGBattle::~CRPGBattle() {}
 
@@ -280,7 +278,6 @@ void CRPGBattle::RunGame()
 {
 	m_assets_manager.LoadAssets();
 
-	m_map.LoadMapOriginalStatus(CRPGBattleAssetsManager::MAP_BATTLE_PATH);
 	initgraph(m_map.GetGraphWidth(), m_map.GetGraphHeight());
 
 	InitGameStatus();

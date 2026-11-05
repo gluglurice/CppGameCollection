@@ -45,10 +45,9 @@ public:
 
 	~CRPGBattleMap();
 
-	CRPGBattleMap(int layer_num, int width, int height, int tile_size, int scale, int tip_bar_width);
+	CRPGBattleMap(const std::wstring);
 
 	/* Logic methods */
-	void LoadMapOriginalStatus(const std::wstring);
 
 	void InitMapStatus();
 
