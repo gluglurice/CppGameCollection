@@ -12,8 +12,8 @@
 
 #include "src/Utils/Tools.h"
 
-namespace solution {
-
-	void Solution();
-
-}
+class CSolution
+{
+public:
+	CSolution();
+};

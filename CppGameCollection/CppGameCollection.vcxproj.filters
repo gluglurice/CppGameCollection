@@ -69,13 +69,28 @@
     <ClCompile Include="src\Tetris\TetrisUI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\CppGameCollection.cpp">
+    <ClCompile Include="src\CCppGameCollection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Solution.cpp">
+    <ClCompile Include="src\CSolution.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils\Utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RPGBattle\CRPGBattleMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RPGBattle\CRPGBattle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RPGBattle\CRPGBattleRole.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RPGBattle\CRPGBattleAssetsManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,16 +149,28 @@
     <ClInclude Include="src\Tetris\TetrisUI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\CppGameCollection.h">
+    <ClInclude Include="src\CCppGameCollection.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Solution.h">
+    <ClInclude Include="src\CSolution.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Tools.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RPGBattle\CRPGBattleMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RPGBattle\CRPGBattle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RPGBattle\CRPGBattleRole.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RPGBattle\CRPGBattleAssetsManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
