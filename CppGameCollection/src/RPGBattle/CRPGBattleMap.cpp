@@ -4,7 +4,21 @@
 
 CRPGBattleMap::CRPGBattleMap() {}
 
-CRPGBattleMap::~CRPGBattleMap() {}
+CRPGBattleMap::~CRPGBattleMap()
+{
+	for (int layer = 0; layer < m_map_layer_num; layer++)
+	{
+		for (int row = 0; row < m_map_height; row++)
+		{
+			delete[] m_map_status[layer][row];
+			delete[] m_map_status_original[layer][row];
+		}
+		delete[] m_map_status[layer];
+		delete[] m_map_status_original[layer];
+	}
+	delete[] m_map_status;
+	delete[] m_map_status_original;
+}
 
 void CRPGBattleMap::LoadMapOriginalStatus(const std::wstring map_path)
 {
