@@ -6,6 +6,6 @@ CCppGameCollection::~CCppGameCollection() {}
 
 void CCppGameCollection::Run()
 {
-	CRPGBattle battle;
-	battle.RunGame();
+	CSokobanV2 sokoban;
+	sokoban.RunGame();
 }

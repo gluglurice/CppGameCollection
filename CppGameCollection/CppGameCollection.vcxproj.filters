@@ -93,6 +93,21 @@
     <ClCompile Include="src\RPGBattle\CRPGBattleAssetsManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\SokobanV2\CSokobanV2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SokobanV2\CSokobanV2AssetsManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SokobanV2\CSokobanV2Map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SokobanV2\CSokobanV2Role.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SokobanV2\CSokobanV2LevelManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DrawDiamond\DrawDiamond.h">
@@ -171,6 +186,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\RPGBattle\CRPGBattleAssetsManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SokobanV2\CSokobanV2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SokobanV2\CSokobanV2AssetsManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SokobanV2\CSokobanV2Map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SokobanV2\CSokobanV2Role.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SokobanV2\CSokobanV2LevelManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

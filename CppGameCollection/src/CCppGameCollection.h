@@ -5,6 +5,7 @@
 #include "NumBomb/NumBomb.h"
 #include "RockPaperScissors/RockPaperScissors.h"
 #include "Sokoban/Sokoban.h"
+#include "SokobanV2/CSokobanV2.h"
 #include "Gacha/Gacha.h"
 #include "MazeRPG/MazeRPG.h"
 #include "RPGBattle/CRPGBattle.h"

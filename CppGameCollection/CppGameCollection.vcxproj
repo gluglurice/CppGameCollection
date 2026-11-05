@@ -143,6 +143,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\SokobanV2\CSokobanV2LevelManager.cpp" />
     <ClCompile Include="src\RPGBattle\CRPGBattleAssetsManager.cpp" />
     <ClCompile Include="src\DrawDiamond\DrawDiamond.cpp" />
     <ClCompile Include="src\Gacha\Gacha.cpp" />
@@ -162,6 +163,10 @@
     <ClCompile Include="src\RPGBattle\CRPGBattleMap.cpp" />
     <ClCompile Include="src\RPGBattle\CRPGBattle.cpp" />
     <ClCompile Include="src\RPGBattle\CRPGBattleRole.cpp" />
+    <ClCompile Include="src\SokobanV2\CSokobanV2.cpp" />
+    <ClCompile Include="src\SokobanV2\CSokobanV2AssetsManager.cpp" />
+    <ClCompile Include="src\SokobanV2\CSokobanV2Map.cpp" />
+    <ClCompile Include="src\SokobanV2\CSokobanV2Role.cpp" />
     <ClCompile Include="src\Sokoban\Sokoban.cpp" />
     <ClCompile Include="src\CSolution.cpp" />
     <ClCompile Include="src\Tetris\Tetris.cpp" />
@@ -171,6 +176,7 @@
     <ClCompile Include="src\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\SokobanV2\CSokobanV2LevelManager.h" />
     <ClInclude Include="src\RPGBattle\CRPGBattleAssetsManager.h" />
     <ClInclude Include="src\DrawDiamond\DrawDiamond.h" />
     <ClInclude Include="src\Gacha\Gacha.h" />
@@ -189,6 +195,10 @@
     <ClInclude Include="src\RPGBattle\CRPGBattleMap.h" />
     <ClInclude Include="src\RPGBattle\CRPGBattle.h" />
     <ClInclude Include="src\RPGBattle\CRPGBattleRole.h" />
+    <ClInclude Include="src\SokobanV2\CSokobanV2.h" />
+    <ClInclude Include="src\SokobanV2\CSokobanV2AssetsManager.h" />
+    <ClInclude Include="src\SokobanV2\CSokobanV2Map.h" />
+    <ClInclude Include="src\SokobanV2\CSokobanV2Role.h" />
     <ClInclude Include="src\Sokoban\Sokoban.h" />
     <ClInclude Include="src\CSolution.h" />
     <ClInclude Include="src\Tetris\Tetris.h" />
