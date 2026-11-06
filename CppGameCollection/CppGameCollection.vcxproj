@@ -168,7 +168,7 @@
     <ClCompile Include="src\SokobanV2\CSokobanV2Map.cpp" />
     <ClCompile Include="src\SokobanV2\CSokobanV2Role.cpp" />
     <ClCompile Include="src\Sokoban\Sokoban.cpp" />
-    <ClCompile Include="src\CSolution.cpp" />
+    <ClCompile Include="src\Solution\CSolution.cpp" />
     <ClCompile Include="src\Tetris\Tetris.cpp" />
     <ClCompile Include="src\Tetris\TetrisCube.cpp" />
     <ClCompile Include="src\Tetris\TetrisMap.cpp" />
@@ -200,7 +200,7 @@
     <ClInclude Include="src\SokobanV2\CSokobanV2Map.h" />
     <ClInclude Include="src\SokobanV2\CSokobanV2Role.h" />
     <ClInclude Include="src\Sokoban\Sokoban.h" />
-    <ClInclude Include="src\CSolution.h" />
+    <ClInclude Include="src\Solution\CSolution.h" />
     <ClInclude Include="src\Tetris\Tetris.h" />
     <ClInclude Include="src\Tetris\TetrisCube.h" />
     <ClInclude Include="src\Tetris\TetrisMap.h" />

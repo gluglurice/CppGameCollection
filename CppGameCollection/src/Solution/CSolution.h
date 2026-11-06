@@ -10,7 +10,7 @@
 #include <windows.h>
 #include <graphics.h>
 
-#include "src/Utils/Tools.h"
+#include "src/Utils/Utils.h"
 
 class CSolution
 {

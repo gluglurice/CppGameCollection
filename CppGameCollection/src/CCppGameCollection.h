@@ -1,16 +1,18 @@
 ﻿#pragma once
 
-#include "CSolution.h"
+#include "Solution/CSolution.h"
+
 #include "DrawDiamond/DrawDiamond.h"
 #include "NumBomb/NumBomb.h"
 #include "RockPaperScissors/RockPaperScissors.h"
 #include "Sokoban/Sokoban.h"
-#include "SokobanV2/CSokobanV2.h"
 #include "Gacha/Gacha.h"
 #include "MazeRPG/MazeRPG.h"
-#include "RPGBattle/CRPGBattle.h"
 #include "GluttonousSnake/GluttonousSnake.h"
 #include "Tetris/Tetris.h"
+
+#include "RPGBattle/CRPGBattle.h"
+#include "SokobanV2/CSokobanV2.h"
 
 class CCppGameCollection
 {

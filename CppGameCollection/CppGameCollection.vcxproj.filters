@@ -72,7 +72,7 @@
     <ClCompile Include="src\CCppGameCollection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\CSolution.cpp">
+    <ClCompile Include="src\Solution\CSolution.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils\Utils.cpp">
@@ -167,7 +167,7 @@
     <ClInclude Include="src\CCppGameCollection.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\CSolution.h">
+    <ClInclude Include="src\Solution\CSolution.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Tools.h">
