@@ -2,7 +2,16 @@
 
 CSokobanV2Map::CSokobanV2Map() {}
 
-CSokobanV2Map::~CSokobanV2Map() {}
+CSokobanV2Map::~CSokobanV2Map()
+{
+	for (int row = 0; row < m_map_height; row++)
+	{
+		delete[] m_map_status[row];
+		delete[] m_map_status_original[row];
+	}
+	delete[] m_map_status;
+	delete[] m_map_status_original;
+}
 
 CSokobanV2Map::CSokobanV2Map(const std::wstring map_path)
 {
@@ -54,6 +63,26 @@ CSokobanV2Map::CSokobanV2Map(const std::wstring map_path)
 	}
 
 	battle_file.close();
+}
+
+void CSokobanV2Map::operator=(const CSokobanV2Map& other)
+{
+	m_map_width = other.m_map_width;
+	m_map_height = other.m_map_height;
+	m_tile_size = other.m_tile_size;
+	m_graph_width = other.m_graph_width;
+	m_graph_height = other.m_graph_height;
+	m_box_not_in_target_num = other.m_box_not_in_target_num;
+	m_box_not_in_target_num_original = other.m_box_not_in_target_num_original;
+	for (int row = 0; row < m_map_height; row++)
+	{
+		for (int col = 0; col < m_map_width; col++)
+		{
+			m_map_status[row][col] = other.m_map_status[row][col];
+			m_map_status_original[row][col] = other.m_map_status_original[row][col];
+		}
+	}
+	m_role_start_position = other.m_role_start_position;
 }
 
 void CSokobanV2Map::InitMapStatus()

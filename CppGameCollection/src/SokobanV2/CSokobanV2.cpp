@@ -7,16 +7,7 @@ CSokobanV2::CSokobanV2() :
 	m_map(m_level_manager.GetMapPaths()[m_level_manager.GetCurrentLevel()]),
 	m_role(CSokobanV2Role(m_map.GetRoleStartPosition(), CSokobanV2Role::RD_DOWN)) {}
 
-CSokobanV2::~CSokobanV2()
-{
-	for (int row = 0; row < m_map.GetMapHeight(); row++)
-	{
-		delete[] m_map.GetMapStatus()[row];
-		delete[] m_map.GetMapStatusOriginal()[row];
-	}
-	delete[] m_map.GetMapStatus();
-	delete[] m_map.GetMapStatusOriginal();
-}
+CSokobanV2::~CSokobanV2() {}
 
 void CSokobanV2::InitGameStatus()
 {

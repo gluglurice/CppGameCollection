@@ -50,6 +50,10 @@ public:
 
 	CSokobanV2Map(const std::wstring);
 
+	/* Override operators */
+
+	void operator=(const CSokobanV2Map& other);
+
 	/* Logic methods */
 
 	void InitMapStatus();
