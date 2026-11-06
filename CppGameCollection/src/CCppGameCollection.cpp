@@ -6,6 +6,6 @@ CCppGameCollection::~CCppGameCollection() {}
 
 void CCppGameCollection::Run()
 {
-	CSokobanV2 sokoban;
-	sokoban.RunGame();
+	CSolution solution;
+	solution.Run();
 }
