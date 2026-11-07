@@ -10,12 +10,5 @@ CSolution::~CSolution() {}
 
 void CSolution::Run()
 {
-	char* str = fun();
-	std::cout << str << std::endl;
-	delete[] str;
-}
 
-char* fun()
-{
-	return new char[]("Hello World");
 }

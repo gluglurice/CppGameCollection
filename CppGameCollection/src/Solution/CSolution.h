@@ -9,5 +9,3 @@ public:
 
 	void Run();
 };
-
-char* fun();
