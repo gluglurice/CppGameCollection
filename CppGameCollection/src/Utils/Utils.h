@@ -8,7 +8,7 @@ public:\
     type Get##name();\
     void Set##name(type val);
 
-#define GET_SET_FUN_DIFINE(type, class, member, name) \
+#define GET_SET_FUN_DEFINE(type, class, member, name) \
 type class::Get##name()\
 {\
     return member;\

@@ -108,6 +108,18 @@
     <ClCompile Include="src\SokobanV2\CSokobanV2LevelManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Solution\Hero\CHero.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Solution\Hero\CMasterYi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Solution\Hero\CNasus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Solution\Hero\CMissFortune.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DrawDiamond\DrawDiamond.h">
@@ -201,6 +213,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\SokobanV2\CSokobanV2LevelManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Solution\Hero\CHero.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Solution\Hero\CMasterYi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Solution\Hero\CNasus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Solution\Hero\CMissFortune.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <iostream>
+
 class CSolution
 {
 public:
@@ -8,4 +10,6 @@ public:
 	~CSolution();
 
 	void Run();
+
+	void TestHeroSay();
 };

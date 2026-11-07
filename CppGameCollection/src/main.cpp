@@ -1,4 +1,4 @@
-﻿#include "CCppGameCollection.h"
+﻿#include "CCppGameCollection/CCppGameCollection.h"
 
 int main()
 {
