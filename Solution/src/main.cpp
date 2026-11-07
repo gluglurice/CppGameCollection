@@ -1,4 +1,4 @@
-﻿#include "CSolution.h"
+﻿#include "Solution/CSolution.h"
 
 int main()
 {

@@ -1,9 +1,9 @@
 ﻿#include "CSolution.h"
 
-#include "Hero/CHero.h"
-#include "Hero/CMasterYi.h"
-#include "Hero/CNasus.h"
-#include "Hero/CMissFortune.h"
+#include "src/Hero/CHero.h"
+#include "src/Hero/CMasterYi.h"
+#include "src/Hero/CNasus.h"
+#include "src/Hero/CMissFortune.h"
 
 CSolution::CSolution() {}
 
