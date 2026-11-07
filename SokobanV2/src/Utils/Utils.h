@@ -1,6 +1,8 @@
 ﻿#pragma once
 #pragma comment(lib, "MSIMG32.LIB")
 
+#include <graphics.h>
+
 #define GET_SET_FUN_DECLAR(type, member, name) \
 protected:\
     type member;\
@@ -17,8 +19,6 @@ void class::Set##name(type val)\
 {\
     member = val;\
 }
-
-class IMAGE;
 
 /**
  * @brief 透明绘制，并支持放大/缩小

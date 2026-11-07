@@ -10,6 +10,4 @@ public:
 	~CSolution();
 
 	void Run();
-
-	void TestHeroSay();
 };

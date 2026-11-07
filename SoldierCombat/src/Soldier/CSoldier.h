@@ -5,17 +5,19 @@
 
 #include "src/Utils/Utils.h"
 
-class CHero
+class CSoldier
 {
 	GET_SET_FUN_DECLAR(int, m_hp, HP)
-
+	GET_SET_FUN_DECLAR(int, m_atk, ATK)
 	GET_SET_FUN_DECLAR(std::string, m_name, Name)
 
 public:
 
-	CHero();
+	CSoldier();
 
-	~CHero();
+	~CSoldier();
 
-	virtual void Say();
+	virtual void Attack(CSoldier& other);
+
+	virtual void GotAttackedBy(CSoldier& other);
 };

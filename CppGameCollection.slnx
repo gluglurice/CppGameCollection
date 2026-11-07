@@ -13,6 +13,8 @@
   <Project Path="RPGBattle/RPGBattle.vcxproj" Id="77238ad2-6535-45a8-b6ab-f7c68698b1a8" />
   <Project Path="Sokoban/Sokoban.vcxproj" Id="c3b80ba4-5136-4c0e-b389-68c4e5fc5059" />
   <Project Path="SokobanV2/SokobanV2.vcxproj" Id="7a0e3178-5f14-4688-acf7-5a670e7401f9" />
+  <Project Path="SoldierCombat/SoldierCombat.vcxproj" Id="139e2207-c87e-45a1-a5ae-5fa16f862d04" />
+  <Project Path="SoldierCombatV2/SoldierCombatV2.vcxproj" Id="72acc592-30d1-4b25-9d82-fc4fbdcb17f1" />
   <Project Path="Solution/Solution.vcxproj" Id="44ade8fa-b848-4305-921f-8e47daf643ce" />
   <Project Path="Tetris/Tetris.vcxproj" Id="e4055eb7-f5bb-49b0-9154-2346a9adde00" />
 </Solution>

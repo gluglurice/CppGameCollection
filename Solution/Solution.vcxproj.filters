@@ -15,18 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Hero\CHero.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hero\CMasterYi.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hero\CMissFortune.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hero\CNasus.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -38,18 +26,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Hero\CHero.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hero\CMasterYi.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hero\CMissFortune.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hero\CNasus.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\Solution\CSolution.h">
       <Filter>头文件</Filter>
     </ClInclude>

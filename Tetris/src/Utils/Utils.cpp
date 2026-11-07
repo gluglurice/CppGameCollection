@@ -1,7 +1,5 @@
 ﻿#include "Utils.h"
 
-#include <graphics.h>
-
 void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img) {
     if (!img) return;
 
