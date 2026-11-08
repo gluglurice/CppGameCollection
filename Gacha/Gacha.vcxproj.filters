@@ -26,8 +26,5 @@
     <ClInclude Include="src\Gacha\Gacha.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\Tools.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

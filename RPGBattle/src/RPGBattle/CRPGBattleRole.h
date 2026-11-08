@@ -3,8 +3,7 @@
 #include <string>
 
 #include <graphics.h>
-
-#include "src/Utils/Utils.h"
+#include <Utils/Utils.h>
 
 class CRPGBattleRole
 {

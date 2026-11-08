@@ -3,6 +3,6 @@
 int main()
 {
 	CSoldierCombat soldier_combat;
-	soldier_combat.Run();
+	soldier_combat.RunGame();
 	return 0;
 }

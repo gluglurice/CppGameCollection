@@ -8,6 +8,8 @@ public:
 
 	CLancer();
 
+	CLancer(const Position& position, const std::wstring& img_path);
+
 	~CLancer();
 
 	void Attack(CSoldier& other) override;

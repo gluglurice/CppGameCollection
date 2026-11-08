@@ -1,6 +1,7 @@
 ﻿#include "Utils.h"
 
-void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img) {
+void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img)
+{
     if (!img) return;
 
     int srcW = img->getwidth();
@@ -17,7 +18,8 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img) {
     );
 }
 
-void putimage_alpha_zoom(int x, int y, int scale, IMAGE* img) {
+void putimage_alpha_zoom(int x, int y, int scale, IMAGE* img)
+{
     if (!img) return;
 
     int srcW = img->getwidth();

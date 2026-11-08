@@ -8,5 +8,5 @@ public:
 
 	~CSoldierCombat();
 
-	void Run();
+	void RunGame();
 };

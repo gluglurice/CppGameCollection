@@ -3,8 +3,7 @@
 
 #include <conio.h>
 #include <graphics.h>
-
-#include "src/Utils/Tools.h"
+#include <Utils/Tools.h>
 
 namespace gacha
 {

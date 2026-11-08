@@ -8,6 +8,8 @@ public:
 
 	CHeavyArmored();
 
+	CHeavyArmored(const Position& position, const std::wstring& img_path);
+
 	~CHeavyArmored();
 
 	void Attack(CSoldier& other) override;

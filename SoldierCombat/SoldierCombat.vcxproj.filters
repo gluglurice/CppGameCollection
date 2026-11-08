@@ -18,9 +18,6 @@
     <ClCompile Include="src\SoldierCombat\CSoldierCombat.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Utils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -36,12 +33,12 @@
     <ClCompile Include="src\Soldier\CSoldier.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Soldier\CActor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SoldierCombat\CSoldierCombat.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\Utils.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Soldier\CArcher.h">
@@ -54,6 +51,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Soldier\CSoldier.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Soldier\CActor.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

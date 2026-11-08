@@ -10,8 +10,8 @@
 #include <conio.h>
 #include <windows.h>
 #include <graphics.h>
+#include <Utils/Utils.h>
 
-#include "src/Utils/Utils.h"
 #include "Map.h"
 #include "Role.h"
 

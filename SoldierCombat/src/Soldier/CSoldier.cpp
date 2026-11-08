@@ -5,6 +5,12 @@ CSoldier::CSoldier()
 
 }
 
+CSoldier::CSoldier(const Position& position, const std::wstring& img_path)
+{
+	m_position = position;
+	LoadImg(img_path);
+}
+
 CSoldier::~CSoldier()
 {
 
