@@ -6,11 +6,9 @@ class CHeavyArmored : public CSoldier
 {
 public:
 
-	CHeavyArmored();
+	using CSoldier::CSoldier;
 
 	CHeavyArmored(const Position& position, const std::wstring& img_path);
-
-	~CHeavyArmored();
 
 	void Attack(CSoldier& other) override;
 

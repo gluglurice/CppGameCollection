@@ -23,9 +23,11 @@ public:
 
 	CActor();
 
+	CActor(const Position& position, const std::wstring& img_path);
+
 	~CActor();
 
 	void LoadImg(const std::wstring& img_path);
 
-	void Draw();
+	virtual void Draw(const int scale);
 };

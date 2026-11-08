@@ -6,11 +6,9 @@ class CArcher : public CSoldier
 {
 public:
 
-	CArcher();
+	using CSoldier::CSoldier;
 
 	CArcher(const Position& position, const std::wstring& img_path);
-
-	~CArcher();
 
 	void Attack(CSoldier& other) override;
 
