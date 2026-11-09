@@ -6,17 +6,17 @@
 #include "src/Soldier/CLancer.h"
 #include "src/Soldier/CHeavyArmored.h"
 
-CSoldierCombat::CSoldierCombat() {}
+CSoldierCombatV2::CSoldierCombatV2() {}
 
-CSoldierCombat::~CSoldierCombat() {}
+CSoldierCombatV2::~CSoldierCombatV2() {}
 
-void CSoldierCombat::DrawBackground(const std::wstring& img_path, const int scale)
+void CSoldierCombatV2::DrawBackground(const std::wstring& img_path, const int scale)
 {
 	loadimage(&m_bg_img, img_path.c_str());
 	putimage_alpha_zoom(0, 0, scale, &m_bg_img);
 }
 
-void CSoldierCombat::DrawGameFinish()
+void CSoldierCombatV2::DrawGameFinish()
 {
 	settextcolor(WHITE);
 	settextstyle(100, 0, L"Arial");
@@ -24,7 +24,7 @@ void CSoldierCombat::DrawGameFinish()
 	outtextxy(150, GRAPH_HEIGHT / 2 - 25, L"Game Finished");
 }
 
-CSoldier* CSoldierCombat::CreateSoldier(const CActor::Position& position)
+CSoldier* CSoldierCombatV2::CreateSoldier(const CActor::Position& position)
 {
 	int type = rand() % 3;
 
@@ -42,15 +42,14 @@ CSoldier* CSoldierCombat::CreateSoldier(const CActor::Position& position)
 	}
 }
 
-void CSoldierCombat::GameLoop()
+void CSoldierCombatV2::GameLoop()
 {
 	DrawBackground(IMG_PATH_BG, SCALE);
 
 	CActor::Position pos_left = { 100, 170 };
 	CActor::Position pos_right = { 700, 170 };
 
-	CSoldier* soldier_left = new CLancer(pos_left, IMG_PATH_LANCER);
-	//CSoldier* soldier_left = CreateSoldier(pos_left);
+	CSoldier* soldier_left = CreateSoldier(pos_left);
 	CSoldier* soldier_right = CreateSoldier(pos_right);
 
 	soldier_left->Draw(SCALE);
@@ -77,7 +76,7 @@ void CSoldierCombat::GameLoop()
 	delete soldier_right;
 }
 
-void CSoldierCombat::RunGame()
+void CSoldierCombatV2::RunGame()
 {
 	srand(static_cast<unsigned int>(time(nullptr)));
 
@@ -89,4 +88,4 @@ void CSoldierCombat::RunGame()
 	closegraph();
 }
 
-GET_SET_FUN_DEFINE(IMAGE, CSoldierCombat, m_bg_img, BgImg)
+GET_SET_FUN_DEFINE(IMAGE, CSoldierCombatV2, m_bg_img, BgImg)

@@ -9,7 +9,7 @@
 #include "src/Soldier/CActor.h"
 #include "src/Soldier/CSoldier.h"
 
-class CSoldierCombat
+class CSoldierCombatV2
 {
 public:
 	static constexpr int SCALE = 1;
@@ -27,9 +27,9 @@ GET_SET_FUN_DECLAR(IMAGE, m_bg_img, BgImg)
 
 public:
 
-	CSoldierCombat();
+	CSoldierCombatV2();
 
-	~CSoldierCombat();
+	~CSoldierCombatV2();
 
 	void DrawBackground(const std::wstring& img_path, const int scale);
 

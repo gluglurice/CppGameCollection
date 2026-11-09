@@ -10,7 +10,7 @@ public:
 
 	CArcher(const Position& position, const std::wstring& img_path);
 
-	void Attack(CSoldier& other) override;
+	void Attack(CSoldier** enemies, int target_id, int enemy_num) override;
 
-	void GotAttackedBy(CSoldier& other) override;
+	void GotAttackedBy(float damage) override;
 };

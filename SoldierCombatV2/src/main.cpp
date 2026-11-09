@@ -3,6 +3,6 @@
 int main()
 {
 	CSoldierCombatV2 soldier_combat_v2;
-	soldier_combat_v2.Run();
+	soldier_combat_v2.RunGame();
 	return 0;
 }

@@ -2,7 +2,7 @@
 
 int main()
 {
-	CSoldierCombat soldier_combat;
+	CSoldierCombatV2 soldier_combat;
 	soldier_combat.RunGame();
 	return 0;
 }

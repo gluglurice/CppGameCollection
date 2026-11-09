@@ -145,11 +145,24 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\SoldierCombatV2\CSoldierCombatV2.cpp" />
-    <ClCompile Include="src\Utils\Utils.cpp" />
+    <ClCompile Include="src\Soldier\CActor.cpp" />
+    <ClCompile Include="src\Soldier\CArcher.cpp" />
+    <ClCompile Include="src\Soldier\CHeavyArmored.cpp" />
+    <ClCompile Include="src\Soldier\CLancer.cpp" />
+    <ClCompile Include="src\Soldier\CSoldier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SoldierCombatV2\CSoldierCombatV2.h" />
-    <ClInclude Include="src\Utils\Utils.h" />
+    <ClInclude Include="src\Soldier\CActor.h" />
+    <ClInclude Include="src\Soldier\CArcher.h" />
+    <ClInclude Include="src\Soldier\CHeavyArmored.h" />
+    <ClInclude Include="src\Soldier\CLancer.h" />
+    <ClInclude Include="src\Soldier\CSoldier.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utils\Utils.vcxproj">
+      <Project>{dff0af0e-ccc3-4924-ac37-37ca07ae1a2a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

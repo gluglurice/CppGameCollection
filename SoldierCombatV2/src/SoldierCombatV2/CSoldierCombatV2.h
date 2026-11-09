@@ -9,14 +9,20 @@
 #include "src/Soldier/CActor.h"
 #include "src/Soldier/CSoldier.h"
 
-class CSoldierCombat
+class CSoldierCombatV2
 {
 public:
-	static constexpr int SCALE = 1;
-	static constexpr float TERMINAL = 500.0f;
+	static constexpr float TERMINAL = 1000.0f;
 
+	static constexpr int SCALE = 1;
 	static constexpr int GRAPH_WIDTH = 960;
 	static constexpr int GRAPH_HEIGHT = 540;
+
+	static constexpr int HERO_NUM = 3;
+	static constexpr int ENEMY_NUM = 3;
+
+	int heros_alive = HERO_NUM;
+	int enemies_alive = ENEMY_NUM;
 
 	const std::wstring IMG_PATH_BG = L"assets/imgs/ui/ui_background.jpg";
 	const std::wstring IMG_PATH_ARCHER = L"assets/imgs/soldiers/archer.png";
@@ -27,13 +33,15 @@ GET_SET_FUN_DECLAR(IMAGE, m_bg_img, BgImg)
 
 public:
 
-	CSoldierCombat();
+	CSoldierCombatV2();
 
-	~CSoldierCombat();
+	~CSoldierCombatV2();
 
 	void DrawBackground(const std::wstring& img_path, const int scale);
 
 	void DrawGameFinish();
+
+	CSoldier* CreateSoldier(CSoldier::SoldierType type, const CActor::Position& position);
 
 	CSoldier* CreateSoldier(const CActor::Position& position);
 
