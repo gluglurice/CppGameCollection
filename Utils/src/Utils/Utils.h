@@ -20,6 +20,18 @@ void class::Set##name(type val)\
     member = val;\
 }
 
+#define GET_SET_FUN_DEFINE_TEMPLATE(type, class, member, name) \
+template<typename T>\
+type class<T>::Get##name()\
+{\
+    return member;\
+}\
+template<typename T>\
+void class<T>::Set##name(type val)\
+{\
+    member = val;\
+}
+
 /**
  * @brief 透明绘制，并支持放大/缩小
  * @param x
