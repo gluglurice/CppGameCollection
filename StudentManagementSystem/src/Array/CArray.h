@@ -20,7 +20,7 @@ public:
 
 	void Expand();
 
-	void Insert(int id, T elem);
+	void Insert(int id, T& elem);
 
 	void Delete(int id);
 
@@ -67,7 +67,7 @@ void CArray<T>::Expand()
 }
 
 template<typename T>
-void CArray<T>::Insert(int id, T elem)
+void CArray<T>::Insert(int id, T& elem)
 {
 	if (id < 0 || id >= m_size)
 	{
@@ -100,7 +100,6 @@ void CArray<T>::Delete(int id)
 	{
 		m_array[i] = m_array[i + 1];
 	}
-	m_array[m_count - 1] = NULL;
 
 	m_count--;
 }
@@ -129,7 +128,7 @@ void CArray<T>::Update(int id, T& elem)
 template<typename T>
 void CArray<T>::SaveToFile(const std::string& filename)
 {
-	std::ofstream out_file(filename, std::out);
+	std::ofstream out_file(filename, std::ios::out);
 	if (!out_file)
 	{
 		std::cout << "打开文件 " << filename  << " 失败！" << std::endl;
@@ -147,7 +146,7 @@ void CArray<T>::SaveToFile(const std::string& filename)
 template<typename T>
 void CArray<T>::LoadFromFile(const std::string& filename)
 {
-	std::ifstream in_file(filename, std::in);
+	std::ifstream in_file(filename, std::ios::in);
 	if (!in_file)
 	{
 		std::cout << "打开文件 " << filename  << " 失败！" << std::endl;
