@@ -17,7 +17,6 @@
   <Project Path="SoldierCombat/SoldierCombat.vcxproj" Id="139e2207-c87e-45a1-a5ae-5fa16f862d04" />
   <Project Path="SoldierCombatV2/SoldierCombatV2.vcxproj" Id="72acc592-30d1-4b25-9d82-fc4fbdcb17f1" />
   <Project Path="Solution/Solution.vcxproj" Id="44ade8fa-b848-4305-921f-8e47daf643ce" />
-  <Project Path="StudentManagementSystem/StudentManagementSystem.vcxproj" Id="4f6f0f93-7e0a-461a-a764-abc0d891d30d" />
   <Project Path="Tetris/Tetris.vcxproj" Id="e4055eb7-f5bb-49b0-9154-2346a9adde00" />
   <Project Path="Utils/Utils.vcxproj" Id="dff0af0e-ccc3-4924-ac37-37ca07ae1a2a" />
 </Solution>
