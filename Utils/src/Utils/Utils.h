@@ -7,27 +7,15 @@
 protected:\
     type member;\
 public:\
-    type Get##name();\
-    void Set##name(type val);
+    type Get##name() const;\
+    void Set##name(type& val);
 
 #define GET_SET_FUN_DEFINE(type, class, member, name) \
-type class::Get##name()\
+type class::Get##name() const\
 {\
     return member;\
 }\
-void class::Set##name(type val)\
-{\
-    member = val;\
-}
-
-#define GET_SET_FUN_DEFINE_TEMPLATE(type, class, member, name) \
-template<typename T>\
-type class<T>::Get##name()\
-{\
-    return member;\
-}\
-template<typename T>\
-void class<T>::Set##name(type val)\
+void class::Set##name(type& val)\
 {\
     member = val;\
 }
