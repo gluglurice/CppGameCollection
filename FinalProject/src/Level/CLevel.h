@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class CUIManager
+class CLevel
 {
 
 };

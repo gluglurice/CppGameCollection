@@ -172,29 +172,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Actor\Bullet\CBullet.cpp" />
+    <ClCompile Include="src\Actor\CBullet.cpp" />
     <ClCompile Include="src\Actor\CActor.cpp" />
-    <ClCompile Include="src\Actor\Item\CItem.cpp" />
-    <ClCompile Include="src\Actor\Ship\CShip.cpp" />
+    <ClCompile Include="src\Actor\CItem.cpp" />
+    <ClCompile Include="src\Actor\CShip.cpp" />
+    <ClCompile Include="src\FX\CFX.cpp" />
     <ClCompile Include="src\Game\CGame.cpp" />
+    <ClCompile Include="src\Level\CLevel.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Manager\CAssetsManager.cpp" />
-    <ClCompile Include="src\Manager\CFXManager.cpp" />
-    <ClCompile Include="src\Manager\CLevelManager.cpp" />
-    <ClCompile Include="src\Manager\CUIManager.cpp" />
+    <ClCompile Include="src\Map\CMap.cpp" />
     <ClCompile Include="src\Solution\CGame.cpp" />
+    <ClCompile Include="src\UI\CUI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Actor\Bullet\CBullet.h" />
+    <ClInclude Include="src\Actor\CBullet.h" />
     <ClInclude Include="src\Actor\CActor.h" />
-    <ClInclude Include="src\Actor\Item\CItem.h" />
-    <ClInclude Include="src\Actor\Ship\CShip.h" />
+    <ClInclude Include="src\Actor\CItem.h" />
+    <ClInclude Include="src\Actor\CShip.h" />
+    <ClInclude Include="src\FX\CFX.h" />
     <ClInclude Include="src\Game\CGame.h" />
-    <ClInclude Include="src\Manager\CAssetsManager.h" />
-    <ClInclude Include="src\Manager\CFXManager.h" />
-    <ClInclude Include="src\Manager\CLevelManager.h" />
-    <ClInclude Include="src\Manager\CUIManager.h" />
+    <ClInclude Include="src\Level\CLevel.h" />
+    <ClInclude Include="src\Map\CMap.h" />
     <ClInclude Include="src\Solution\CGame.h" />
+    <ClInclude Include="src\UI\CUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

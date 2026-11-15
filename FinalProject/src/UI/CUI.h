@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class CFXManager
+class CUI
 {
 
 };

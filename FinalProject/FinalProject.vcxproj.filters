@@ -24,28 +24,28 @@
     <ClCompile Include="src\Actor\CActor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\Bullet\CBullet.cpp">
+    <ClCompile Include="src\Actor\CBullet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\Item\CItem.cpp">
+    <ClCompile Include="src\Actor\CItem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\Ship\CShip.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Manager\CAssetsManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Manager\CLevelManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Manager\CUIManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Manager\CFXManager.cpp">
+    <ClCompile Include="src\Actor\CShip.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CGame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\CUI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FX\CFX.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\CMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Level\CLevel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,28 +56,28 @@
     <ClInclude Include="src\Actor\CActor.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\Bullet\CBullet.h">
+    <ClInclude Include="src\Actor\CBullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\Item\CItem.h">
+    <ClInclude Include="src\Actor\CItem.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\Ship\CShip.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Manager\CAssetsManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Manager\CLevelManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Manager\CUIManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Manager\CFXManager.h">
+    <ClInclude Include="src\Actor\CShip.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CGame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\CUI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FX\CFX.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\CMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Level\CLevel.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
