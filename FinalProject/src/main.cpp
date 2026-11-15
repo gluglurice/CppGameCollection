@@ -1,8 +1,8 @@
-﻿#include "Solution/CSolution.h"
+﻿#include "Game/CGame.h"
 
 int main()
 {
-	CSolution solution;
-	solution.Run();
+	CGame game;
+	game.Run();
 	return 0;
 }

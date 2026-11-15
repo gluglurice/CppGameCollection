@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="30" height="70" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="ui" tilewidth="16" tileheight="16" tilecount="17" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../ui/ui_cursor.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../ui/ui_dot.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../ui/ui_location.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../ui/ui_number_0.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../ui/ui_number_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="5">
+   <image source="../../ui/ui_number_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="6">
+   <image source="../../ui/ui_number_3.png" width="16" height="16"/>
+  </tile>
+  <tile id="7">
+   <image source="../../ui/ui_number_4.png" width="16" height="16"/>
+  </tile>
+  <tile id="8">
+   <image source="../../ui/ui_number_5.png" width="16" height="16"/>
+  </tile>
+  <tile id="9">
+   <image source="../../ui/ui_number_6.png" width="16" height="16"/>
+  </tile>
+  <tile id="10">
+   <image source="../../ui/ui_number_7.png" width="16" height="16"/>
+  </tile>
+  <tile id="11">
+   <image source="../../ui/ui_number_8.png" width="16" height="16"/>
+  </tile>
+  <tile id="12">
+   <image source="../../ui/ui_number_9.png" width="16" height="16"/>
+  </tile>
+  <tile id="13">
+   <image source="../../ui/ui_selected.png" width="16" height="16"/>
+  </tile>
+  <tile id="14">
+   <image source="../../ui/ui_targeted.png" width="16" height="16"/>
+  </tile>
+  <tile id="15">
+   <image source="../../ui/ui_x.png" width="16" height="16"/>
+  </tile>
+  <tile id="16">
+   <image source="../../ui/ui_x_crossed.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="18" name="terrain_usual" tilewidth="16" tileheight="16" tilecount="13" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../terrain/usual/terrain_flag_blue.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../terrain/usual/terrain_flag_red.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../terrain/usual/terrain_grass.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../terrain/usual/terrain_house_blue_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../terrain/usual/terrain_house_blue_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="5">
+   <image source="../../terrain/usual/terrain_house_red_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="6">
+   <image source="../../terrain/usual/terrain_house_red_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="7">
+   <image source="../../terrain/usual/terrain_pipe.png" width="16" height="16"/>
+  </tile>
+  <tile id="8">
+   <image source="../../terrain/usual/terrain_pool.png" width="16" height="16"/>
+  </tile>
+  <tile id="9">
+   <image source="../../terrain/usual/terrain_tree_double_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="10">
+   <image source="../../terrain/usual/terrain_tree_double_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="11">
+   <image source="../../terrain/usual/terrain_tree_single_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="12">
+   <image source="../../terrain/usual/terrain_tree_single_2.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="31" name="item" tilewidth="16" tileheight="16" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../item/item_heal.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../item/item_power.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../item/item_shield.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="34" name="bullet" tilewidth="16" tileheight="16" tilecount="5" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../bullet/bullet_single.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../bullet/bullet_double.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../bullet/bullet_triple.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../bullet/bullet_bomb_single.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../bullet/bullet_bomb_double.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="39" name="vfx" tilewidth="16" tileheight="16" tilecount="5" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../vfx/vfx_hit_diamond.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../vfx/vfx_hit_explosion.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../vfx/vfx_hit_rotation.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../vfx/vfx_hit_smoke.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../vfx/vfx_hit_sputtering.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="44" name="ship" tilewidth="32" tileheight="32" tilecount="28" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../ship/ship_blue_l.png" width="32" height="32"/>
+  </tile>
+  <tile id="1">
+   <image source="../../ship/ship_blue_m.png" width="32" height="32"/>
+  </tile>
+  <tile id="2">
+   <image source="../../ship/ship_blue_s.png" width="32" height="32"/>
+  </tile>
+  <tile id="3">
+   <image source="../../ship/ship_blue_l_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="4">
+   <image source="../../ship/ship_blue_m_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="5">
+   <image source="../../ship/ship_blue_s_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="6">
+   <image source="../../ship/ship_green_l.png" width="32" height="32"/>
+  </tile>
+  <tile id="7">
+   <image source="../../ship/ship_green_m.png" width="32" height="32"/>
+  </tile>
+  <tile id="8">
+   <image source="../../ship/ship_green_s.png" width="32" height="32"/>
+  </tile>
+  <tile id="9">
+   <image source="../../ship/ship_green_l_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="10">
+   <image source="../../ship/ship_green_m_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="11">
+   <image source="../../ship/ship_green_s_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="12">
+   <image source="../../ship/ship_red_l.png" width="32" height="32"/>
+  </tile>
+  <tile id="13">
+   <image source="../../ship/ship_red_m.png" width="32" height="32"/>
+  </tile>
+  <tile id="14">
+   <image source="../../ship/ship_red_s.png" width="32" height="32"/>
+  </tile>
+  <tile id="15">
+   <image source="../../ship/ship_red_l_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="16">
+   <image source="../../ship/ship_red_m_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="17">
+   <image source="../../ship/ship_red_s_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="18">
+   <image source="../../ship/ship_yellow_l.png" width="32" height="32"/>
+  </tile>
+  <tile id="19">
+   <image source="../../ship/ship_yellow_m.png" width="32" height="32"/>
+  </tile>
+  <tile id="20">
+   <image source="../../ship/ship_yellow_s.png" width="32" height="32"/>
+  </tile>
+  <tile id="21">
+   <image source="../../ship/ship_yellow_l_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="22">
+   <image source="../../ship/ship_yellow_m_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="23">
+   <image source="../../ship/ship_yellow_s_gray.png" width="32" height="32"/>
+  </tile>
+  <tile id="24">
+   <image source="../../ship/tank_green_body.png" width="16" height="16"/>
+  </tile>
+  <tile id="25">
+   <image source="../../ship/tank_green_head.png" width="16" height="16"/>
+  </tile>
+  <tile id="26">
+   <image source="../../ship/tank_red_body.png" width="16" height="16"/>
+  </tile>
+  <tile id="27">
+   <image source="../../ship/tank_red_head.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="72" name="terrain_green" tilewidth="16" tileheight="16" tilecount="35" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../terrain/green/terrain_green.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../terrain/green/terrain_green_crater.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../terrain/green/terrain_green_fense.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../terrain/green/terrain_green_island.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../terrain/green/terrain_green_island_isolated_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="5">
+   <image source="../../terrain/green/terrain_green_island_isolated_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="6">
+   <image source="../../terrain/green/terrain_green_island_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="7">
+   <image source="../../terrain/green/terrain_green_island_lower_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="8">
+   <image source="../../terrain/green/terrain_green_island_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="9">
+   <image source="../../terrain/green/terrain_green_island_mid_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="10">
+   <image source="../../terrain/green/terrain_green_island_mid_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="11">
+   <image source="../../terrain/green/terrain_green_island_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="12">
+   <image source="../../terrain/green/terrain_green_island_upper_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="13">
+   <image source="../../terrain/green/terrain_green_island_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="14">
+   <image source="../../terrain/green/terrain_green_pool_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="15">
+   <image source="../../terrain/green/terrain_green_pool_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="16">
+   <image source="../../terrain/green/terrain_green_pool_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="17">
+   <image source="../../terrain/green/terrain_green_pool_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="18">
+   <image source="../../terrain/green/terrain_green_road_down.png" width="16" height="16"/>
+  </tile>
+  <tile id="19">
+   <image source="../../terrain/green/terrain_green_road_horizontal_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="20">
+   <image source="../../terrain/green/terrain_green_road_horizontal_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="21">
+   <image source="../../terrain/green/terrain_green_road_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="22">
+   <image source="../../terrain/green/terrain_green_road_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="23">
+   <image source="../../terrain/green/terrain_green_road_lower_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="24">
+   <image source="../../terrain/green/terrain_green_road_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="25">
+   <image source="../../terrain/green/terrain_green_road_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="26">
+   <image source="../../terrain/green/terrain_green_road_mid_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="27">
+   <image source="../../terrain/green/terrain_green_road_mid_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="28">
+   <image source="../../terrain/green/terrain_green_road_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="29">
+   <image source="../../terrain/green/terrain_green_road_up.png" width="16" height="16"/>
+  </tile>
+  <tile id="30">
+   <image source="../../terrain/green/terrain_green_road_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="31">
+   <image source="../../terrain/green/terrain_green_road_upper_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="32">
+   <image source="../../terrain/green/terrain_green_road_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="33">
+   <image source="../../terrain/green/terrain_green_road_vertical_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="34">
+   <image source="../../terrain/green/terrain_green_road_vertical_2.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="107" name="terrain_red" tilewidth="16" tileheight="16" tilecount="35" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../../terrain/red/terrain_red.png" width="16" height="16"/>
+  </tile>
+  <tile id="1">
+   <image source="../../terrain/red/terrain_red_crater.png" width="16" height="16"/>
+  </tile>
+  <tile id="2">
+   <image source="../../terrain/red/terrain_red_fence.png" width="16" height="16"/>
+  </tile>
+  <tile id="3">
+   <image source="../../terrain/red/terrain_red_island.png" width="16" height="16"/>
+  </tile>
+  <tile id="4">
+   <image source="../../terrain/red/terrain_red_island_isolated_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="5">
+   <image source="../../terrain/red/terrain_red_island_isolated_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="6">
+   <image source="../../terrain/red/terrain_red_island_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="7">
+   <image source="../../terrain/red/terrain_red_island_lower_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="8">
+   <image source="../../terrain/red/terrain_red_island_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="9">
+   <image source="../../terrain/red/terrain_red_island_mid_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="10">
+   <image source="../../terrain/red/terrain_red_island_mid_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="11">
+   <image source="../../terrain/red/terrain_red_island_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="12">
+   <image source="../../terrain/red/terrain_red_island_upper_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="13">
+   <image source="../../terrain/red/terrain_red_island_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="14">
+   <image source="../../terrain/red/terrain_red_pool_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="15">
+   <image source="../../terrain/red/terrain_red_pool_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="16">
+   <image source="../../terrain/red/terrain_red_pool_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="17">
+   <image source="../../terrain/red/terrain_red_pool_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="18">
+   <image source="../../terrain/red/terrain_red_road_down.png" width="16" height="16"/>
+  </tile>
+  <tile id="19">
+   <image source="../../terrain/red/terrain_red_road_horizontal_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="20">
+   <image source="../../terrain/red/terrain_red_road_horizontal_2.png" width="16" height="16"/>
+  </tile>
+  <tile id="21">
+   <image source="../../terrain/red/terrain_red_road_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="22">
+   <image source="../../terrain/red/terrain_red_road_lower_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="23">
+   <image source="../../terrain/red/terrain_red_road_lower_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="24">
+   <image source="../../terrain/red/terrain_red_road_lower_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="25">
+   <image source="../../terrain/red/terrain_red_road_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="26">
+   <image source="../../terrain/red/terrain_red_road_mid_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="27">
+   <image source="../../terrain/red/terrain_red_road_mid_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="28">
+   <image source="../../terrain/red/terrain_red_road_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="29">
+   <image source="../../terrain/red/terrain_red_road_up.png" width="16" height="16"/>
+  </tile>
+  <tile id="30">
+   <image source="../../terrain/red/terrain_red_road_upper_left.png" width="16" height="16"/>
+  </tile>
+  <tile id="31">
+   <image source="../../terrain/red/terrain_red_road_upper_mid.png" width="16" height="16"/>
+  </tile>
+  <tile id="32">
+   <image source="../../terrain/red/terrain_red_road_upper_right.png" width="16" height="16"/>
+  </tile>
+  <tile id="33">
+   <image source="../../terrain/red/terrain_red_road_vertical_1.png" width="16" height="16"/>
+  </tile>
+  <tile id="34">
+   <image source="../../terrain/red/terrain_red_road_vertical_2.png" width="16" height="16"/>
+  </tile>
+ </tileset>
+ <layer id="1" name="图块层 1" width="30" height="70">
+  <data encoding="csv">
+75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,75,75,72,72,72,72,72,72,72,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,75,75,75,75,75,75,
+75,75,75,72,75,72,72,72,75,75,75,75,75,75,75,72,72,72,72,72,72,72,75,75,75,75,75,75,75,75,
+75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,72,75,75,72,72,75,75,72,72,72,72,72,75,75,75,
+75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,72,72,72,72,75,75,75,75,75,75,75,75,72,72,75,
+75,75,75,72,75,75,75,75,75,75,75,75,72,72,72,72,75,75,75,75,75,75,75,75,75,75,75,75,72,75,
+75,75,75,72,75,72,72,72,72,72,72,72,75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,75,72,75,
+75,75,75,72,75,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,72,75,75,
+75,75,75,75,72,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,72,75,75,75,
+75,75,75,75,72,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,
+75,75,75,75,75,72,72,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,
+75,75,75,75,75,72,72,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,72,75,75,72,72,72,72,75,
+75,75,75,75,75,75,72,72,72,72,72,72,72,75,75,75,75,75,75,75,72,72,72,72,72,75,75,72,75,75,
+75,75,75,75,75,75,75,72,75,75,72,72,72,72,72,72,72,72,72,72,72,75,75,75,75,75,75,72,75,75,
+75,75,75,75,75,75,75,72,72,72,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,72,75,75,
+75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,72,75,75,75,
+72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,
+75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,
+72,75,75,75,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,
+75,72,72,75,75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,
+75,75,75,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,
+75,75,75,75,75,75,72,72,75,75,75,75,75,72,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,72,75,75,75,75,72,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,72,72,72,72,72,72,75,75,72,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,72,75,75,72,75,72,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,72,75,75,75,75,72,72,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,72,72,75,75,75,75,75,72,72,72,72,72,72,72,72,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,75,75,72,72,72,72,72,72,72,75,72,72,75,75,75,75,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,72,72,72,72,72,75,72,75,72,72,75,72,75,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,75,75,72,75,72,72,72,72,72,75,75,72,72,75,72,72,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,75,72,72,75,75,72,75,72,72,72,72,72,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,72,72,75,75,75,72,75,72,72,72,75,75,72,72,75,72,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,72,75,75,75,75,72,72,72,72,72,72,72,72,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,72,75,75,72,75,75,75,72,75,72,72,75,75,72,75,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,75,72,75,72,75,75,75,72,75,75,75,72,72,72,72,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,75,72,75,72,75,75,75,72,75,75,75,75,75,75,72,72,72,72,72,75,75,75,75,75,75,
+75,75,75,75,75,75,72,72,72,75,75,72,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,72,72,75,75,72,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,72,72,72,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,72,75,75,75,75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,72,72,72,72,75,75,75,75,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,72,72,72,75,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,72,75,75,75,72,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,72,75,75,75,75,72,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,72,72,72,72,72,75,75,75,75,75,72,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,72,75,75,75,72,75,72,72,72,75,75,75,75,75,72,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,72,75,75,75,75,72,72,75,75,75,72,75,75,75,75,75,72,75,75,75,75,
+75,75,75,75,75,75,75,75,72,72,72,72,72,72,72,72,75,75,75,75,72,75,75,75,75,72,75,75,75,75,
+75,75,75,75,75,72,72,72,72,72,75,75,75,75,75,75,72,72,72,72,72,72,75,75,75,72,75,75,75,75,
+75,75,72,72,72,75,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,72,72,72,72,72,72,75,75,75,
+72,72,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,75,72,75,75,72,72,75,75,75,
+75,75,75,75,75,75,75,72,75,72,75,75,75,75,75,75,75,75,75,75,75,75,72,75,75,75,72,75,75,75,
+75,75,75,75,75,75,75,72,75,72,75,75,75,75,75,75,75,75,75,75,75,75,75,72,75,75,72,72,75,75,
+72,75,75,75,75,75,75,72,75,72,75,75,75,75,75,75,75,75,75,75,75,75,75,72,75,72,75,72,75,75,
+75,72,72,72,72,72,75,72,75,75,72,75,75,75,75,75,75,75,75,75,75,75,75,72,75,72,75,72,75,75,
+75,75,75,75,75,75,72,72,72,72,72,72,72,75,75,75,75,75,75,75,75,75,75,75,72,72,72,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,72,72,72,72,72,72,72,72,75,75,72,72,72,72,72,75,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,75,75,75,72,75,75,75,75,72,72,75,75,75,72,75,75,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,72,72,72,75,75,75,75,75,75,72,75,75,75,75,75,
+75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,75,75,72,72,72,72,72,72,72,75,75,75,75,75,
+75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,72,75,75,75,75,75,75,75,75,75,72,72,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,72,72,75,75,75,72,72,72,72,75,75,75,75,75,75,75,75,75,75,75,75,75,
+75,75,75,75,75,75,75,75,75,75,72,72,72,72,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75,75
+</data>
+ </layer>
+</map>

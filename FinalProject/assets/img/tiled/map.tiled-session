@@ -1,0 +1,127 @@
+{
+    "activeFile": "levels/map_level_1.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "levels",
+        "tile sets"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "bullet.tsx": {
+            "scaleInDock": 1
+        },
+        "item.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 342.5,
+                "y": 578.5
+            }
+        },
+        "levels/map_level_1.tmx#bullet": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#item": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#ship": {
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#terrain_green": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#terrain_red": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#terrain_usual": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#ui": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "levels/map_level_1.tmx#vfx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx": {
+            "scale": 1.080625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 240.13880855986116,
+                "y": 560.3238866396762
+            }
+        },
+        "map_level_1.tmx#bullet": {
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#item": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#ship": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#terrain_green": {
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#terrain_red": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#terrain_usual": {
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#ui": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "map_level_1.tmx#vfx": {
+            "scaleInDock": 1
+        },
+        "ship.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "terrain_green.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "terrain_red.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "terrain_usual.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "tile sets/bullet.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.externalTilesetPath": "D:/Documents/9artedu/CppGameCollection/FinalProject/assets/imgs/tiled/tile sets",
+    "openFiles": [
+        "levels/map_level_1.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "levels/map_level_1.tmx",
+        "tile sets/bullet.tsx",
+        "map_level_1.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled 图块集文件 (*.tsx *.xml)"
+}
