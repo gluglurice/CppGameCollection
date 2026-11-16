@@ -1,9 +1,9 @@
 {
     "activeFile": "levels/map_level_1.tmx",
     "expandedProjectPaths": [
-        ".",
+        "tile sets",
         "levels",
-        "tile sets"
+        "."
     ],
     "fileStates": {
         "": {
@@ -33,6 +33,7 @@
             "scaleInDock": 1
         },
         "levels/map_level_1.tmx#ship": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "levels/map_level_1.tmx#terrain_green": {
