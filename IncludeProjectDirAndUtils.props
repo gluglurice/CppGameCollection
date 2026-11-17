@@ -9,6 +9,10 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Utils\src;</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)Utils\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tinyxml.lib;soloud.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

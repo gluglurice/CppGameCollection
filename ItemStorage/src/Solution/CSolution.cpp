@@ -157,4 +157,16 @@ void CSolution::Run()
 
 	_getch();
 	closegraph();
+
+	delete drug_heal;
+	delete drug_mana;
+	delete drug_buff_atk;
+	delete drug_buff_def;
+
+	delete equipment_weapon;
+	delete equipment_accessory_flower;
+	delete equipment_accessory_feather;
+	delete equipment_accessory_hourglass;
+	delete equipment_accessory_cup;
+	delete equipment_accessory_crown;
 }
