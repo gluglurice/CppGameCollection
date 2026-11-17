@@ -8,6 +8,7 @@
   <Project Path="FinalProject/FinalProject.vcxproj" Id="c17c2083-4b55-4bf5-b379-c2ccf0f6b122" />
   <Project Path="Gacha/Gacha.vcxproj" Id="620e9f86-2958-4f37-a225-80a343f0f2fe" />
   <Project Path="GluttonousSnake/GluttonousSnake.vcxproj" Id="54717039-9b2b-4d00-ae72-52324b3e9bb8" />
+  <Project Path="ItemStorage/ItemStorage.vcxproj" Id="21bacd7d-be4d-4c1c-af1c-81c8186d16eb" />
   <Project Path="MazeRPG/MazeRPG.vcxproj" Id="bb7c2de3-9f07-4ee5-b0f3-6a2454b92472" />
   <Project Path="NumBomb/NumBomb.vcxproj" Id="b8c93743-c750-44c7-bb2b-7ecaeaa8eca1" />
   <Project Path="RockPaperScissors/RockPaperScissors.vcxproj" Id="2aac83cb-2e89-4d22-bb71-49ab514310c3" />
