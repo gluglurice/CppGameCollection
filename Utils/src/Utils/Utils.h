@@ -37,4 +37,4 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img);
  * @param scale 
  * @param img
  */
-void putimage_alpha_zoom(int x, int y, int scale, IMAGE* img);
+void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img);

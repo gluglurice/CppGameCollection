@@ -18,7 +18,7 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img)
     );
 }
 
-void putimage_alpha_zoom(int x, int y, int scale, IMAGE* img)
+void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img)
 {
     if (!img) return;
 
@@ -29,7 +29,7 @@ void putimage_alpha_zoom(int x, int y, int scale, IMAGE* img)
 
     AlphaBlend(
         GetImageHDC(NULL),                  // 目标：当前绘图窗口
-        x, y, srcW * scale, srcH * scale,    // 目标位置和尺寸（放大后的尺寸）
+        x, y, static_cast<int>(srcW * scale), static_cast<int>(srcH * scale),    // 目标位置和尺寸（放大后的尺寸）
         GetImageHDC(img),                     // 源：图片 HDC
         0, 0, srcW, srcH,                           // 源位置和原始尺寸
         blend
