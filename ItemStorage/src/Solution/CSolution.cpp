@@ -307,7 +307,6 @@ void CSolution::Run()
 		EndBatchDraw();
 	}
 
-	_getch();
 	closegraph();
 
 	SaveXml(CSolution::DEFAULT_SAVE_FILE.c_str(), role);

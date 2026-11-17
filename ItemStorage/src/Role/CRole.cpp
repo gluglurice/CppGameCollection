@@ -12,13 +12,14 @@ const std::wstring CRole::ATTRIBUTE_IMG_PATHS[CRole::ATTRIBUTE_IMG_NUM] = {
 };
 IMAGE CRole::ATTRIBUTE_IMGS[CRole::ATTRIBUTE_IMG_NUM];
 
-const int CRole::UI_IMG_NUM = 5;
+const int CRole::UI_IMG_NUM = 6;
 const std::wstring CRole::UI_IMG_PATHS[CRole::UI_IMG_NUM] = {
 	L"assets/imgs/ui/keyboard_w.png",
 	L"assets/imgs/ui/keyboard_s.png",
 	L"assets/imgs/ui/keyboard_a.png",
 	L"assets/imgs/ui/keyboard_d.png",
-	L"assets/imgs/ui/keyboard_space.png"
+	L"assets/imgs/ui/keyboard_space.png",
+	L"assets/imgs/ui/keyboard_escape.png",
 };
 IMAGE CRole::UI_IMGS[CRole::UI_IMG_NUM];
 
@@ -162,6 +163,18 @@ void CRole::Draw()
 	const int UI_KEY_SIZE = 32;
 	const int UI_KEY_WIDTH_MID = 70;
 	const int UI_KEY_HEIGHT = 540;
+
+	putimage_alpha_zoom(
+		UI_KEY_WIDTH_MID,
+		UI_KEY_HEIGHT - UI_KEY_SIZE * 2 - 32,
+		UI_KEY_SCALE,
+		&UI_IMGS[5]
+	);
+	outtextxy(
+		UI_KEY_WIDTH_MID - 6,
+		UI_KEY_HEIGHT - 32,
+		_T("保存并退出")
+	);
 
 	putimage_alpha_zoom(
 		UI_KEY_WIDTH_MID,
