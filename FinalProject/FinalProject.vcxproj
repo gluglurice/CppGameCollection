@@ -181,7 +181,6 @@
     <ClCompile Include="src\Level\CLevel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map\CMap.cpp" />
-    <ClCompile Include="src\Solution\CGame.cpp" />
     <ClCompile Include="src\UI\CUI.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,7 +192,6 @@
     <ClInclude Include="src\Game\CGame.h" />
     <ClInclude Include="src\Level\CLevel.h" />
     <ClInclude Include="src\Map\CMap.h" />
-    <ClInclude Include="src\Solution\CGame.h" />
     <ClInclude Include="src\UI\CUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
