@@ -36,6 +36,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Item\CItemFC.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bag\CBag.h">
@@ -56,9 +59,16 @@
     <ClInclude Include="src\Solution\CSolution.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Item\CItemFC.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="role.xml" />
-    <Xml Include="role - 副本.xml" />
+    <Xml Include="config\ini.xml">
+      <Filter>资源文件</Filter>
+    </Xml>
+    <Xml Include="config\save.xml">
+      <Filter>资源文件</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

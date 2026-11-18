@@ -16,12 +16,6 @@ public:
 		ET_COUNT,
 	};
 
-	static const int EQUIPMENT_IMG_NUM;
-	static const std::wstring EQUIPMENT_IMG_PATHS[];
-	static IMAGE EQUIPMENT_IMGS[];
-
-	static void Init();
-
 GET_SET_FUN_DECLAR(EEquipmentType, m_equipment_type, EquipmentType)
 
 public:

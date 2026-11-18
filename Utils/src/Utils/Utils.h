@@ -1,6 +1,8 @@
 ﻿#pragma once
 #pragma comment(lib, "MSIMG32.LIB")
 
+#include <string>
+
 #include <graphics.h>
 
 #define GET_SET_FUN_DECLAR(type, member, name) \
@@ -38,3 +40,5 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img);
  * @param img
  */
 void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img);
+
+std::wstring Utf8ToWide(const char* text);

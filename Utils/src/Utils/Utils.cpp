@@ -1,5 +1,9 @@
 ﻿#include "Utils.h"
 
+#include <stdexcept>
+
+#include <Windows.h>
+
 void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img)
 {
     if (!img) return;
@@ -34,4 +38,23 @@ void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img)
         0, 0, srcW, srcH,                           // 源位置和原始尺寸
         blend
     );
+}
+
+std::wstring Utf8ToWide(const char* text)
+{
+	if (text == nullptr)
+		throw std::invalid_argument("text is null");
+
+	int size = MultiByteToWideChar(
+		CP_UTF8, MB_ERR_INVALID_CHARS, text, -1, nullptr, 0);
+	if (size == 0)
+		throw std::runtime_error("UTF-8 conversion failed");
+
+	std::wstring result(size, L'\0');
+	if (MultiByteToWideChar(
+		CP_UTF8, MB_ERR_INVALID_CHARS, text, -1, &result[0], size) == 0)
+		throw std::runtime_error("UTF-8 conversion failed");
+
+	result.pop_back(); // 移除转换结果末尾的空字符
+	return result;
 }

@@ -88,28 +88,12 @@ void CRole::UseDrug(CDrug* drug)
 
 void CRole::Equip(CEquipment* equipment)
 {
-	m_bag.Equip(equipment);
-
-	m_max_hp += equipment->GetHP();
-	m_hp += equipment->GetHP();
-	m_max_mp += equipment->GetMP();
-	m_mp += equipment->GetMP();
-	m_atk += equipment->GetATK();
-	m_def += equipment->GetDEF();
+	m_bag.Equip(equipment, this);
 }
 
 void CRole::UnEquip(CEquipment::EEquipmentType equipment_type)
 {
-	CEquipment* equipment = m_bag.GetEquipments()[equipment_type];
-
-	m_max_hp -= equipment->GetHP();
-	m_hp -= equipment->GetHP();
-	m_max_mp -= equipment->GetMP();
-	m_mp -= equipment->GetMP();
-	m_atk -= equipment->GetATK();
-	m_def -= equipment->GetDEF();
-
-	m_bag.UnEquip(equipment_type);
+	m_bag.UnEquip(equipment_type, this);
 }
 
 void CRole::ChooseItem(int index)

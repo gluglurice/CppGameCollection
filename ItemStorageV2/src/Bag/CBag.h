@@ -8,8 +8,11 @@
 #include <Utils/Utils.h>
 
 #include "src/Item/CItem.h"
+#include "src/Item/CItemFC.h"
 #include "src/Item/CDrug.h"
 #include "src/Item/CEquipment.h"
+
+class CRole;
 
 using ItemMap = std::map<int, CItem*>;
 using EquipmentMap = std::map<CEquipment::EEquipmentType, CEquipment*>;
@@ -50,9 +53,9 @@ public:
 
 	void RemoveItem(CItem* item);
 
-	void Equip(CEquipment* equipment);
+	void Equip(CEquipment* equipment, CRole* role);
 
-	void UnEquip(CEquipment::EEquipmentType equipment_type);
+	void UnEquip(CEquipment::EEquipmentType equipment_type, CRole* role);
 
 	void ChooseItem(int index);
 

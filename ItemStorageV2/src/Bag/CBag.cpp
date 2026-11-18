@@ -1,5 +1,7 @@
 ﻿#include "CBag.h"
 
+#include "src/Role/CRole.h"
+
 const int CBag::BAG_IMG_NUM = 3;
 const std::wstring CBag::BAG_IMG_PATHS[CBag::BAG_IMG_NUM] = {
 	L"assets/imgs/ui/bag.png",
@@ -69,26 +71,40 @@ void CBag::RemoveItem(CItem* item)
 	}
 }
 
-void CBag::Equip(CEquipment* equipment)
+void CBag::Equip(CEquipment* equipment, CRole* role)
 {
 	auto it = m_equipments.find(equipment->GetEquipmentType());
 	if (it != m_equipments.end())
 	{
-		AddItem(it->second);
-		UnEquip(equipment->GetEquipmentType());
+		UnEquip(equipment->GetEquipmentType(), role);
 	}
 	m_equipments[equipment->GetEquipmentType()] = equipment;
 	RemoveItem(equipment);
 
+	role->SetMaxHP(role->GetMaxHP() + equipment->GetHP());
+	role->SetHP(role->GetHP() + equipment->GetHP());
+	role->SetMaxMP(role->GetMaxMP() + equipment->GetMP());
+	role->SetMP(role->GetMP() + equipment->GetMP());
+	role->SetATK(role->GetATK() + equipment->GetATK());
+	role->SetDEF(role->GetDEF() + equipment->GetDEF());
+
 	m_equipments_array[static_cast<int>(equipment->GetEquipmentType())] = equipment;
 }
 
-void CBag::UnEquip(CEquipment::EEquipmentType equipment_type)
+void CBag::UnEquip(CEquipment::EEquipmentType equipment_type, CRole* role)
 {
 	auto it = m_equipments.find(equipment_type);
 	if (it != m_equipments.end())
 	{
 		AddItem(it->second);
+
+		role->SetMaxHP(role->GetMaxHP() - it->second->GetHP());
+		role->SetHP(role->GetHP() - it->second->GetHP());
+		role->SetMaxMP(role->GetMaxMP() - it->second->GetMP());
+		role->SetMP(role->GetMP() - it->second->GetMP());
+		role->SetATK(role->GetATK() - it->second->GetATK());
+		role->SetDEF(role->GetDEF() - it->second->GetDEF());
+
 		m_equipments.erase(it);
 	}
 
@@ -116,22 +132,17 @@ void CBag::Draw()
 	putimage_alpha_zoom(200, 600, 1, &BAG_IMGS[0]);
 	putimage_alpha_zoom(800, 0, 1, &EQUIPMENTS_IMGS[0]);
 
+	auto item_map = CItemFC::GetInstance()->GetItemMap();
+
 	/* 绘制物品 */
 	for (int i = 0; i < m_item_array_size; ++i)
 	{
 		if (m_items_array[i] != nullptr)
 		{
 			CItem* item = m_items_array[i];
-			switch (item->GetItemType())
+			if (item_map.find(item->GetID()) != item_map.end())
 			{
-			case CItem::EItemType::IT_DRUG:
-				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9f, &CDrug::DRUG_IMGS[static_cast<int>(static_cast<CDrug*>(item)->GetDrugType())]);
-				break;
-			case CItem::EItemType::IT_EQUIPMENT:
-				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9f, &CEquipment::EQUIPMENT_IMGS[static_cast<int>(static_cast<CEquipment*>(item)->GetEquipmentType())]);
-				break;
-			default:
-				break;
+				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9f, &item_map[item->GetID()].second);
 			}
 		}
 	}
@@ -155,7 +166,11 @@ void CBag::Draw()
 	{
 		if (m_equipments_array[i] != nullptr)
 		{
-			putimage_alpha_zoom(810, 10 + i * 100, 1, &CEquipment::EQUIPMENT_IMGS[m_equipments_array[i]->GetEquipmentType()]);
+			CEquipment* equipment = m_equipments_array[i];
+			if (item_map.find(equipment->GetID()) != item_map.end())
+			{
+				putimage_alpha_zoom(810, 10 + i * 100, 1, &item_map[equipment->GetID()].second);
+			}
 		}
 	}
 

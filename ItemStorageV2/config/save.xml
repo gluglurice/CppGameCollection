@@ -1,0 +1,19 @@
+﻿<Save>
+    <Role hp="11300" max_hp="11500" mp="2300" max_mp="2500" atk="7400" def="1600" name="桑多涅">
+        <Bag item_array_size="14" item_chosen_index="0" equipment_chosen_index="-1">
+			<Item id="1001" />
+			<Item id="1002" />
+			<Item id="1003" />
+			<Item id="1004" />
+			<Item id="2001" />
+			<Item id="2002" />
+			<Item id="2003" />
+			<Item id="3001" />
+			<Item id="3002" />
+			<Item id="3003" />
+			<Item id="3004" />
+			<Item id="3005" />
+			<Item id="3006" />
+        </Bag>
+    </Role>
+</Save>
