@@ -2,7 +2,10 @@
 
 #include "src/Game/CGame.h"
 
-CActor::EDirection CItem::DEFAULT_DIRECTION = CActor::EDirection::D_UP;
+int CItem::ITEM_IMG_NUM = 1;
+std::wstring CItem::ITEM_IMG_PATHS[] = { L"" };
+IMAGE CItem::ITEM_IMAGES[] = { NULL };
+
 float CItem::DEFAULT_VELOCITY = 0.2f;
 
 void CItem::Init()
@@ -14,7 +17,6 @@ CItem::CItem() {}
 
 CItem::CItem(const CActor::Position& position, const EItemType& item_type) : CActor(position), m_item_type(item_type)
 {
-	m_direction = CItem::DEFAULT_DIRECTION;
 	m_velocity = CItem::DEFAULT_VELOCITY;
 }
 

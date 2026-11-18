@@ -11,6 +11,10 @@ public:
 		BT_DOUBLE,
 	};
 
+	static int BOMB_IMG_NUM;
+	static  std::wstring BOMB_IMG_PATHS[];
+	static  IMAGE BOMB_IMAGES[];
+
 	static float DEFAULT_VELOCITY;
 	static float DEFAULT_ACCELERATION;
 

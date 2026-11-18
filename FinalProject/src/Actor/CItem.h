@@ -11,8 +11,11 @@ public:
 		IT_POWER,
 		IT_SHIELD,
 	};
+
+	static int ITEM_IMG_NUM;
+	static  std::wstring ITEM_IMG_PATHS[];
+	static  IMAGE ITEM_IMAGES[];
 	
-	static CActor::EDirection DEFAULT_DIRECTION;
 	static float DEFAULT_VELOCITY;
 
 	static void Init();

@@ -2,6 +2,10 @@
 
 #include "src/Game/CGame.h"
 
+int CNormalBullet::NORMAL_BULLET_IMG_NUM = 1;
+std::wstring CNormalBullet::NORMAL_BULLET_IMG_PATHS[] = { L"" };
+IMAGE CNormalBullet::NORMAL_BULLET_IMAGES[] = { NULL };
+
 float CNormalBullet::DEFAULT_VELOCITY = 5.0f;
 
 void CNormalBullet::Init()

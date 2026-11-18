@@ -2,6 +2,10 @@
 
 #include "src/Game/CGame.h"
 
+int CBomb::BOMB_IMG_NUM = 1;
+std::wstring CBomb::BOMB_IMG_PATHS[] = { L"" };
+IMAGE CBomb::BOMB_IMAGES[] = { NULL };
+
 float CBomb::DEFAULT_VELOCITY = 3.0f;
 float CBomb::DEFAULT_ACCELERATION = 0.5;
 

@@ -12,6 +12,10 @@ public:
 		NBT_TRIPLE,
 	};
 
+	static int NORMAL_BULLET_IMG_NUM;
+	static  std::wstring NORMAL_BULLET_IMG_PATHS[];
+	static  IMAGE NORMAL_BULLET_IMAGES[];
+
 	static float DEFAULT_VELOCITY;
 
 	static void Init();

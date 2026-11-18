@@ -12,5 +12,5 @@ CGame::~CGame() {}
 
 void CGame::Run()
 {
-	CShip::Init();
+
 }
