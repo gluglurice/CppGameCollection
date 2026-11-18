@@ -1,14 +1,15 @@
 ﻿#include "CBullet.h"
 
-#include "src/Game/CGame.h"
+CActor::EDirection CBullet::DEFAULT_PLAYER_DIRECTION;
+CActor::EDirection CBullet::DEFAULT_ENEMY_DIRECTION;
 
-CActor::EDirection CBullet::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
-CActor::EDirection CBullet::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
-
-void CBullet::Init()
+void CBullet::Init(const std::string& config_path)
 {
-
+	CBullet::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
+	CBullet::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
 }
+
+void CBullet::Delete() {}
 
 CBullet::CBullet() {}
 

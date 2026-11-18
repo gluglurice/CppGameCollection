@@ -2,7 +2,9 @@
 
 int main()
 {
+	CGame::Init();
 	CGame game;
 	game.Run();
+	CGame::Delete();
 	return 0;
 }

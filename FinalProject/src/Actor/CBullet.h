@@ -14,7 +14,9 @@ public:
 	static CActor::EDirection DEFAULT_PLAYER_DIRECTION;
 	static CActor::EDirection DEFAULT_ENEMY_DIRECTION;
 
-	static void Init();
+	static void Init(const std::string& config_path);
+
+	static void Delete();
 
 GET_SET_FUN_DECLAR(EBulletFrom, m_bullet_from, BulletFrom)
 

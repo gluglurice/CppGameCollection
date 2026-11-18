@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <string>
-
 #include "src/Actor/CActor.h"
 
 class CShip : public CActor
@@ -26,9 +24,9 @@ public:
 		BT_DOUBLE,
 	};
 
-	static int SHIP_IMG_NUM;
-	static  std::wstring SHIP_IMG_PATHS[];
-	static  IMAGE SHIP_IMAGES[];
+	static int IMG_NUM;
+	static  std::wstring* IMG_PATHS;
+	static  IMAGE* IMGS;
 
 	static  CActor::EDirection DEFAULT_PLAYER_DIRECTION;
 	static  CActor::EDirection DEFAULT_ENEMY_DIRECTION;
@@ -42,7 +40,9 @@ public:
 	static  ENormalBulletType DEFAULT_NORMAL_BULLET_TYPE;
 	static  EBombType DEFAULT_BOMB_TYPE;
 
-	static void Init();
+	static void Init(const std::string& config_path);
+
+	static void Delete();
 
 GET_SET_FUN_DECLAR(EShipType, m_ship_type, ShipType)
 GET_SET_FUN_DECLAR(int, m_hp, HP)

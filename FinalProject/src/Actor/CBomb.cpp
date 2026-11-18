@@ -1,17 +1,34 @@
 ﻿#include "CBomb.h"
 
-#include "src/Game/CGame.h"
+int CBomb::IMG_NUM;
+std::wstring* CBomb::IMG_PATHS;
+IMAGE* CBomb::IMGS;
 
-int CBomb::BOMB_IMG_NUM = 1;
-std::wstring CBomb::BOMB_IMG_PATHS[] = { L"" };
-IMAGE CBomb::BOMB_IMAGES[] = { NULL };
+float CBomb::DEFAULT_VELOCITY;
+float CBomb::DEFAULT_ACCELERATION;
 
-float CBomb::DEFAULT_VELOCITY = 3.0f;
-float CBomb::DEFAULT_ACCELERATION = 0.5;
-
-void CBomb::Init()
+void CBomb::Init(const std::string& config_path)
 {
+	CBomb::IMG_NUM = 1;
+	CBomb::IMG_PATHS = new std::wstring[CBomb::IMG_NUM];
+	CBomb::IMGS = new IMAGE[CBomb::IMG_NUM];
 
+	CBomb::DEFAULT_VELOCITY = 3.0f;
+	CBomb::DEFAULT_ACCELERATION = 0.5;
+}
+
+void CBomb::Delete()
+{
+	if (CBomb::IMG_PATHS)
+	{
+		delete[] CBomb::IMG_PATHS;
+		CBomb::IMG_PATHS = nullptr;
+	}
+	if (CBomb::IMGS)
+	{
+		delete[] CBomb::IMGS;
+		CBomb::IMGS = nullptr;
+	}
 }
 
 CBomb::CBomb() {}

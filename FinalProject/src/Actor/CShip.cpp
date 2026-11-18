@@ -1,26 +1,52 @@
 ﻿#include "CShip.h"
 
-#include "src/Game/CGame.h"
+int CShip::IMG_NUM;
+std::wstring* CShip::IMG_PATHS;
+IMAGE* CShip::IMGS;
 
-int CShip::SHIP_IMG_NUM = 1;
-std::wstring CShip::SHIP_IMG_PATHS[] = { L""};
-IMAGE CShip::SHIP_IMAGES[] = { NULL };
+CActor::EDirection CShip::DEFAULT_PLAYER_DIRECTION;
+CActor::EDirection CShip::DEFAULT_ENEMY_DIRECTION;
+float CShip::DEFAULT_VELOCITY;
 
-CActor::EDirection CShip::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
-CActor::EDirection CShip::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
-float CShip::DEFAULT_VELOCITY = 1.0f;
+int CShip::DEFAULT_MAX_HP;
+int CShip::DEFAULT_MAX_MP;
+int CShip::DEFAULT_MAX_ATK;
+int CShip::DEFAULT_MAX_DEF;
+int CShip::DEFAULT_MAX_SHIELD;
+CShip::ENormalBulletType CShip::DEFAULT_NORMAL_BULLET_TYPE;
+CShip::EBombType CShip::DEFAULT_BOMB_TYPE;
 
-int CShip::DEFAULT_MAX_HP = 100;
-int CShip::DEFAULT_MAX_MP = 100;
-int CShip::DEFAULT_MAX_ATK = 1;
-int CShip::DEFAULT_MAX_DEF = 0;
-int CShip::DEFAULT_MAX_SHIELD = 0;
-CShip::ENormalBulletType CShip::DEFAULT_NORMAL_BULLET_TYPE = CShip::ENormalBulletType::NBT_SINGLE;
-CShip::EBombType CShip::DEFAULT_BOMB_TYPE = CShip::EBombType::BT_SINGLE;
-
-void CShip::Init()
+void CShip::Init(const std::string& config_path)
 {
+	CShip::IMG_NUM = 1;
+	CShip::IMG_PATHS = new std::wstring[CShip::IMG_NUM];
+	CShip::IMGS = new IMAGE[CShip::IMG_NUM];
 
+	CShip::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
+	CShip::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
+	CShip::DEFAULT_VELOCITY = 1.0f;
+
+	CShip::DEFAULT_MAX_HP = 100;
+	CShip::DEFAULT_MAX_MP = 100;
+	CShip::DEFAULT_MAX_ATK = 1;
+	CShip::DEFAULT_MAX_DEF = 0;
+	CShip::DEFAULT_MAX_SHIELD = 0;
+	CShip::DEFAULT_NORMAL_BULLET_TYPE = CShip::ENormalBulletType::NBT_SINGLE;
+	CShip::DEFAULT_BOMB_TYPE = CShip::EBombType::BT_SINGLE;
+}
+
+void CShip::Delete()
+{
+	if (CShip::IMG_PATHS)
+	{
+		delete[] CShip::IMG_PATHS;
+		CShip::IMG_PATHS = nullptr;
+	}
+	if (CShip::IMGS)
+	{
+		delete[] CShip::IMGS;
+		CShip::IMGS = nullptr;
+	}
 }
 
 CShip::CShip() {}

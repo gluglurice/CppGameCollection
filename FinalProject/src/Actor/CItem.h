@@ -12,13 +12,15 @@ public:
 		IT_SHIELD,
 	};
 
-	static int ITEM_IMG_NUM;
-	static  std::wstring ITEM_IMG_PATHS[];
-	static  IMAGE ITEM_IMAGES[];
+	static int IMG_NUM;
+	static  std::wstring* IMG_PATHS;
+	static  IMAGE* IMGS;
 	
 	static float DEFAULT_VELOCITY;
 
-	static void Init();
+	static void Init(const std::string& config_path);
+
+	static void Delete();
 
 GET_SET_FUN_DECLAR(EItemType, m_item_type, ItemType)
 

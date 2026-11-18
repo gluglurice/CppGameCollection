@@ -11,14 +11,16 @@ public:
 		BT_DOUBLE,
 	};
 
-	static int BOMB_IMG_NUM;
-	static  std::wstring BOMB_IMG_PATHS[];
-	static  IMAGE BOMB_IMAGES[];
+	static int IMG_NUM;
+	static  std::wstring* IMG_PATHS;
+	static  IMAGE* IMGS;
 
 	static float DEFAULT_VELOCITY;
 	static float DEFAULT_ACCELERATION;
 
-	static void Init();
+	static void Init(const std::string& config_path);
+
+	static void Delete();
 
 GET_SET_FUN_DECLAR(EBombType, m_bomb_type, BombType)
 GET_SET_FUN_DECLAR(float, m_acceleration, Acceleration)

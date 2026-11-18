@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <string>
+
 #include <graphics.h>
 #include <Utils/Utils.h>
 
@@ -20,6 +22,10 @@ public:
 
 	static EDirection DEFAULT_DIRECTION;
 	static float DEFAULT_VELOCITY;
+
+	static void Init(const std::string& config_path);
+
+	static void Delete();
 
 GET_SET_FUN_DECLAR(Position, m_position, Position)
 GET_SET_FUN_DECLAR(EDirection, m_direction, Direction)

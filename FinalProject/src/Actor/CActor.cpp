@@ -1,7 +1,15 @@
 ﻿#include "CActor.h"
 
-CActor::EDirection CActor::DEFAULT_DIRECTION = CActor::EDirection::D_UP;
-float CActor::DEFAULT_VELOCITY = 0.0f;
+CActor::EDirection CActor::DEFAULT_DIRECTION;
+float CActor::DEFAULT_VELOCITY;
+
+void CActor::Init(const std::string& config_path)
+{
+	CActor::DEFAULT_DIRECTION = CActor::EDirection::D_UP;
+	CActor::DEFAULT_VELOCITY = 0.0f;
+}
+
+void CActor::Delete() {}
 
 CActor::CActor() {}
 

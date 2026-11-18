@@ -1,16 +1,32 @@
 ﻿#include "CItem.h"
 
-#include "src/Game/CGame.h"
+int CItem::IMG_NUM;
+std::wstring* CItem::IMG_PATHS;
+IMAGE* CItem::IMGS;
 
-int CItem::ITEM_IMG_NUM = 1;
-std::wstring CItem::ITEM_IMG_PATHS[] = { L"" };
-IMAGE CItem::ITEM_IMAGES[] = { NULL };
+float CItem::DEFAULT_VELOCITY;
 
-float CItem::DEFAULT_VELOCITY = 0.2f;
-
-void CItem::Init()
+void CItem::Init(const std::string& config_path)
 {
+	CItem::IMG_NUM = 1;
+	CItem::IMG_PATHS = new std::wstring[CItem::IMG_NUM];
+	CItem::IMGS = new IMAGE[CItem::IMG_NUM];
 
+	CItem::DEFAULT_VELOCITY = 0.2f;
+}
+
+void CItem::Delete()
+{
+	if (CItem::IMG_PATHS)
+	{
+		delete[] CItem::IMG_PATHS;
+		CItem::IMG_PATHS = nullptr;
+	}
+	if (CItem::IMGS)
+	{
+		delete[] CItem::IMGS;
+		CItem::IMGS = nullptr;
+	}
 }
 
 CItem::CItem() {}

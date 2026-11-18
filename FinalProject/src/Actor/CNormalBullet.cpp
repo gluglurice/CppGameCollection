@@ -1,16 +1,32 @@
 ﻿#include "CNormalBullet.h"
 
-#include "src/Game/CGame.h"
+int CNormalBullet::IMG_NUM;
+std::wstring* CNormalBullet::IMG_PATHS;
+IMAGE* CNormalBullet::IMGS;
 
-int CNormalBullet::NORMAL_BULLET_IMG_NUM = 1;
-std::wstring CNormalBullet::NORMAL_BULLET_IMG_PATHS[] = { L"" };
-IMAGE CNormalBullet::NORMAL_BULLET_IMAGES[] = { NULL };
+float CNormalBullet::DEFAULT_VELOCITY;
 
-float CNormalBullet::DEFAULT_VELOCITY = 5.0f;
-
-void CNormalBullet::Init()
+void CNormalBullet::Init(const std::string& config_path)
 {
+	CNormalBullet::IMG_NUM = 1;
+	CNormalBullet::IMG_PATHS = new std::wstring[CNormalBullet::IMG_NUM];
+	CNormalBullet::IMGS = new IMAGE[CNormalBullet::IMG_NUM];
 
+	CNormalBullet::DEFAULT_VELOCITY = 5.0f;
+}
+
+void CNormalBullet::Delete()
+{
+	if (CNormalBullet::IMG_PATHS)
+	{
+		delete[] CNormalBullet::IMG_PATHS;
+		CNormalBullet::IMG_PATHS = nullptr;
+	}
+	if (CNormalBullet::IMGS)
+	{
+		delete[] CNormalBullet::IMGS;
+		CNormalBullet::IMGS = nullptr;
+	}
 }
 
 CNormalBullet::CNormalBullet() {}
