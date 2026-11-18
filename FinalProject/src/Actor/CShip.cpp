@@ -1,5 +1,28 @@
 ﻿#include "CShip.h"
 
+#include "src/Game/CGame.h"
+
+int CShip::SHIP_IMG_NUM = 1;
+std::wstring CShip::SHIP_IMG_PATHS[] = { L""};
+IMAGE CShip::SHIP_IMAGES[] = { NULL };
+
+CActor::EDirection CShip::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
+CActor::EDirection CShip::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
+float CShip::DEFAULT_VELOCITY = 1.0f;
+
+int CShip::DEFAULT_MAX_HP = 100;
+int CShip::DEFAULT_MAX_MP = 100;
+int CShip::DEFAULT_MAX_ATK = 1;
+int CShip::DEFAULT_MAX_DEF = 0;
+int CShip::DEFAULT_MAX_SHIELD = 0;
+CShip::ENormalBulletType CShip::DEFAULT_NORMAL_BULLET_TYPE = CShip::ENormalBulletType::NBT_SINGLE;
+CShip::EBombType CShip::DEFAULT_BOMB_TYPE = CShip::EBombType::BT_SINGLE;
+
+void CShip::Init()
+{
+
+}
+
 CShip::CShip() {}
 
 CShip::CShip(const CActor::Position& position, const EShipType& ship_type) : CActor(position), m_ship_type(ship_type)
@@ -20,8 +43,11 @@ CShip::CShip(const CActor::Position& position, const EShipType& ship_type) : CAc
 	m_max_hp = CShip::DEFAULT_MAX_HP;
 	m_mp = CShip::DEFAULT_MAX_MP;
 	m_max_mp = CShip::DEFAULT_MAX_MP;
-	m_bullet_type = CShip::DEFAULT_BULLET_TYPE;
-	m_skill = CShip::DEFAULT_SKILL;
+	m_atk = CShip::DEFAULT_MAX_ATK;
+	m_def = CShip::DEFAULT_MAX_DEF;
+	m_shield = CShip::DEFAULT_MAX_SHIELD;
+	m_normal_bullet_type = CShip::DEFAULT_NORMAL_BULLET_TYPE;
+	m_bomb_type = CShip::DEFAULT_BOMB_TYPE;
 }
 
 CShip::~CShip() {}
@@ -36,7 +62,7 @@ void CShip::Shoot()
 
 }
 
-void CShip::UseSkill()
+void CShip::Bomb()
 {
 
 }
@@ -56,5 +82,8 @@ GET_SET_FUN_DEFINE(int, CShip, m_hp, HP)
 GET_SET_FUN_DEFINE(int, CShip, m_max_hp, MaxHP)
 GET_SET_FUN_DEFINE(int, CShip, m_mp, MP)
 GET_SET_FUN_DEFINE(int, CShip, m_max_mp, MaxMP)
-GET_SET_FUN_DEFINE(CBullet::EBulletType, CShip, m_bullet_type, BulletType)
-GET_SET_FUN_DEFINE(CShip::EShipSkill, CShip, m_skill, Skill)
+GET_SET_FUN_DEFINE(int, CShip, m_atk, Atk)
+GET_SET_FUN_DEFINE(int, CShip, m_def, Def)
+GET_SET_FUN_DEFINE(int, CShip, m_shield, Shield)
+GET_SET_FUN_DEFINE(CShip::ENormalBulletType, CShip, m_normal_bullet_type, NormalBulletType)
+GET_SET_FUN_DEFINE(CShip::EBombType, CShip, m_bomb_type, BombType)

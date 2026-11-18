@@ -18,8 +18,8 @@ public:
 		D_DOWN,
 	};
 
-	static constexpr EDirection DEFAULT_DIRECTION = EDirection::D_UP;
-	static constexpr float DEFAULT_VELOCITY = 0.0f;
+	static EDirection DEFAULT_DIRECTION;
+	static float DEFAULT_VELOCITY;
 
 GET_SET_FUN_DECLAR(Position, m_position, Position)
 GET_SET_FUN_DECLAR(EDirection, m_direction, Direction)

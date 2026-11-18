@@ -1,8 +1,18 @@
 ﻿#include "CBullet.h"
 
+#include "src/Game/CGame.h"
+
+CActor::EDirection CBullet::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
+CActor::EDirection CBullet::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
+
+void CBullet::Init()
+{
+
+}
+
 CBullet::CBullet() {}
 
-CBullet::CBullet(const CActor::Position& position, const EBulletFrom& bullet_from, const EBulletType& bullet_type) : CActor(position), m_bullet_from(bullet_from), m_bullet_type(bullet_type)
+CBullet::CBullet(const CActor::Position& position, const EBulletFrom& bullet_from) : CActor(position), m_bullet_from(bullet_from)
 {
 	switch (m_bullet_from)
 	{
@@ -13,8 +23,6 @@ CBullet::CBullet(const CActor::Position& position, const EBulletFrom& bullet_fro
 		m_direction = CBullet::DEFAULT_ENEMY_DIRECTION;
 		break;
 	}
-
-	m_velocity = CBullet::DEFAULT_VELOCITY;
 }
 
 CBullet::~CBullet() {}
@@ -30,4 +38,3 @@ void CBullet::Draw()
 }
 
 GET_SET_FUN_DEFINE(CBullet::EBulletFrom, CBullet, m_bullet_from, BulletFrom)
-GET_SET_FUN_DEFINE(CBullet::EBulletType, CBullet, m_bullet_type, BulletType)

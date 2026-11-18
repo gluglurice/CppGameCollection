@@ -1,7 +1,8 @@
 ﻿#pragma once
 
+#include <string>
+
 #include "src/Actor/CActor.h"
-#include "src/Actor/CBullet.h"
 
 class CShip : public CActor
 {
@@ -12,28 +13,47 @@ public:
 		ST_ENEMY,
 	};
 
-	enum EShipSkill
+	enum ENormalBulletType
 	{
-		SS_BOMB,
-		SS_DOUBLE_BOMB,
+		NBT_SINGLE,
+		NBT_DOUBLE,
+		NBT_TRIPLE,
 	};
 
-	static constexpr CActor::EDirection DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
-	static constexpr CActor::EDirection DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
-	static constexpr float DEFAULT_VELOCITY = 1.0f;
+	enum EBombType
+	{
+		BT_SINGLE,
+		BT_DOUBLE,
+	};
 
-	static constexpr int DEFAULT_MAX_HP = 100;
-	static constexpr int DEFAULT_MAX_MP = 100;
-	static constexpr CBullet::EBulletType DEFAULT_BULLET_TYPE = CBullet::EBulletType::BT_SINGLE;
-	static constexpr EShipSkill DEFAULT_SKILL = EShipSkill::SS_BOMB;
+	static int SHIP_IMG_NUM;
+	static  std::wstring SHIP_IMG_PATHS[];
+	static  IMAGE SHIP_IMAGES[];
+
+	static  CActor::EDirection DEFAULT_PLAYER_DIRECTION;
+	static  CActor::EDirection DEFAULT_ENEMY_DIRECTION;
+	static  float DEFAULT_VELOCITY;
+
+	static  int DEFAULT_MAX_HP;
+	static  int DEFAULT_MAX_MP;
+	static  int DEFAULT_MAX_ATK;
+	static  int DEFAULT_MAX_DEF;
+	static  int DEFAULT_MAX_SHIELD;
+	static  ENormalBulletType DEFAULT_NORMAL_BULLET_TYPE;
+	static  EBombType DEFAULT_BOMB_TYPE;
+
+	static void Init();
 
 GET_SET_FUN_DECLAR(EShipType, m_ship_type, ShipType)
 GET_SET_FUN_DECLAR(int, m_hp, HP)
 GET_SET_FUN_DECLAR(int, m_max_hp, MaxHP)
 GET_SET_FUN_DECLAR(int, m_mp, MP)
 GET_SET_FUN_DECLAR(int, m_max_mp, MaxMP)
-GET_SET_FUN_DECLAR(CBullet::EBulletType, m_bullet_type, BulletType)
-GET_SET_FUN_DECLAR(EShipSkill, m_skill, Skill)
+GET_SET_FUN_DECLAR(int, m_atk, Atk)
+GET_SET_FUN_DECLAR(int, m_def, Def)
+GET_SET_FUN_DECLAR(int, m_shield, Shield)
+GET_SET_FUN_DECLAR(ENormalBulletType, m_normal_bullet_type, NormalBulletType)
+GET_SET_FUN_DECLAR(EBombType, m_bomb_type, BombType)
 
 public:
 	CShip();
@@ -46,7 +66,7 @@ public:
 
 	void Shoot();
 
-	void UseSkill();
+	void Bomb();
 
 	void Die();
 

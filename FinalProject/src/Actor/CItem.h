@@ -12,8 +12,10 @@ public:
 		IT_SHIELD,
 	};
 	
-	static constexpr CActor::EDirection DEFAULT_DIRECTION = CActor::EDirection::D_DOWN;
-	static constexpr float DEFAULT_VELOCITY = 0.2f;
+	static CActor::EDirection DEFAULT_DIRECTION;
+	static float DEFAULT_VELOCITY;
+
+	static void Init();
 
 GET_SET_FUN_DECLAR(EItemType, m_item_type, ItemType)
 

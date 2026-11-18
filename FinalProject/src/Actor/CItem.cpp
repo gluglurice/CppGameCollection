@@ -1,5 +1,15 @@
 ﻿#include "CItem.h"
 
+#include "src/Game/CGame.h"
+
+CActor::EDirection CItem::DEFAULT_DIRECTION = CActor::EDirection::D_UP;
+float CItem::DEFAULT_VELOCITY = 0.2f;
+
+void CItem::Init()
+{
+
+}
+
 CItem::CItem() {}
 
 CItem::CItem(const CActor::Position& position, const EItemType& item_type) : CActor(position), m_item_type(item_type)

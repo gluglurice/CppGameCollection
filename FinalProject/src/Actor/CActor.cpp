@@ -1,5 +1,8 @@
 ﻿#include "CActor.h"
 
+CActor::EDirection CActor::DEFAULT_DIRECTION = CActor::EDirection::D_UP;
+float CActor::DEFAULT_VELOCITY = 0.0f;
+
 CActor::CActor() {}
 
 CActor::CActor(const Position& position) : m_position(position), m_direction(CActor::DEFAULT_DIRECTION), m_velocity(CActor::DEFAULT_VELOCITY) {}

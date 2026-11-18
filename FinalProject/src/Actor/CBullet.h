@@ -11,24 +11,17 @@ public:
 		BF_ENEMY,
 	};
 
-	enum EBulletType
-	{
-		BT_SINGLE,
-		BT_DOUBLE,
-		BT_TRIPLE,
-	};
+	static CActor::EDirection DEFAULT_PLAYER_DIRECTION;
+	static CActor::EDirection DEFAULT_ENEMY_DIRECTION;
 
-	static constexpr CActor::EDirection DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
-	static constexpr CActor::EDirection DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;
-	static constexpr float DEFAULT_VELOCITY = 5.0f;
+	static void Init();
 
 GET_SET_FUN_DECLAR(EBulletFrom, m_bullet_from, BulletFrom)
-GET_SET_FUN_DECLAR(EBulletType, m_bullet_type, BulletType)
 
 public:
 	CBullet();
 
-	CBullet(const CActor::Position& position, const EBulletFrom& bullet_from, const EBulletType& bullet_type);
+	CBullet(const CActor::Position& position, const EBulletFrom& bullet_from);
 
 	~CBullet();
 
