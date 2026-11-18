@@ -3,6 +3,7 @@
 #include <string>
 
 #include <graphics.h>
+#include <tinyxml/tinyxml.h>
 #include <Utils/Utils.h>
 
 class CActor

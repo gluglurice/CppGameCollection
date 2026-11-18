@@ -20,7 +20,9 @@ void CShip::Init(const std::string& config_path)
 {
 	CShip::IMG_NUM = 1;
 	CShip::IMG_PATHS = new std::wstring[CShip::IMG_NUM];
+	CShip::IMG_PATHS[0] = L"assets/img/ship/ship_blue_s.png";
 	CShip::IMGS = new IMAGE[CShip::IMG_NUM];
+	loadimage(&CShip::IMGS[0], CShip::IMG_PATHS[0].c_str());
 
 	CShip::DEFAULT_PLAYER_DIRECTION = CActor::EDirection::D_UP;
 	CShip::DEFAULT_ENEMY_DIRECTION = CActor::EDirection::D_DOWN;

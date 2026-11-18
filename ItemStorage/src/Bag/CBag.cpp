@@ -125,10 +125,10 @@ void CBag::Draw()
 			switch (item->GetItemType())
 			{
 			case CItem::EItemType::IT_DRUG:
-				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9, &CDrug::DRUG_IMGS[static_cast<int>(static_cast<CDrug*>(item)->GetDrugType())]);
+				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9f, &CDrug::DRUG_IMGS[static_cast<int>(static_cast<CDrug*>(item)->GetDrugType())]);
 				break;
 			case CItem::EItemType::IT_EQUIPMENT:
-				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9, &CEquipment::EQUIPMENT_IMGS[static_cast<int>(static_cast<CEquipment*>(item)->GetEquipmentType())]);
+				putimage_alpha_zoom(213 + (i % 7) * 100, 618 + (i / 7) * 90, 0.9f, &CEquipment::EQUIPMENT_IMGS[static_cast<int>(static_cast<CEquipment*>(item)->GetEquipmentType())]);
 				break;
 			default:
 				break;
