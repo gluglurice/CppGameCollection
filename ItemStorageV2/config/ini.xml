@@ -1,20 +1,20 @@
 <Ini>
 	<Items>
-		<Item item_type="0" id="1001" hp="500" mp="0" atk="0" def="0" name="ç©°ç©°ç‘žé›ªç³•" drug_type="0" img_path="assets/imgs/item/drug_heal_ç©°ç©°ç‘žé›ªç³•.png" />
-		<Item item_type="0" id="1002" hp="0" mp="500" atk="0" def="0" name="å®çŸ³é—ªé—ª" drug_type="1" img_path="assets/imgs/item/drug_mana_å®çŸ³é—ªé—ª.png" />
-		<Item item_type="0" id="1003" hp="0" mp="0" atk="200" def="0" name="éŽé‡‘æ®¿å ‚" drug_type="2" img_path="assets/imgs/item/drug_buff_atk_éŽé‡‘æ®¿å ‚.png" />
-		<Item item_type="0" id="1004" hp="0" mp="0" atk="0" def="200" name="é…ªé¦™èŸ¹èŸ¹é”…" drug_type="3" img_path="assets/imgs/item/drug_buff_def_é…ªé¦™èŸ¹èŸ¹é”….png" />
-		<Item item_type="1" id="2001" hp="0" mp="0" atk="1000" def="0" name="è¶…è¶Šä¹‹åŒ™" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_è¶…è¶Šä¹‹åŒ™.png" />
-		<Item item_type="1" id="2002" hp="0" mp="0" atk="900" def="0" name="ç„šæ›œåƒé˜³" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_ç„šæ›œåƒé˜³.png" />
-		<Item item_type="1" id="2003" hp="0" mp="0" atk="800" def="0" name="ç‹¼çš„æœ«è·¯" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_ç‹¼çš„æœ«è·¯.png" />
-		<Item item_type="1" id="3001" hp="2000" mp="0" atk="0" def="0" name="å½±ä¸­æ²‰å‡çš„å¹»ç­_Flower" equipment_type="1" img_path="assets/imgs/item/equipment_accessory_å½±ä¸­æ²‰å‡çš„å¹»ç­_flower.png" />
-		<Item item_type="1" id="3002" hp="0" mp="0" atk="1000" def="0" name="å½±ä¸­æ²‰å‡çš„å¹»ç­_Feather" equipment_type="2" img_path="assets/imgs/item/equipment_accessory_å½±ä¸­æ²‰å‡çš„å¹»ç­_feather.png" />
-		<Item item_type="1" id="3003" hp="500" mp="500" atk="0" def="0" name="å½±ä¸­æ²‰å‡çš„å¹»ç­_Hourglass" equipment_type="3" img_path="assets/imgs/item/equipment_accessory_å½±ä¸­æ²‰å‡çš„å¹»ç­_hourglass.png" />
-		<Item item_type="1" id="3004" hp="500" mp="0" atk="500" def="0" name="å½±ä¸­æ²‰å‡çš„å¹»ç­_Cup" equipment_type="4" img_path="assets/imgs/item/equipment_accessory_å½±ä¸­æ²‰å‡çš„å¹»ç­_cup.png" />
-		<Item item_type="1" id="3005" hp="500" mp="0" atk="0" def="500" name="å½±ä¸­æ²‰å‡çš„å¹»ç­_Crown" equipment_type="5" img_path="assets/imgs/item/equipment_accessory_å½±ä¸­æ²‰å‡çš„å¹»ç­_crown.png" />
-		<Item item_type="1" id="3006" hp="2000" mp="0" atk="0" def="0" name="å¤©ä¹‹ç¾Žèµ_Flower" equipment_type="1" img_path="assets/imgs/item/equipment_accessory_å¤©ä¹‹ç¾Žèµ_flower.png" />
+		<Item item_type="0" id="1001" hp="500" mp="0" atk="0" def="0" name="ð¦ð¦ÈðÑ©¸â" drug_type="0" img_path="assets/imgs/item/drug_heal_ð¦ð¦ÈðÑ©¸â.png" />
+		<Item item_type="0" id="1002" hp="0" mp="500" atk="0" def="0" name="±¦Ê¯ÉÁÉÁ" drug_type="1" img_path="assets/imgs/item/drug_mana_±¦Ê¯ÉÁÉÁ.png" />
+		<Item item_type="0" id="1003" hp="0" mp="0" atk="200" def="0" name="öÌ½ðµîÌÃ" drug_type="2" img_path="assets/imgs/item/drug_buff_atk_öÌ½ðµîÌÃ.png" />
+		<Item item_type="0" id="1004" hp="0" mp="0" atk="0" def="200" name="ÀÒÏãÐ·Ð·¹ø" drug_type="3" img_path="assets/imgs/item/drug_buff_def_ÀÒÏãÐ·Ð·¹ø.png" />
+		<Item item_type="1" id="2001" hp="0" mp="0" atk="1000" def="0" name="³¬Ô½Ö®³×" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_³¬Ô½Ö®³×.png" />
+		<Item item_type="1" id="2002" hp="0" mp="0" atk="900" def="0" name="·Ùê×Ç§Ñô" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_·Ùê×Ç§Ñô.png" />
+		<Item item_type="1" id="2003" hp="0" mp="0" atk="800" def="0" name="ÀÇµÄÄ©Â·" equipment_type="0" img_path="assets/imgs/item/equipment_weapon_ÀÇµÄÄ©Â·.png" />
+		<Item item_type="1" id="3001" hp="2000" mp="0" atk="0" def="0" name="Ó°ÖÐ³ÁÄýµÄ»ÃÃð_Flower" equipment_type="1" img_path="assets/imgs/item/equipment_accessory_Ó°ÖÐ³ÁÄýµÄ»ÃÃð_flower.png" />
+		<Item item_type="1" id="3002" hp="0" mp="0" atk="1000" def="0" name="Ó°ÖÐ³ÁÄýµÄ»ÃÃð_Feather" equipment_type="2" img_path="assets/imgs/item/equipment_accessory_Ó°ÖÐ³ÁÄýµÄ»ÃÃð_feather.png" />
+		<Item item_type="1" id="3003" hp="500" mp="500" atk="0" def="0" name="Ó°ÖÐ³ÁÄýµÄ»ÃÃð_Hourglass" equipment_type="3" img_path="assets/imgs/item/equipment_accessory_Ó°ÖÐ³ÁÄýµÄ»ÃÃð_hourglass.png" />
+		<Item item_type="1" id="3004" hp="500" mp="0" atk="500" def="0" name="Ó°ÖÐ³ÁÄýµÄ»ÃÃð_Cup" equipment_type="4" img_path="assets/imgs/item/equipment_accessory_Ó°ÖÐ³ÁÄýµÄ»ÃÃð_cup.png" />
+		<Item item_type="1" id="3005" hp="500" mp="0" atk="0" def="500" name="Ó°ÖÐ³ÁÄýµÄ»ÃÃð_Crown" equipment_type="5" img_path="assets/imgs/item/equipment_accessory_Ó°ÖÐ³ÁÄýµÄ»ÃÃð_crown.png" />
+		<Item item_type="1" id="3006" hp="2000" mp="0" atk="0" def="0" name="ÌìÖ®ÃÀ´Í_Flower" equipment_type="1" img_path="assets/imgs/item/equipment_accessory_ÌìÖ®ÃÀ´Í_flower.png" />
 	</Items>
-	<Role hp="800" max_hp="1000" mp="800" max_mp="1000" atk="100" def="100" name="æ¡‘å¤šæ¶…">
+	<Role hp="800" max_hp="1000" mp="800" max_mp="1000" atk="100" def="100" name="É£¶àÄù">
 		<Bag item_array_size="14" item_chosen_index="0" equipment_chosen_index="-1">
 			<Item id="1001" />
 			<Item id="1002" />

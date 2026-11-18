@@ -9,6 +9,7 @@ class CSolution
 public:
 	static const std::string INI_XML_PATH;
 	static const std::string SAVE_XML_PATH;
+	static const std::string XML_ENCODING;
 
 public:
 	CSolution();

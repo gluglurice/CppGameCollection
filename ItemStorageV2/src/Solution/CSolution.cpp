@@ -14,6 +14,7 @@
 
 const std::string CSolution::INI_XML_PATH = "config/ini.xml";
 const std::string CSolution::SAVE_XML_PATH = "config/save.xml";
+const std::string CSolution::XML_ENCODING = "ANSI";
 
 CSolution::CSolution() {}
 

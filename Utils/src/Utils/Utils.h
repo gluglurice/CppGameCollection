@@ -41,4 +41,4 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img);
  */
 void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img);
 
-std::wstring Utf8ToWide(const char* text);
+std::wstring StringToWString(const char* text, std::string encoding = "UTF-8");
