@@ -172,6 +172,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map\CMap.cpp" />
     <ClCompile Include="src\UI\CUI.cpp" />
+    <ClCompile Include="src\Vector\CVector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Actor\CBomb.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="src\Level\CLevel.h" />
     <ClInclude Include="src\Map\CMap.h" />
     <ClInclude Include="src\UI\CUI.h" />
+    <ClInclude Include="src\Vector\CVector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\game_ini.xml" />
