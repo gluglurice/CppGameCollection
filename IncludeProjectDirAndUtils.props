@@ -3,17 +3,20 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <ReferencePath>$(ProjectDir);$(SolutionDir)Utils\src;$(VC_ReferencesPath_x86);</ReferencePath>
+    <ReferencePath>$(VC_ReferencesPath_x86);</ReferencePath>
     <OutDir>$(ProjectDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\</IntDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)</IntDir>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <_PropertySheetDisplayName>Customed</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Utils\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Utils\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)Utils\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>tinyxml.lib;soloud.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Utils\lib\;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ALPHA.lib;d3d9.lib;d3dx9.lib;d3dx9d.lib;d3dxof.lib;dinput8.lib;dxguid.lib;soloud.lib;tinyxml.lib;XInput;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

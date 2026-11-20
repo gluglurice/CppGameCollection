@@ -15,139 +15,171 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Utils\Utils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vector\CVector3D.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <ClInclude Include="include\d3d9.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9anim.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9effect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9math.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9tex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dx9xof.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_audiosource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_bassboostfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_biquadresonantfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_bus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_c.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_dcremovalfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_echofilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_error.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_fader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_fft.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_fftfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_file.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_file_hack_off.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_file_hack_on.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_flangerfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_freeverbfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_lofifilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_misc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_monotone.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_noise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_openmpt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_robotizefilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_sfxr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_speech.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_tedsid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_thread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_vic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_vizsn.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_wav.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_waveshaperfilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\soloud_wavstream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tinystr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tinyxml.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector3D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Utils\Utils.h">
+    <None Include="include\d3dx9math.inl">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\Tools.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_audiosource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_bassboostfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_biquadresonantfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_bus.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_c.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_dcremovalfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_echofilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_error.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_fader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_fft.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_fftfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_file.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_file_hack_off.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_file_hack_on.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_filter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_flangerfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_freeverbfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_internal.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_lofifilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_misc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_monotone.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_noise.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_openmpt.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_queue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_robotizefilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_sfxr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_speech.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_tedsid.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_thread.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_vic.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_vizsn.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_wav.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_waveshaperfilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\soloud\soloud_wavstream.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinixml\tinystr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinixml\tinyxml.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vector\CVector3D.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinyxml\tinystr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tinyxml\tinyxml.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

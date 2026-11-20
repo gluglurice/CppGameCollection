@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../Utils/Utils.h"
+#include "Utils.h"
 
 class CVector3D
 {

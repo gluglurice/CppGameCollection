@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <graphics.h>
+class IMAGE;
 
 #define GET_SET_FUN_DECLAR(type, member, name) \
 protected:\

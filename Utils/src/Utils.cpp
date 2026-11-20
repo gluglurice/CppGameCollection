@@ -1,8 +1,9 @@
-﻿#include "Utils.h"
+﻿#include "include/Utils.h"
 
 #include <stdexcept>
 
 #include <Windows.h>
+#include <graphics.h>
 
 void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img)
 {

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Solution\CSolution.cpp">
+    <ClCompile Include="src\Solution\Solution.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Solution\CSolution.h">
+    <ClInclude Include="src\Solution\Solution.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
