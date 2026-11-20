@@ -51,7 +51,10 @@
     <ClCompile Include="src\Actor\CBomb.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vector\CVector3D.cpp">
+    <ClCompile Include="src\Actor\CShipFC.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\CNormalBulletFC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +92,10 @@
     <ClInclude Include="src\Actor\CBomb.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vector\CVector3D.h">
+    <ClInclude Include="src\Actor\CShipFC.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\CNormalBulletFC.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

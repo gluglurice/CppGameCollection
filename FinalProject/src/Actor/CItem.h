@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <Vector/CVector3D.h>
+
 #include "src/Actor/CActor.h"
 
 class CItem : public CActor
@@ -12,26 +14,16 @@ public:
 		IT_SHIELD,
 	};
 
-	static int IMG_NUM;
-	static  std::wstring* IMG_PATHS;
-	static  IMAGE* IMGS;
-	
-	static float DEFAULT_VELOCITY;
-
-	static void Init(const std::string& config_path);
-
-	static void Delete();
-
 GET_SET_FUN_DECLAR(EItemType, m_item_type, ItemType)
 
 public:
 	CItem();
 
-	CItem(const CActor::Position& position, const EItemType& item_type);
+	CItem(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, const EItemType& item_type);
 
 	~CItem();
 
-	void Move(int move_x, int move_y) override;
+	void Move(const CVector3D& offset) override;
 
 	void Draw() override;
 };

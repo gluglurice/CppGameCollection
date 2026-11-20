@@ -1,46 +1,15 @@
 ﻿#include "CItem.h"
 
-int CItem::IMG_NUM;
-std::wstring* CItem::IMG_PATHS;
-IMAGE* CItem::IMGS;
-
-float CItem::DEFAULT_VELOCITY;
-
-void CItem::Init(const std::string& config_path)
-{
-	CItem::IMG_NUM = 1;
-	CItem::IMG_PATHS = new std::wstring[CItem::IMG_NUM];
-	CItem::IMGS = new IMAGE[CItem::IMG_NUM];
-
-	CItem::DEFAULT_VELOCITY = 0.2f;
-}
-
-void CItem::Delete()
-{
-	if (CItem::IMG_PATHS)
-	{
-		delete[] CItem::IMG_PATHS;
-		CItem::IMG_PATHS = nullptr;
-	}
-	if (CItem::IMGS)
-	{
-		delete[] CItem::IMGS;
-		CItem::IMGS = nullptr;
-	}
-}
-
 CItem::CItem() {}
 
-CItem::CItem(const CActor::Position& position, const EItemType& item_type) : CActor(position), m_item_type(item_type)
-{
-	m_velocity = CItem::DEFAULT_VELOCITY;
-}
+CItem::CItem(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, const EItemType& item_type)
+	: CActor(position, tile_size, scale, direction, velocity), m_item_type(item_type) {}
 
 CItem::~CItem() {}
 
-void CItem::Move(int move_x, int move_y)
+void CItem::Move(const CVector3D& offset)
 {
-
+	CActor::Move(offset);
 }
 
 void CItem::Draw()

@@ -75,3 +75,8 @@ std::wstring StringToWString(const char* text, std::string encoding)
 	result.pop_back(); // 移除转换结果末尾的空字符
 	return result;
 }
+
+bool isKeyDown(int vk)
+{
+	return (GetAsyncKeyState(vk) & 0x8000) != 0;
+}

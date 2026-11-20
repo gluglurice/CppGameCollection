@@ -1,50 +1,15 @@
 ﻿#include "CBomb.h"
 
-int CBomb::IMG_NUM;
-std::wstring* CBomb::IMG_PATHS;
-IMAGE* CBomb::IMGS;
-
-float CBomb::DEFAULT_VELOCITY;
-float CBomb::DEFAULT_ACCELERATION;
-
-void CBomb::Init(const std::string& config_path)
-{
-	CBomb::IMG_NUM = 1;
-	CBomb::IMG_PATHS = new std::wstring[CBomb::IMG_NUM];
-	CBomb::IMGS = new IMAGE[CBomb::IMG_NUM];
-
-	CBomb::DEFAULT_VELOCITY = 3.0f;
-	CBomb::DEFAULT_ACCELERATION = 0.5;
-}
-
-void CBomb::Delete()
-{
-	if (CBomb::IMG_PATHS)
-	{
-		delete[] CBomb::IMG_PATHS;
-		CBomb::IMG_PATHS = nullptr;
-	}
-	if (CBomb::IMGS)
-	{
-		delete[] CBomb::IMGS;
-		CBomb::IMGS = nullptr;
-	}
-}
-
 CBomb::CBomb() {}
 
-CBomb::CBomb(const CActor::Position& position, const EBulletFrom& bullet_from, const EBombType& bomb_type)
-	: CBullet(position, bullet_from), m_bomb_type(bomb_type)
-{
-	m_velocity = CBomb::DEFAULT_VELOCITY;
-	m_acceleration = CBomb::DEFAULT_ACCELERATION;
-}
+CBomb::CBomb(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, const EBulletFrom& bullet_from, const EBombType& bomb_type, float acceleration)
+	: CBullet(position, tile_size, scale, direction, velocity, bullet_from), m_bomb_type(bomb_type), m_acceleration(acceleration) {}
 
 CBomb::~CBomb() {}
 
-void CBomb::Move(int move_x, int move_y)
+void CBomb::Move(const CVector3D& offset)
 {
-
+	CBullet::Move(offset);
 }
 
 void CBomb::Draw()

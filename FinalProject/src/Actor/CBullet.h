@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <Vector/CVector3D.h>
+
 #include "src/Actor/CActor.h"
 
 class CBullet : public CActor
@@ -11,23 +13,16 @@ public:
 		BF_ENEMY,
 	};
 
-	static CActor::EDirection DEFAULT_PLAYER_DIRECTION;
-	static CActor::EDirection DEFAULT_ENEMY_DIRECTION;
-
-	static void Init(const std::string& config_path);
-
-	static void Delete();
-
 GET_SET_FUN_DECLAR(EBulletFrom, m_bullet_from, BulletFrom)
 
 public:
 	CBullet();
 
-	CBullet(const CActor::Position& position, const EBulletFrom& bullet_from);
+	CBullet(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, EBulletFrom bullet_from);
 
 	~CBullet();
 
-	void Move(int move_x, int move_y) override;
+	void Move(const CVector3D& offset) override;
 
 	void Draw() override;
 };

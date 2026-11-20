@@ -11,9 +11,9 @@
   <image source="../../bullet/bullet_triple.png" width="16" height="16"/>
  </tile>
  <tile id="3">
-  <image source="../../bullet/bullet_bomb_single.png" width="16" height="16"/>
+  <image source="../../bullet/bomb_single.png" width="16" height="16"/>
  </tile>
  <tile id="4">
-  <image source="../../bullet/bullet_bomb_double.png" width="16" height="16"/>
+  <image source="../../bullet/bomb_double.png" width="16" height="16"/>
  </tile>
 </tileset>

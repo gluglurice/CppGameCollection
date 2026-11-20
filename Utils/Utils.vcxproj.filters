@@ -18,6 +18,9 @@
     <ClCompile Include="src\Utils\Utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vector\CVector3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Utils.h">
@@ -135,6 +138,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\tinixml\tinyxml.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vector\CVector3D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tinyxml\tinystr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tinyxml\tinyxml.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

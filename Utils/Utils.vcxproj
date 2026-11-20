@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Utils.cpp" />
+    <ClCompile Include="src\Vector\CVector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\soloud\soloud.h" />
@@ -183,8 +184,11 @@
     <ClInclude Include="src\soloud\soloud_wavstream.h" />
     <ClInclude Include="src\tinixml\tinystr.h" />
     <ClInclude Include="src\tinixml\tinyxml.h" />
+    <ClInclude Include="src\tinyxml\tinystr.h" />
+    <ClInclude Include="src\tinyxml\tinyxml.h" />
     <ClInclude Include="src\Utils\Tools.h" />
     <ClInclude Include="src\Utils\Utils.h" />
+    <ClInclude Include="src\Vector\CVector3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <ReferencePath>$(ProjectDir);$(SolutionDir)Utils\src;$(VC_ReferencesPath_x86);</ReferencePath>
+    <OutDir>$(ProjectDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)temp\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

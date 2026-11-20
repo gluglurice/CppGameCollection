@@ -1,9 +1,9 @@
 {
     "activeFile": "levels/map_level_1.tmx",
     "expandedProjectPaths": [
-        "tile sets",
+        ".",
         "levels",
-        "."
+        "tile sets"
     ],
     "fileStates": {
         "": {
@@ -20,8 +20,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 342.5,
-                "y": 578.5
+                "x": 357.5,
+                "y": 571.5
             }
         },
         "levels/map_level_1.tmx#bullet": {
@@ -114,7 +114,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "D:/Documents/9artedu/CppGameCollection/FinalProject/assets/imgs/tiled/tile sets",
+    "last.externalTilesetPath": "D:/Documents/9artedu/CppGameCollection/FinalProject/assets/img/tiled/tile sets",
     "openFiles": [
         "levels/map_level_1.tmx"
     ],

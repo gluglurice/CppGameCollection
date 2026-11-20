@@ -2,9 +2,6 @@
 
 int main()
 {
-	CGame::Init();
-	CGame game;
-	game.Run();
-	CGame::Delete();
+	CGame::GetInstance()->Run();
 	return 0;
 }

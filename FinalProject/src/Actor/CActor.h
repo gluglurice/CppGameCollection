@@ -1,45 +1,31 @@
 ﻿#pragma once
 
-#include <string>
-
-#include <graphics.h>
-#include <tinyxml/tinyxml.h>
 #include <Utils/Utils.h>
+#include <Vector/CVector3D.h>
 
 class CActor
 {
 public:
-	struct Position
-	{
-		int x;
-		int y;
-	};
-
 	enum EDirection
 	{
 		D_UP,
 		D_DOWN,
 	};
 
-	static EDirection DEFAULT_DIRECTION;
-	static float DEFAULT_VELOCITY;
-
-	static void Init(const std::string& config_path);
-
-	static void Delete();
-
-GET_SET_FUN_DECLAR(Position, m_position, Position)
+GET_SET_FUN_DECLAR(CVector3D, m_position, Position)
+GET_SET_FUN_DECLAR(int, m_tile_size, TileSize)
+GET_SET_FUN_DECLAR(float, m_scale, Scale)
 GET_SET_FUN_DECLAR(EDirection, m_direction, Direction)
 GET_SET_FUN_DECLAR(float, m_velocity, Velocity)
 
 public:
 	CActor();
 
-	CActor(const Position& position);
+	CActor(const CVector3D& position, int tile_size, float scale, EDirection direction, float velocity);
 
 	~CActor();
 
-	virtual void Move(int move_x, int move_y);
+	virtual void Move(const CVector3D& offset);
 
 	virtual void Draw();
 };
