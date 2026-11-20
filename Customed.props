@@ -5,7 +5,7 @@
   <PropertyGroup>
     <ReferencePath>$(VC_ReferencesPath_x86);</ReferencePath>
     <OutDir>$(ProjectDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\</IntDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)</IntDir>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
