@@ -2,7 +2,6 @@
 
 int main()
 {
-	CSolution solution;
-	solution.Run();
+	CSolution::GetInstance()->Run();
 	return 0;
 }

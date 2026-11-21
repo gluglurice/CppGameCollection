@@ -1,11 +1,14 @@
 ﻿#pragma once
 
-class CSolution
+#include <Singleton.h>
+
+class CSolution : public CSingleton<CSolution>
 {
-public:
+	friend CSingleton<CSolution>;
+
+protected:
 	CSolution();
 
-	~CSolution();
-
+public:
 	void Run();
 };

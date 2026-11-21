@@ -1,8 +1,8 @@
 ﻿#include "Solution.h"
 
-CSolution::CSolution() {}
+#include <iostream>
 
-CSolution::~CSolution() {}
+CSolution::CSolution() : CSingleton<CSolution>() {}
 
 void CSolution::Run()
 {

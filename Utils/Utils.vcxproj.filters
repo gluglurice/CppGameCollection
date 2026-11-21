@@ -179,6 +179,9 @@
     <ClInclude Include="include\Utils\EasyXExtension.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utils\Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\d3d\d3dx9math.inl">

@@ -72,6 +72,7 @@
     <ClInclude Include="include\tinyxml\tinystr.h" />
     <ClInclude Include="include\tinyxml\tinyxml.h" />
     <ClInclude Include="include\Utils\EasyXExtension.h" />
+    <ClInclude Include="include\Utils\Singleton.h" />
     <ClInclude Include="include\Utils\Tools.h" />
     <ClInclude Include="include\Utils\Utils.h" />
     <ClInclude Include="include\Utils\Vector3D.h" />
