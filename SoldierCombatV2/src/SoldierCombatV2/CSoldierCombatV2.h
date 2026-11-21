@@ -4,7 +4,7 @@
 
 #include <conio.h>
 #include <graphics.h>
-#include <Utils/Utils.h>
+#include <Utils.h>
 
 #include "src/Soldier/CActor.h"
 #include "src/Soldier/CSoldier.h"

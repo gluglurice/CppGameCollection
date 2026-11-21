@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <Vector/CVector3D.h>
-
 #include "src/Actor/CActor.h"
 
 class CBullet : public CActor

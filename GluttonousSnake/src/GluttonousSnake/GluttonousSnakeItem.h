@@ -2,9 +2,6 @@
 
 #include <string>
 
-#include <graphics.h>
-#include <Utils/Utils.h>
-
 #include "GluttonousSnakeActor.h"
 
 namespace gluttonous_snake

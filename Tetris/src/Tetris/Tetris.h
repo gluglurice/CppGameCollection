@@ -7,7 +7,6 @@
 #include <conio.h>
 #include <windows.h>
 #include <graphics.h>
-#include <Utils/Utils.h>
 
 #include "TetrisMap.h"
 #include "TetrisCube.h"

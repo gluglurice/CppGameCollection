@@ -5,7 +5,8 @@
 #include <map>
 #include <string>
 
-#include <Utils/Utils.h>
+#include <Utils.h>
+#include <EasyXExtension.h>
 
 #include "src/Item/CItem.h"
 #include "src/Item/CItemFC.h"

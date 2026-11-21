@@ -4,7 +4,7 @@
 
 #include <conio.h>
 #include <graphics.h>
-#include <tinyxml/tinyxml.h>
+#include <tinyxml.h>
 
 #include "src/Role/CRole.h"
 #include "src/Item/CItem.h"

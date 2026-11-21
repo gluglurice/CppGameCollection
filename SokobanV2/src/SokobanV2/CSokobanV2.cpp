@@ -1,5 +1,7 @@
 ﻿#include "CSokobanV2.h"
 
+#include <EasyXExtension.h>
+
 CSokobanV2::CSokobanV2() :
 	m_game_finish(false),
 	m_assets_manager(CSokobanV2AssetsManager()),

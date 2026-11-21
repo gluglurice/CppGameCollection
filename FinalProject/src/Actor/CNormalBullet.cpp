@@ -1,7 +1,5 @@
 ﻿#include "CNormalBullet.h"
 
-#include <Utils/Utils.h>
-
 #include "CNormalBulletFC.h"
 
 CNormalBullet::CNormalBullet() {}

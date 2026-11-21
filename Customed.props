@@ -7,13 +7,14 @@
     <OutDir>$(ProjectDir)bin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)</IntDir>
     <LibraryPath>$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Utils\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Utils\include\d3d\;$(SolutionDir)Utils\include\soloud\;$(SolutionDir)Utils\include\tinyxml\;$(SolutionDir)Utils\include\Utils\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)Utils\lib\;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Utils\lib\d3d\;$(SolutionDir)Utils\lib\soloud\;$(SolutionDir)Utils\lib\tinyxml\;$(SolutionDir)Utils\lib\Utils\</AdditionalLibraryDirectories>
       <AdditionalDependencies>ALPHA.lib;d3d9.lib;d3dx9.lib;d3dx9d.lib;d3dxof.lib;dinput8.lib;dxguid.lib;soloud.lib;tinyxml.lib;XInput.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>

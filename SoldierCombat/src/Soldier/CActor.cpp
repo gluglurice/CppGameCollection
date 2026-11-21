@@ -1,5 +1,7 @@
 ﻿#include "CActor.h"
 
+#include <EasyXExtension.h>
+
 CActor::CActor() {}
 
 CActor::CActor(const Position& position, const std::wstring& img_path)

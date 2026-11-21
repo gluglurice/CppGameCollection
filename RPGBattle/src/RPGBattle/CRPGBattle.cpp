@@ -1,5 +1,7 @@
 ﻿#include "CRPGBattle.h"
 
+#include <EasyXExtension.h>
+
 CRPGBattle::CRPGBattle() :
 	m_game_finish(false),
 	m_assets_manager(CRPGBattleAssetsManager()),

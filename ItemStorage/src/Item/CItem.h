@@ -2,7 +2,8 @@
 
 #include <string>
 
-#include <Utils/Utils.h>
+#include <Utils.h>
+#include <graphics.h>
 
 class CItem
 {

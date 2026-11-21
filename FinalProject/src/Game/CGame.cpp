@@ -3,9 +3,8 @@
 #include <iostream>
 
 #include <conio.h>
-#include <graphics.h>
-#include <tinyxml/tinyxml.h>
-#include <Utils/Utils.h>
+#include <tinyxml.h>
+#include <EasyXExtension.h>
 
 #include "src/Actor/CActor.h"
 #include "src/Actor/CShip.h"
@@ -16,11 +15,11 @@
 #include "src/Actor/CItem.h"
 
 const std::string CGame::GAME_INI_PATH = "config/game_ini.xml";
-const int CGame::ONE_SEC = 1000;
+const unsigned CGame::ONE_SEC = 1000;
 
-int CGame::GRAPH_WIDTH;
-int CGame::GRAPH_HEIGHT;
-int CGame::FPS;
+unsigned CGame::GRAPH_WIDTH;
+unsigned CGame::GRAPH_HEIGHT;
+unsigned CGame::FPS;
 
 CGame* CGame::m_instance;
 
@@ -43,9 +42,9 @@ CGame::CGame()
 	}
 
 	TiXmlElement* xml_root = xml_doc.RootElement();
-	xml_root->QueryIntAttribute("graph_width", &GRAPH_WIDTH);
-	xml_root->QueryIntAttribute("graph_height", &GRAPH_HEIGHT);
-	xml_root->QueryIntAttribute("fps", &FPS);
+	xml_root->QueryUnsignedAttribute("graph_width", &GRAPH_WIDTH);
+	xml_root->QueryUnsignedAttribute("graph_height", &GRAPH_HEIGHT);
+	xml_root->QueryUnsignedAttribute("fps", &FPS);
 }
 
 CGame::~CGame() {}
@@ -56,7 +55,7 @@ void CGame::Run()
 	loadimage(&background, L"assets/img/background.jpg");
 
 	initgraph(CGame::GRAPH_WIDTH, CGame::GRAPH_HEIGHT);
-	CShip* ship = CShipFC::GetInstance()->CreateShip(CVector3D(CGame::GRAPH_WIDTH / 2, CGame::GRAPH_HEIGHT - 50, 0), CShip::EShipCamp::SC_PLAYER, CShip::EShipType::ST_BLUE_S);
+	CShip* ship = CShipFC::GetInstance()->CreateShip(CVector3D(CGame::GRAPH_WIDTH / 2.0f, CGame::GRAPH_HEIGHT - 50.0f, 0.0f), CShip::EShipCamp::SC_PLAYER, CShip::EShipType::ST_BLUE_S);
 
 	static unsigned tick_ship_shoot = clock();
 	static unsigned tick_bullet_move = clock();

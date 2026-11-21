@@ -1,5 +1,7 @@
 ﻿#include "GluttonousSnake.h"
 
+#include <EasyXExtension.h>
+
 namespace gluttonous_snake
 {
 	float item_generate_terminal = 2000.0f;

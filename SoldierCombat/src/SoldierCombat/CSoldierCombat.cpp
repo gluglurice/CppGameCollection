@@ -1,5 +1,7 @@
 ﻿#include "CSoldierCombat.h"
 
+#include <EasyXExtension.h>
+
 #include "src/Soldier/CActor.h"
 #include "src/Soldier/CSoldier.h"
 #include "src/Soldier/CArcher.h"

@@ -3,9 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include <graphics.h>
-#include <tinyxml/tinyxml.h>
-#include <Utils/Utils.h>
+#include <tinyxml.h>
 
 #include "src/Solution/CSolution.h"
 #include "CItem.h"

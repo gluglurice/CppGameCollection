@@ -2,9 +2,7 @@
 
 #include <iostream>
 
-#include <graphics.h>
-#include <tinyxml/tinyxml.h>
-#include <Utils/Utils.h>
+#include <tinyxml.h>
 
 #include "src/Game/CGame.h"
 

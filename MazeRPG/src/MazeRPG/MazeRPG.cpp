@@ -1,5 +1,7 @@
 ﻿#include "MazeRPG.h"
 
+#include <EasyXExtension.h>
+
 namespace maze_rpg
 {
 	int enemy_num = ENEMY_NUM;

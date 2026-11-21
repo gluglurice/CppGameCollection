@@ -1,10 +1,5 @@
 ﻿#include "CActor.h"
 
-#include <string>
-
-#include <graphics.h>
-#include <tinyxml/tinyxml.h>
-
 CActor::CActor() {}
 
 CActor::CActor(const CVector3D& position, int tile_size, float scale, EDirection direction, float velocity) : m_position(position), m_tile_size(tile_size), m_scale(scale), m_direction(direction), m_velocity(velocity) {}

@@ -1,5 +1,7 @@
 ﻿#include "Tetris.h"
 
+#include <EasyXExtension.h>
+
 namespace tetris
 {
 	bool should_generate_cube = true;

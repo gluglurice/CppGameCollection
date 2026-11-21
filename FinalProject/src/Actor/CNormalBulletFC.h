@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 
+#include <EasyXExtension.h>
+
 #include "src/Actor/CNormalBullet.h"
 
 class CNormalBulletFC

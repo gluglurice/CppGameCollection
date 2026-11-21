@@ -1,4 +1,4 @@
-﻿#include "Solution/Solution.h"
+﻿#include "Solution.h"
 
 int main()
 {

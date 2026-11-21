@@ -10,7 +10,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <graphics.h>
-#include <Utils/Utils.h>
+#include <Utils.h>
 
 #include "CSokobanV2AssetsManager.h"
 #include "CSokobanV2LevelManager.h"

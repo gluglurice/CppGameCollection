@@ -1,7 +1,9 @@
 ﻿#pragma once
 
-#include <Utils/Utils.h>
-#include <Vector/CVector3D.h>
+#include <tinyxml.h>
+#include <Utils.h>
+#include <Vector3D.h>
+#include <EasyXExtension.h>
 
 class CActor
 {

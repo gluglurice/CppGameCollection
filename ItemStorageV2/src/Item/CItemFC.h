@@ -2,7 +2,8 @@
 
 #include <map>
 
-class IMAGE;
+#include <EasyXExtension.h>
+
 class CItem;
 
 class CItemFC

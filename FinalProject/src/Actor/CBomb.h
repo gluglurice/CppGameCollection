@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <Vector/CVector3D.h>
-
 #include "CBullet.h"
 
 class CBomb : public CBullet

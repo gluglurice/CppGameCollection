@@ -2,8 +2,6 @@
 
 #include <vector>
 
-#include <Vector/CVector3D.h>
-
 #include "src/Actor/CActor.h"
 
 class CNormalBullet;

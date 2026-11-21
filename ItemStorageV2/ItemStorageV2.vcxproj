@@ -162,13 +162,13 @@
     <ClInclude Include="src\Solution\CSolution.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="config\ini.xml" />
+    <Xml Include="config\save.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Utils\Utils.vcxproj">
       <Project>{dff0af0e-ccc3-4924-ac37-37ca07ae1a2a}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="config\ini.xml" />
-    <Xml Include="config\save.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

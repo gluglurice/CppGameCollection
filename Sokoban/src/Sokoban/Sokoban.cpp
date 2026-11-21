@@ -1,5 +1,11 @@
 ﻿#include "Sokoban.h"
 
+#include <iostream>
+#include <map>
+
+#include <conio.h>
+#include <graphics.h>
+
 namespace sokoban
 {
 	#pragma region DataGame

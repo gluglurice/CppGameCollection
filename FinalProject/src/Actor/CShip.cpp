@@ -1,6 +1,6 @@
 ﻿#include "CShip.h"
 
-#include <Utils/Utils.h>
+#include <EasyXExtension.h>
 
 #include "CshipFC.h"
 #include "CBullet.h"

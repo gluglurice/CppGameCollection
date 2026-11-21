@@ -2,7 +2,8 @@
 
 #include <string>
 
-#include <Utils/Utils.h>
+#include <Utils.h>
+#include <EasyXExtension.h>
 
 #include "src/Bag/CBag.h"
 #include "src/Item/CEquipment.h"
