@@ -21,6 +21,9 @@
     <ClCompile Include="src\EasyXExtension.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphic.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\d3d\d3d9.h">
@@ -180,6 +183,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\Utils\Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\Graphic.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
