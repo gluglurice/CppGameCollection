@@ -96,7 +96,6 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Utils\src;;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
@@ -115,7 +114,6 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Utils\src;;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
@@ -132,7 +130,6 @@
       <AdditionalIncludeDirectories>;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
@@ -151,7 +148,6 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Utils\src;;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
