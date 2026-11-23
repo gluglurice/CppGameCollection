@@ -2,8 +2,8 @@
 
 CItem::CItem() {}
 
-CItem::CItem(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, const EItemType& item_type)
-	: CActor(position, tile_size, scale, direction, velocity), m_item_type(item_type) {}
+CItem::CItem(const CVector3D& center, const CVector3D& position, const CVector3D& rotation, const CVector3D& scale, int tile_size, CActor::EDirection direction, float velocity, const EItemType& item_type)
+	: CActor(center, position, rotation, scale, tile_size, direction, velocity), m_item_type(item_type) {}
 
 CItem::~CItem() {}
 

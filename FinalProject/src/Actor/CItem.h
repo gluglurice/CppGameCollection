@@ -17,7 +17,7 @@ GET_SET_FUN_DECLAR(EItemType, m_item_type, ItemType)
 public:
 	CItem();
 
-	CItem(const CVector3D& position, int tile_size, float scale, CActor::EDirection direction, float velocity, const EItemType& item_type);
+	CItem(const CVector3D& center, const CVector3D& position, const CVector3D& rotation, const CVector3D& scale, int tile_size, CActor::EDirection direction, float velocity, const EItemType& item_type);
 
 	~CItem();
 

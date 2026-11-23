@@ -1,11 +1,5 @@
 ﻿#include "CGame.h"
 
-#include <iostream>
-
-#include <conio.h>
-#include <tinyxml.h>
-#include <EasyXExtension.h>
-
 #include "src/Actor/CActor.h"
 #include "src/Actor/CShip.h"
 #include "src/Actor/CShipFC.h"
@@ -14,6 +8,8 @@
 #include "src/Actor/CBomb.h"
 #include "src/Actor/CItem.h"
 
+#define PI 3.1415926
+
 const std::string CGame::GAME_INI_PATH = "config/game_ini.xml";
 const unsigned CGame::ONE_SEC = 1000;
 
@@ -21,15 +17,28 @@ unsigned CGame::GRAPH_WIDTH;
 unsigned CGame::GRAPH_HEIGHT;
 unsigned CGame::FPS;
 
-CGame* CGame::m_instance;
+map<int, pair<bool, bool>> CGame::m_key_pressed = {
+	{ 'W', make_pair(false, false) },
+	{ 'A', make_pair(false, false) },
+	{ 'S', make_pair(false, false) },
+	{ 'D', make_pair(false, false) },
+};
 
-CGame* CGame::GetInstance()
+LRESULT CGame::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	if (!m_instance)
+	switch (msg)
 	{
-		m_instance = new CGame();
+	case WM_KEYDOWN:
+		m_key_pressed[wParam].first = true;
+		break;
+	case WM_KEYUP:
+		m_key_pressed[wParam].first = false;
+		m_key_pressed[wParam].second = false;
+		break;
+	default:
+		return DefWindowProc(hwnd, msg, wParam, lParam);
 	}
-	return m_instance;
+	return 0;
 }
 
 CGame::CGame()
@@ -37,7 +46,7 @@ CGame::CGame()
 	TiXmlDocument xml_doc;
 	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
 	{
-		std::cerr << "读取XML文件失败：" << CGame::GAME_INI_PATH << std::endl;
+		cerr << "读取游戏配置文件失败：" << CGame::GAME_INI_PATH << endl;
 		return;
 	}
 
@@ -47,25 +56,32 @@ CGame::CGame()
 	xml_root->QueryUnsignedAttribute("fps", &FPS);
 }
 
-CGame::~CGame() {}
-
-void CGame::Run()
+int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
-	IMAGE background;
-	loadimage(&background, L"assets/img/background.jpg");
+	auto hwnd = CGraphic::GetInstance()->InitWindow(&CGame::WndProc, GRAPH_WIDTH, GRAPH_HEIGHT);
+	CGraphic::GetInstance()->InitDX(hwnd);
 
-	initgraph(CGame::GRAPH_WIDTH, CGame::GRAPH_HEIGHT);
+	MSG msg;
+
 	CShip* ship = CShipFC::GetInstance()->CreateShip(CVector3D(CGame::GRAPH_WIDTH / 2.0f, CGame::GRAPH_HEIGHT - 50.0f, 0.0f), CShip::EShipCamp::SC_PLAYER, CShip::EShipType::ST_BLUE_S);
+
+	Image background;
+	CGraphic::GetInstance()->LoadTex(L"assets/img/background.jpg" , background);
 
 	static unsigned tick_ship_shoot = clock();
 	static unsigned tick_bullet_move = clock();
 
 	while (true)
 	{
-		BeginBatchDraw();
-		putimage_alpha_zoom(0, 0, 1.0f, &background);
+		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+		CGraphic::GetInstance()->BeginDraw();
+
 		ship->Draw();
-		EndBatchDraw();
 
 		if (clock() - tick_ship_shoot > CGame::ONE_SEC / ship->GetFiringRate())
 		{
@@ -82,24 +98,26 @@ void CGame::Run()
 			tick_bullet_move = clock();
 		}
 
-		if (isKeyDown('W'))
+		if (m_key_pressed['W'].first)
 		{
 			ship->Move(CVector3D(0, -ship->GetVelocity(), 0));
 		}
-		if (isKeyDown('S'))
+		if (m_key_pressed['S'].first)
 		{
 			ship->Move(CVector3D(0, ship->GetVelocity(), 0));
 		}
-		if (isKeyDown('A'))
+		if (m_key_pressed['A'].first)
 		{
 			ship->Move(CVector3D(-ship->GetVelocity(), 0, 0));
 		}
-		if (isKeyDown('D'))
+		if (m_key_pressed['D'].first)
 		{
 			ship->Move(CVector3D(ship->GetVelocity(), 0, 0));
 		}
+
+		CGraphic::GetInstance()->DrawTex(background, CVector3D(0, 0, 0));
+		CGraphic::GetInstance()->EndDraw();
 	}
 
-	_getch();
-	closegraph();
+	return 0;
 }

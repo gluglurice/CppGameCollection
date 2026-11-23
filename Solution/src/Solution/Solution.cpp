@@ -16,8 +16,6 @@ map<int, pair<bool, bool>> CSolution::m_key_pressed = {
 	{ 'C', make_pair(false, false) },
 };
 
-CSolution::CSolution() : CSingleton<CSolution>() {}
-
 LRESULT CSolution::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -34,6 +32,8 @@ LRESULT CSolution::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
+
+CSolution::CSolution() : CSingleton<CSolution>() {}
 
 int CSolution::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {

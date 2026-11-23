@@ -1,32 +1,21 @@
 ﻿#pragma once
 
-#include <map>
-#include <string>
-
-#include <EasyXExtension.h>
-
 #include "src/Actor/CShip.h"
 
-class IMAGE;
-
-class CShipFC
+class CShipFC : public CSingleton<CShipFC>
 {
-private:
-	static CShipFC* m_instance;
+	/**
+	 * @brief 友元化基类，便于基类指针调用派生类私有构造函数
+	 */
+	friend CSingleton<CShipFC>;
 
-public:
-	static CShipFC* GetInstance();
+protected:
+	static map<CShip::EShipType, pair<CShip*, Image*>> m_ship_map;
 
-private:
-	std::map<CShip::EShipType, std::pair<CShip*, IMAGE*>> m_ship_map;
-
-private:
 	CShipFC();
 
 public:
-	~CShipFC();
-
-	IMAGE* GetImg(CShip::EShipType ship_type);
+	Image* GetImg(CShip::EShipType ship_type);
 
 	CShip* CreateShip(const CVector3D& position, CShip::EShipCamp ship_camp, CShip::EShipType ship_type);
 };

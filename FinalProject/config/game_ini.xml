@@ -3,7 +3,7 @@
 	<version>dev-0.1</version>
 	<Inventory>
 		<Ships>
-			<Ship tile_size="32" scale="1.0" velocity="0.1" type="0" max_hp="100" max_mp="100" atk="1" firing_rate="1.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_blue_s.png" />
+			<Ship tile_size="32" scale="1.0" velocity="1.0" type="0" max_hp="100" max_mp="100" atk="1" firing_rate="1.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_blue_s.png" />
 			<Ship tile_size="32" scale="1.0" velocity="10.0" type="1" max_hp="100" max_mp="100" atk="1" firing_rate="5.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_blue_m.png" />
 			<Ship tile_size="32" scale="1.0" velocity="10.0" type="2" max_hp="100" max_mp="100" atk="1" firing_rate="5.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_blue_l.png" />
 			<Ship tile_size="32" scale="1.0" velocity="10.0" type="3" max_hp="5" max_mp="100" atk="1" firing_rate="5.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_red_s.png" />
@@ -17,7 +17,7 @@
 			<Ship tile_size="32" scale="1.0" velocity="10.0" type="11" max_hp="5" max_mp="100" atk="1" firing_rate="5.0" def="0" shield="0" normal_bullet_type="0" bomb_type="0" img_path="assets/img/ship/ship_yellow_l.png" />
 		</Ships>
 		<NormalBullets>
-			<NormalBullet tile_size="16" scale="1.0" velocity="1.0" type="0" img_path="assets/img/bullet/bullet_single.png" />
+			<NormalBullet tile_size="16" scale="1.0" velocity="2.0" type="0" img_path="assets/img/bullet/bullet_single.png" />
 			<NormalBullet tile_size="16" scale="1.0" velocity="20.0" type="1" img_path="assets/img/bullet/bullet_double.png" />
 			<NormalBullet tile_size="16" scale="1.0" velocity="20.0" type="2" img_path="assets/img/bullet/bullet_triple.png" />
 		</NormalBullets>

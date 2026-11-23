@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <vector>
-
 #include "src/Actor/CActor.h"
 
 class CNormalBullet;
@@ -61,7 +59,7 @@ GET_SET_FUN_DECLAR(std::vector<CNormalBullet*>, m_normal_bullets, NormalBullets)
 public:
 	CShip();
 
-	CShip(const CVector3D& position, int tile_size, float scale, EDirection direction, float velocity, EShipCamp ship_camp, EShipType ship_type, int hp, int max_hp, int mp, int max_mp, int atk, float firing_rate, int def, int shield, ENormalBulletType normal_bullet_type, EBombType bomb_type);
+	CShip(const CVector3D& center, const CVector3D& position, const CVector3D& rotation, const CVector3D& scale, int tile_size, EDirection direction, float velocity, EShipCamp ship_camp, EShipType ship_type, int hp, int max_hp, int mp, int max_mp, int atk, float firing_rate, int def, int shield, ENormalBulletType normal_bullet_type, EBombType bomb_type);
 
 	~CShip();
 

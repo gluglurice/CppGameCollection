@@ -23,18 +23,3 @@ void putimage_alpha_zoom(int x, int y, int w, int h, IMAGE* img);
  * @param img
  */
 void putimage_alpha_zoom(int x, int y, float scale, IMAGE* img);
-
-/**
- * @brief
- * @param text
- * @param encoding
- * @return
- */
-std::wstring StringToWString(const char* text, std::string encoding = "UTF-8");
-
-/**
- * @brief
- * @param vk
- * @return
- */
-bool isKeyDown(int vk);

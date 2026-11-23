@@ -1,30 +1,21 @@
 ﻿#pragma once
 
-#include <map>
-#include <string>
-
-#include <EasyXExtension.h>
-
 #include "src/Actor/CNormalBullet.h"
 
-class CNormalBulletFC
+class CNormalBulletFC : public CSingleton<CNormalBulletFC>
 {
-private:
-	static CNormalBulletFC* m_instance;
+	/**
+	 * @brief 友元化基类，便于基类指针调用派生类私有构造函数
+	 */
+	friend CSingleton<CNormalBulletFC>;
 
-public:
-	static CNormalBulletFC* GetInstance();
+protected:
+	static map<CNormalBullet::ENormalBulletType, pair<CNormalBullet*, Image*>> m_normal_bullet_map;
 
-private:
-	std::map<CNormalBullet::ENormalBulletType, std::pair<CNormalBullet*, IMAGE*>> m_normal_bullet_map;
-
-private:
 	CNormalBulletFC();
 
 public:
-	~CNormalBulletFC();
-
-	IMAGE* GetImg(CNormalBullet::ENormalBulletType normal_bullet_type);
+	Image* GetImg(CNormalBullet::ENormalBulletType normal_bullet_type);
 
 	CNormalBullet* CreateNormalBullet(const CVector3D& position, CBullet::EBulletFrom bullet_from, CNormalBullet::ENormalBulletType normal_bullet_type);
 };

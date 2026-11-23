@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <string>
+
 #define GET_SET_FUN_DECLAR(type, member, name) \
 protected:\
     type member;\
@@ -16,3 +18,11 @@ void class::Set##name(type val)\
 {\
     member = val;\
 }
+
+/**
+ * @brief
+ * @param text
+ * @param encoding
+ * @return
+ */
+std::wstring StringToWString(const char* text, std::string encoding = "UTF-8");

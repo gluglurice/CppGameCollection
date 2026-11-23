@@ -1,7 +1,8 @@
 ﻿#include "Game/CGame.h"
 
-int main()
+#include <windows.h>
+
+int WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
-	CGame::GetInstance()->Run();
-	return 0;
+	return CGame::GetInstance()->WinRun(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
 }

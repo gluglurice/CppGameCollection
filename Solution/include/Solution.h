@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include <Graphic.h>
-#include <Singleton.h>
 
 class CSolution : public CSingleton<CSolution>
 {
@@ -10,7 +9,7 @@ class CSolution : public CSingleton<CSolution>
 	 */
 	friend CSingleton<CSolution>;
 
-public:
+protected:
 	/**
 	 * @brief 按键状态，first表示按下，second表示按下后是否处理过
 	 */
@@ -26,7 +25,6 @@ public:
 	 */
 	static LRESULT WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-protected:
 	/**
 	 * @brief 单例类私有构造函数
 	 */

@@ -1,9 +1,8 @@
 ﻿#pragma once
 
-#include <tinyxml.h>
 #include <Utils.h>
+#include <Graphic.h>
 #include <Vector3D.h>
-#include <EasyXExtension.h>
 
 class CActor
 {
@@ -14,16 +13,18 @@ public:
 		D_DOWN,
 	};
 
+GET_SET_FUN_DECLAR(CVector3D, m_center, Center)
 GET_SET_FUN_DECLAR(CVector3D, m_position, Position)
+GET_SET_FUN_DECLAR(CVector3D, m_rotation, Rotation)
+GET_SET_FUN_DECLAR(CVector3D, m_scale, Scale)
 GET_SET_FUN_DECLAR(int, m_tile_size, TileSize)
-GET_SET_FUN_DECLAR(float, m_scale, Scale)
 GET_SET_FUN_DECLAR(EDirection, m_direction, Direction)
 GET_SET_FUN_DECLAR(float, m_velocity, Velocity)
 
 public:
 	CActor();
 
-	CActor(const CVector3D& position, int tile_size, float scale, EDirection direction, float velocity);
+	CActor(const CVector3D& center, const CVector3D& position, const CVector3D& rotation, const CVector3D& scale, int tile_size, EDirection direction, float velocity);
 
 	~CActor();
 
