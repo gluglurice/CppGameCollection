@@ -38,7 +38,7 @@ CShipFC::CShipFC()
 		wstring img_path = StringToWString(xml_ship->Attribute("img_path"), "UTF-8");
 		img = new Image();
 
-		ship = new CShip(CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CShip::EShipCamp)0, (CShip::EShipType)type, max_hp, max_hp, max_mp, max_mp, atk, firing_rate, def, shield, (CShip::ENormalBulletType)normal_bullet_type, (CShip::EBombType)bomb_type);
+		ship = new CShip(CVector3D(tile_size / 2.0f, tile_size / 2.0f, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CShip::EShipCamp)0, (CShip::EShipType)type, max_hp, max_hp, max_mp, max_mp, atk, firing_rate, def, shield, (CShip::ENormalBulletType)normal_bullet_type, (CShip::EBombType)bomb_type);
 		CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
 		m_ship_map[(CShip::EShipType)type] = make_pair(ship, img);
 	}

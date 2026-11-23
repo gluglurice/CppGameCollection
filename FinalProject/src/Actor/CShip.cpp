@@ -19,7 +19,7 @@ void CShip::Move(const CVector3D& offset)
 
 void CShip::Shoot()
 {
-	CVector3D bullet_position = m_position;
+	CVector3D bullet_position = m_position - CVector3D(0, m_center.y, 0);
 	CNormalBullet* bullet = CNormalBulletFC::GetInstance()->CreateNormalBullet(bullet_position, static_cast<CBullet::EBulletFrom>(m_ship_camp), static_cast<CNormalBullet::ENormalBulletType>(m_normal_bullet_type));
 	m_normal_bullets.push_back(bullet);
 }

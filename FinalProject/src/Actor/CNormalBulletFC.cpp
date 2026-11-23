@@ -30,7 +30,7 @@ CNormalBulletFC::CNormalBulletFC()
 		wstring img_path = StringToWString(xml_normal_bullet->Attribute("img_path"), "UTF-8");
 		img = new Image();
 
-		normal_bullet = new CNormalBullet(CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CBullet::EBulletFrom)0, (CNormalBullet::ENormalBulletType)type);
+		normal_bullet = new CNormalBullet(CVector3D(tile_size / 2.0f, tile_size / 2.0f, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CBullet::EBulletFrom)0, (CNormalBullet::ENormalBulletType)type);
 		CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
 		m_normal_bullet_map[(CNormalBullet::ENormalBulletType)type] = make_pair(normal_bullet, img);
 	}
