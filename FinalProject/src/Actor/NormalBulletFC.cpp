@@ -1,6 +1,6 @@
-﻿#include "CNormalBulletFC.h"
+﻿#include "NormalBulletFC.h"
 
-#include "CGame.h"
+#include "Game.h"
 
 map<CNormalBullet::ENormalBulletType, pair<CNormalBullet*, Image*>> CNormalBulletFC::m_normal_bullet_map;
 

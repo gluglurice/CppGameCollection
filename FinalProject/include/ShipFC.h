@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "CShip.h"
+#include "Ship.h"
 
 class CShipFC : public CSingleton<CShipFC>
 {

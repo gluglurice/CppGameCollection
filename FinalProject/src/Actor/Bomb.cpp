@@ -1,4 +1,4 @@
-﻿#include "CBomb.h"
+﻿#include "Bomb.h"
 
 CBomb::CBomb() {}
 

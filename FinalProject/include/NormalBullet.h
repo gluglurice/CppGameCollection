@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "CBullet.h"
+#include "Bullet.h"
 
 class CNormalBullet : public CBullet
 {

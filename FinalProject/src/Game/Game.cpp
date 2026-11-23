@@ -1,12 +1,12 @@
-﻿#include "CGame.h"
+﻿#include "Game.h"
 
-#include "CActor.h"
-#include "CShip.h"
-#include "CShipFC.h"
-#include "CNormalBullet.h"
-#include "CNormalBulletFC.h"
-#include "CBomb.h"
-#include "CItem.h"
+#include "Actor.h"
+#include "Ship.h"
+#include "ShipFC.h"
+#include "NormalBullet.h"
+#include "NormalBulletFC.h"
+#include "Bomb.h"
+#include "Item.h"
 
 #define PI 3.1415926
 #define ONE_SEC 1000

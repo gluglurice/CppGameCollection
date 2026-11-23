@@ -1,10 +1,10 @@
-﻿#include "CShip.h"
+﻿#include "Ship.h"
 
-#include "CGame.h"
-#include "CshipFC.h"
-#include "CBullet.h"
-#include "CNormalBullet.h"
-#include "CNormalBulletFC.h"
+#include "Game.h"
+#include "ShipFC.h"
+#include "Bullet.h"
+#include "NormalBullet.h"
+#include "NormalBulletFC.h"
 #include <cmath>
 #include <utility>
 

@@ -18,84 +18,84 @@
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CActor.cpp">
+    <ClCompile Include="src\Actor\Actor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CBullet.cpp">
+    <ClCompile Include="src\Actor\Bullet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CItem.cpp">
+    <ClCompile Include="src\Actor\Item.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CShip.cpp">
+    <ClCompile Include="src\Actor\Ship.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CGame.cpp">
+    <ClCompile Include="src\Game\Game.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\CUI.cpp">
+    <ClCompile Include="src\UI\UI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\FX\CFX.cpp">
+    <ClCompile Include="src\FX\FX.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\CMap.cpp">
+    <ClCompile Include="src\Map\Map.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Level\CLevel.cpp">
+    <ClCompile Include="src\Level\Level.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CNormalBullet.cpp">
+    <ClCompile Include="src\Actor\NormalBullet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CBomb.cpp">
+    <ClCompile Include="src\Actor\Bomb.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CShipFC.cpp">
+    <ClCompile Include="src\Actor\ShipFC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CNormalBulletFC.cpp">
+    <ClCompile Include="src\Actor\NormalBulletFC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\CActor.h">
+    <ClInclude Include="include\Actor.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CBullet.h">
+    <ClInclude Include="include\Bullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CItem.h">
+    <ClInclude Include="include\Item.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CShip.h">
+    <ClInclude Include="include\Ship.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CGame.h">
+    <ClInclude Include="include\Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CUI.h">
+    <ClInclude Include="include\UI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CFX.h">
+    <ClInclude Include="include\FX.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CMap.h">
+    <ClInclude Include="include\Map.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CLevel.h">
+    <ClInclude Include="include\Level.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CNormalBullet.h">
+    <ClInclude Include="include\NormalBullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CBomb.h">
+    <ClInclude Include="include\Bomb.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CShipFC.h">
+    <ClInclude Include="include\ShipFC.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\CNormalBulletFC.h">
+    <ClInclude Include="include\NormalBulletFC.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

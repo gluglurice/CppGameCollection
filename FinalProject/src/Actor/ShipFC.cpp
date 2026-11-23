@@ -1,6 +1,6 @@
-﻿#include "CShipFC.h"
+﻿#include "ShipFC.h"
 
-#include "CGame.h"
+#include "Game.h"
 
 map<CShip::EShipType, pair<CShip*, Image*>> CShipFC::m_ship_map;
 

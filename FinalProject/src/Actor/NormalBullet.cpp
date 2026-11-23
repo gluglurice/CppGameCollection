@@ -1,6 +1,6 @@
-﻿#include "CNormalBullet.h"
+﻿#include "NormalBullet.h"
 
-#include "CNormalBulletFC.h"
+#include "NormalBulletFC.h"
 
 CNormalBullet::CNormalBullet() {}
 

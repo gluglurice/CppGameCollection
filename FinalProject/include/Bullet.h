@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "CActor.h"
+#include "Actor.h"
 
 class CBullet : public CActor
 {
