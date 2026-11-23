@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "src/Actor/CNormalBullet.h"
+#include "CNormalBullet.h"
 
 class CNormalBulletFC : public CSingleton<CNormalBulletFC>
 {

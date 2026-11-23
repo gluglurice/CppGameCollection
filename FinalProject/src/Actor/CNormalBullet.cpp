@@ -14,6 +14,11 @@ void CNormalBullet::Move(const CVector3D& offset)
 	CBullet::Move(offset);
 }
 
+void CNormalBullet::Destroy()
+{
+	CBullet::Destroy();
+}
+
 void CNormalBullet::Draw()
 {
 	CGraphic::GetInstance()->DrawTex(*CNormalBulletFC::GetInstance()->GetImg(m_normal_bullet_type), m_position, m_center, m_rotation, m_scale);

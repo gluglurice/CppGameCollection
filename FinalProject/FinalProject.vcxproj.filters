@@ -59,43 +59,43 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Actor\CActor.h">
+    <ClInclude Include="include\CActor.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CBullet.h">
+    <ClInclude Include="include\CBullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CItem.h">
+    <ClInclude Include="include\CItem.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CShip.h">
+    <ClInclude Include="include\CShip.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CGame.h">
+    <ClInclude Include="include\CGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\CUI.h">
+    <ClInclude Include="include\CUI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\FX\CFX.h">
+    <ClInclude Include="include\CFX.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\CMap.h">
+    <ClInclude Include="include\CMap.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Level\CLevel.h">
+    <ClInclude Include="include\CLevel.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CNormalBullet.h">
+    <ClInclude Include="include\CNormalBullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CBomb.h">
+    <ClInclude Include="include\CBomb.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CShipFC.h">
+    <ClInclude Include="include\CShipFC.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CNormalBulletFC.h">
+    <ClInclude Include="include\CNormalBulletFC.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -159,19 +159,19 @@
     <ClCompile Include="src\UI\CUI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Actor\CNormalBulletFC.h" />
-    <ClInclude Include="src\Actor\CShipFC.h" />
-    <ClInclude Include="src\Actor\CBomb.h" />
-    <ClInclude Include="src\Actor\CBullet.h" />
-    <ClInclude Include="src\Actor\CActor.h" />
-    <ClInclude Include="src\Actor\CItem.h" />
-    <ClInclude Include="src\Actor\CNormalBullet.h" />
-    <ClInclude Include="src\Actor\CShip.h" />
-    <ClInclude Include="src\FX\CFX.h" />
-    <ClInclude Include="src\Game\CGame.h" />
-    <ClInclude Include="src\Level\CLevel.h" />
-    <ClInclude Include="src\Map\CMap.h" />
-    <ClInclude Include="src\UI\CUI.h" />
+    <ClInclude Include="include\CNormalBulletFC.h" />
+    <ClInclude Include="include\CShipFC.h" />
+    <ClInclude Include="include\CBomb.h" />
+    <ClInclude Include="include\CBullet.h" />
+    <ClInclude Include="include\CActor.h" />
+    <ClInclude Include="include\CItem.h" />
+    <ClInclude Include="include\CNormalBullet.h" />
+    <ClInclude Include="include\CShip.h" />
+    <ClInclude Include="include\CFX.h" />
+    <ClInclude Include="include\CGame.h" />
+    <ClInclude Include="include\CLevel.h" />
+    <ClInclude Include="include\CMap.h" />
+    <ClInclude Include="include\CUI.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\game_ini.xml" />

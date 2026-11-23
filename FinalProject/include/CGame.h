@@ -2,6 +2,8 @@
 
 #include <Graphic.h>
 
+# define GAME_INI_PATH "config/game_ini.xml"
+
 class CGame : public CSingleton<CGame>
 {
 	/**
@@ -10,9 +12,6 @@ class CGame : public CSingleton<CGame>
 	friend CSingleton<CGame>;
 
 public:
-	static const string GAME_INI_PATH;
-	static const unsigned ONE_SEC;
-
 	static unsigned GRAPH_WIDTH;
 	static unsigned GRAPH_HEIGHT;
 	static unsigned FPS;

@@ -1,9 +1,12 @@
 ﻿#include "CShip.h"
 
+#include "CGame.h"
 #include "CshipFC.h"
 #include "CBullet.h"
 #include "CNormalBullet.h"
 #include "CNormalBulletFC.h"
+#include <cmath>
+#include <utility>
 
 CShip::CShip() {}
 
@@ -29,9 +32,49 @@ void CShip::Bomb()
 
 }
 
-void CShip::Die()
+void CShip::Destroy()
 {
+	for (CNormalBullet* bullet : m_normal_bullets)
+	{
+		bullet->Destroy();
+	}
+	CActor::Destroy();
+}
 
+void CShip::CheckAndDestroyNormalBullets()
+{
+	for (auto it = m_normal_bullets.begin(); it != m_normal_bullets.end(); )
+	{
+		CNormalBullet* bullet = *it;
+		CVector3D bullet_position = bullet->GetPosition();
+		CVector3D bullet_center = bullet->GetCenter();
+		CVector3D bullet_rotation = bullet->GetRotation();
+		CVector3D bullet_scale = bullet->GetScale();
+
+		const float radians = bullet_rotation.z * 0.017453292519943295f;
+		const float cos_angle = abs(cos(radians));
+		const float sin_angle = abs(sin(radians));
+		const float half_width = abs(bullet_center.x * bullet_scale.x);
+		const float half_height = abs(bullet_center.y * bullet_scale.y);
+
+		const float extent_x = half_width * cos_angle + half_height * sin_angle;
+		const float extent_y = half_width * sin_angle + half_height * cos_angle;
+
+		pair<CVector3D, CVector3D> bullet_outline = make_pair(
+			CVector3D(bullet_position.x - extent_x, bullet_position.y - extent_y, bullet_position.z),
+			CVector3D(bullet_position.x + extent_x, bullet_position.y + extent_y, bullet_position.z)
+		);
+
+		if (bullet_outline.first.y < 0 || bullet_outline.second.y > CGame::GRAPH_HEIGHT || bullet_outline.first.x < 0 || bullet_outline.second.x > CGame::GRAPH_WIDTH)
+		{
+			bullet->Destroy();
+			it = m_normal_bullets.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
 }
 
 void CShip::Draw()
@@ -55,4 +98,4 @@ GET_SET_FUN_DEFINE(int, CShip, m_def, Def)
 GET_SET_FUN_DEFINE(int, CShip, m_shield, Shield)
 GET_SET_FUN_DEFINE(CShip::ENormalBulletType, CShip, m_normal_bullet_type, NormalBulletType)
 GET_SET_FUN_DEFINE(CShip::EBombType, CShip, m_bomb_type, BombType)
-GET_SET_FUN_DEFINE(std::vector<CNormalBullet*>, CShip, m_normal_bullets, NormalBullets)
+GET_SET_FUN_DEFINE(list<CNormalBullet*>, CShip, m_normal_bullets, NormalBullets)

@@ -23,5 +23,7 @@ public:
 
 	void Move(const CVector3D& offset) override;
 
+	void Destroy() override;
+
 	void Draw() override;
 };

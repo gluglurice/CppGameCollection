@@ -12,6 +12,11 @@ void CBullet::Move(const CVector3D& offset)
 	CActor::Move(offset);
 }
 
+void CBullet::Destroy()
+{
+	CActor::Destroy();
+}
+
 void CBullet::Draw()
 {
 

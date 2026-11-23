@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "src/Actor/CActor.h"
+#include "CActor.h"
 
 class CNormalBullet;
 
@@ -54,7 +54,7 @@ GET_SET_FUN_DECLAR(int, m_def, Def)
 GET_SET_FUN_DECLAR(int, m_shield, Shield)
 GET_SET_FUN_DECLAR(ENormalBulletType, m_normal_bullet_type, NormalBulletType)
 GET_SET_FUN_DECLAR(EBombType, m_bomb_type, BombType)
-GET_SET_FUN_DECLAR(std::vector<CNormalBullet*>, m_normal_bullets, NormalBullets)
+GET_SET_FUN_DECLAR(list<CNormalBullet*>, m_normal_bullets, NormalBullets)
 
 public:
 	CShip();
@@ -69,7 +69,9 @@ public:
 
 	void Bomb();
 
-	void Die();
+	void Destroy() override;
+
+	void CheckAndDestroyNormalBullets();
 
 	void Draw() override;
 };

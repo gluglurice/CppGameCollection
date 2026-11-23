@@ -1,17 +1,15 @@
 ﻿#include "CGame.h"
 
-#include "src/Actor/CActor.h"
-#include "src/Actor/CShip.h"
-#include "src/Actor/CShipFC.h"
-#include "src/Actor/CNormalBullet.h"
-#include "src/Actor/CNormalBulletFC.h"
-#include "src/Actor/CBomb.h"
-#include "src/Actor/CItem.h"
+#include "CActor.h"
+#include "CShip.h"
+#include "CShipFC.h"
+#include "CNormalBullet.h"
+#include "CNormalBulletFC.h"
+#include "CBomb.h"
+#include "CItem.h"
 
 #define PI 3.1415926
-
-const std::string CGame::GAME_INI_PATH = "config/game_ini.xml";
-const unsigned CGame::ONE_SEC = 1000;
+#define ONE_SEC 1000
 
 unsigned CGame::GRAPH_WIDTH;
 unsigned CGame::GRAPH_HEIGHT;
@@ -44,9 +42,9 @@ LRESULT CGame::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 CGame::CGame()
 {
 	TiXmlDocument xml_doc;
-	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
+	if (!xml_doc.LoadFile(GAME_INI_PATH))
 	{
-		cerr << "读取游戏配置文件失败：" << CGame::GAME_INI_PATH << endl;
+		cerr << "读取游戏配置文件失败：" << GAME_INI_PATH << endl;
 		return;
 	}
 
@@ -80,16 +78,17 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 		}
 
 		CGraphic::GetInstance()->BeginDraw();
-
 		ship->Draw();
+		CGraphic::GetInstance()->DrawTex(background, CVector3D(0, 0, 0));
+		CGraphic::GetInstance()->EndDraw();
 
-		if (clock() - tick_ship_shoot > CGame::ONE_SEC / ship->GetFiringRate())
+		if (clock() - tick_ship_shoot > ONE_SEC / ship->GetFiringRate())
 		{
 			ship->Shoot();
 			tick_ship_shoot = clock();
 		}
 
-		if (clock() - tick_bullet_move > CGame::ONE_SEC / CGame::FPS)
+		if (clock() - tick_bullet_move > ONE_SEC / CGame::FPS)
 		{
 			for (CNormalBullet* bullet : ship->GetNormalBullets())
 			{
@@ -115,8 +114,7 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 			ship->Move(CVector3D(ship->GetVelocity(), 0, 0));
 		}
 
-		CGraphic::GetInstance()->DrawTex(background, CVector3D(0, 0, 0));
-		CGraphic::GetInstance()->EndDraw();
+		ship->CheckAndDestroyNormalBullets();
 	}
 
 	return 0;

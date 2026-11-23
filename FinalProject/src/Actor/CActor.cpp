@@ -11,6 +11,11 @@ void CActor::Move(const CVector3D& offset)
 	m_position += offset;
 }
 
+void CActor::Destroy()
+{
+	delete this;
+}
+
 void CActor::Draw() {}
 
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_center, Center)

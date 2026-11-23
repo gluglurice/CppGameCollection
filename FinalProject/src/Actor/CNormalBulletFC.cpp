@@ -1,15 +1,15 @@
 ﻿#include "CNormalBulletFC.h"
 
-#include "src/Game/CGame.h"
+#include "CGame.h"
 
 map<CNormalBullet::ENormalBulletType, pair<CNormalBullet*, Image*>> CNormalBulletFC::m_normal_bullet_map;
 
 CNormalBulletFC::CNormalBulletFC()
 {
 	TiXmlDocument xml_doc;
-	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
+	if (!xml_doc.LoadFile(GAME_INI_PATH))
 	{
-		cerr << "读取游戏配置文件失败：" << CGame::GAME_INI_PATH << endl;
+		cerr << "读取游戏配置文件失败：" << GAME_INI_PATH << endl;
 		return;
 	}
 

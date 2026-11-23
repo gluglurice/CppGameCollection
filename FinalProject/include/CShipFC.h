@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "src/Actor/CShip.h"
+#include "CShip.h"
 
 class CShipFC : public CSingleton<CShipFC>
 {

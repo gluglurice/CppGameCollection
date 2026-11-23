@@ -12,6 +12,11 @@ void CItem::Move(const CVector3D& offset)
 	CActor::Move(offset);
 }
 
+void CItem::Destroy()
+{
+	CActor::Destroy();
+}
+
 void CItem::Draw()
 {
 

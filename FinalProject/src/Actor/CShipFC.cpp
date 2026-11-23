@@ -1,15 +1,15 @@
 ﻿#include "CShipFC.h"
 
-#include "src/Game/CGame.h"
+#include "CGame.h"
 
 map<CShip::EShipType, pair<CShip*, Image*>> CShipFC::m_ship_map;
 
 CShipFC::CShipFC()
 {
 	TiXmlDocument xml_doc;
-	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
+	if (!xml_doc.LoadFile(GAME_INI_PATH))
 	{
-		cerr << "读取XML文件失败：" << CGame::GAME_INI_PATH << endl;
+		cerr << "读取XML文件失败：" << GAME_INI_PATH << endl;
 		return;
 	}
 

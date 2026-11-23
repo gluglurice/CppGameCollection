@@ -30,5 +30,7 @@ public:
 
 	virtual void Move(const CVector3D& offset);
 
+	virtual void Destroy();
+
 	virtual void Draw();
 };

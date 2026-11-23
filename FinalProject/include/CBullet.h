@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "src/Actor/CActor.h"
+#include "CActor.h"
 
 class CBullet : public CActor
 {
@@ -21,6 +21,8 @@ public:
 	~CBullet();
 
 	void Move(const CVector3D& offset) override;
+
+	void Destroy() override;
 
 	void Draw() override;
 };
