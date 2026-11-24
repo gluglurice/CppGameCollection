@@ -47,7 +47,7 @@ int CSolution::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 	D3DXVECTOR3 rot(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR3 scale(1.0f, 1.0f, 1.0f);
 
-	CSprite sprite_character(img_character, 1, 10, center, pos, rot, scale, CSprite::RM_HORIZONTAL);
+	CSprite sprite_character(img_character, 1, 10, center, pos, rot, scale);
 	sprite_character.SetPlayState(CSprite::PS_CYCLE);
 	sprite_character.SetFrameTerminal(10);
 
