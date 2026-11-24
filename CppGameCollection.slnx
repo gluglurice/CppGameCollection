@@ -11,6 +11,7 @@
   <Project Path="ItemStorage/ItemStorage.vcxproj" Id="21bacd7d-be4d-4c1c-af1c-81c8186d16eb" />
   <Project Path="ItemStorageV2/ItemStorageV2.vcxproj" Id="cb7f9d69-d4ab-4168-a589-0b8dec77f07b" />
   <Project Path="MazeRPG/MazeRPG.vcxproj" Id="bb7c2de3-9f07-4ee5-b0f3-6a2454b92472" />
+  <Project Path="MazeRPGV2/MazeRPGV2.vcxproj" Id="2769a7cc-4d00-4865-80b6-88ca50cda43d" />
   <Project Path="NumBomb/NumBomb.vcxproj" Id="b8c93743-c750-44c7-bb2b-7ecaeaa8eca1" />
   <Project Path="RockPaperScissors/RockPaperScissors.vcxproj" Id="2aac83cb-2e89-4d22-bb71-49ab514310c3" />
   <Project Path="RPGBattle/RPGBattle.vcxproj" Id="77238ad2-6535-45a8-b6ab-f7c68698b1a8" />
