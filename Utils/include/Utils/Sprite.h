@@ -10,6 +10,7 @@ public:
 	{
 		PS_STOP,
 		PS_CYCLE,
+		PS_CYCLE_TERMINAL,
 		PS_ONCE,
 	};
 
@@ -53,13 +54,14 @@ GET_SET_FUN_DECLAR(int, m_cur_frame, CurFrame)
 GET_SET_FUN_DECLAR(int, m_play_row, PlayRow)
 GET_SET_FUN_DECLAR(int, m_play_col, PlayCol)
 GET_SET_FUN_DECLAR(unsigned, m_frame_terminal, FrameTerminal)
+GET_SET_FUN_DECLAR(unsigned, m_cycle_terminal, CycleTerminal)
 GET_SET_FUN_DECLAR(unsigned, m_waited_time, WaitedTime)
 
 public:
 	CSprite();
 
 	CSprite(Image* img, int row_num = 1, int col_num = 1,
-		D3DXVECTOR3 center = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 rotation = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 scale = D3DXVECTOR3(1, 1, 1), Direction default_direction = D_DOWN,
+		D3DXVECTOR3 center = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 rotation = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 scale = D3DXVECTOR3(1, 1, 1), Direction default_direction = D_RIGHT,
 		ReadMode read_mode = RM_HORIZONTAL, int play_row = 0, int play_col = 0);
 
 	void Update();

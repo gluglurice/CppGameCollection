@@ -13,7 +13,8 @@ CSprite::CSprite(Image* img, int row_num, int col_num,
 	m_play_state = PS_STOP;
 	m_is_visible = true;
 	m_cur_frame = 0;
-	m_frame_terminal = 100;
+	m_frame_terminal = 10;
+	m_cycle_terminal = 100;
 	m_waited_time = 0;
 
 	/* 帧 */
@@ -41,6 +42,33 @@ void CSprite::Update()
 		m_cur_frame = 0;
 		break;
 	case PS_CYCLE:
+		m_waited_time++;
+		if (m_waited_time >= m_frame_terminal)
+		{
+			m_cur_frame++;
+			if (m_cur_frame >= m_frame_count)
+			{
+				m_cur_frame = 0;
+			}
+			m_waited_time = 0;
+		}
+		break;
+	case PS_CYCLE_TERMINAL:
+		m_waited_time++;
+
+		if (m_waited_time >= m_frame_terminal * m_frame_count + m_cycle_terminal)
+		{
+			m_waited_time = 0;
+		}
+		else if (m_waited_time >= m_frame_terminal && m_waited_time < m_frame_terminal * m_frame_count)
+		{
+			m_cur_frame++;
+			if (m_cur_frame >= m_frame_count)
+			{
+				m_cur_frame = 0;
+			}
+		}
+		break;
 	case PS_ONCE:
 		m_waited_time++;
 		if (m_waited_time >= m_frame_terminal)
@@ -49,11 +77,8 @@ void CSprite::Update()
 			if (m_cur_frame >= m_frame_count)
 			{
 				m_cur_frame = 0;
-				if (m_play_state == PS_ONCE)
-				{
-					m_play_state = PS_STOP;
-					m_is_visible = false;
-				}
+				m_play_state = PS_STOP;
+				m_is_visible = false;
 			}
 			m_waited_time = 0;
 		}
@@ -69,6 +94,7 @@ void CSprite::Draw()
 	}
 
 	D3DXVECTOR2 src_pos;
+	D3DXVECTOR2 size(m_frame_width, m_frame_height);
 	switch (m_read_mode)
 	{
 	case RM_HORIZONTAL:
@@ -85,7 +111,7 @@ void CSprite::Draw()
 	CGraphic::GetInstance()->DrawTex(
 		m_img->pTex,
 		src_pos,
-		{ m_frame_width, m_frame_height },
+		size,
 		m_position,
 		m_center,
 		m_rotation,
@@ -114,4 +140,5 @@ GET_SET_FUN_DEFINE(bool, CSprite, m_is_visible, IsVisible)
 GET_SET_FUN_DEFINE(int, CSprite, m_play_row, PlayRow)
 GET_SET_FUN_DEFINE(int, CSprite, m_play_col, PlayCol)
 GET_SET_FUN_DEFINE(unsigned, CSprite, m_frame_terminal, FrameTerminal)
+GET_SET_FUN_DEFINE(unsigned, CSprite, m_cycle_terminal, CycleTerminal)
 GET_SET_FUN_DEFINE(unsigned, CSprite, m_waited_time, WaitedTime)

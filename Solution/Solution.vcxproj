@@ -160,10 +160,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Character\Character.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Solution\Solution.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Character.h" />
     <ClInclude Include="include\Solution.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

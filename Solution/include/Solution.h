@@ -15,6 +15,8 @@ protected:
 	 */
 	static map<int, pair<bool, bool>> m_key_pressed;
 
+	static unsigned m_key_pressed_count;
+
 	/**
 	 * @brief 窗口消息回调
 	 * @param hwnd 
