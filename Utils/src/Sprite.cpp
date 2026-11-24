@@ -41,17 +41,6 @@ void CSprite::Update()
 		m_cur_frame = 0;
 		break;
 	case PS_CYCLE:
-		m_waited_time++;
-		if (m_waited_time >= m_frame_terminal)
-		{
-			m_cur_frame++;
-			if (m_cur_frame >= m_frame_count)
-			{
-				m_cur_frame = 0;
-			}
-			m_waited_time = 0;
-		}
-		break;
 	case PS_ONCE:
 		m_waited_time++;
 		if (m_waited_time >= m_frame_terminal)
@@ -60,8 +49,11 @@ void CSprite::Update()
 			if (m_cur_frame >= m_frame_count)
 			{
 				m_cur_frame = 0;
-				m_play_state = PS_STOP;
-				m_is_visible = false;
+				if (m_play_state == PS_ONCE)
+				{
+					m_play_state = PS_STOP;
+					m_is_visible = false;
+				}
 			}
 			m_waited_time = 0;
 		}
@@ -75,42 +67,30 @@ void CSprite::Draw()
 	{
 		return;
 	}
+
+	D3DXVECTOR2 src_pos;
 	switch (m_read_mode)
 	{
 	case RM_HORIZONTAL:
-		CGraphic::GetInstance()->DrawTex(
-			m_img->pTex,
-			{ m_cur_frame % m_col_num * m_frame_width, m_cur_frame / m_col_num * m_frame_height },
-			{ m_frame_width, m_frame_height },
-			m_position,
-			m_center,
-			m_rotation,
-			m_scale
-		);
+		src_pos = { m_cur_frame % m_col_num * m_frame_width, m_cur_frame / m_col_num * m_frame_height };
 		break;
 	case RM_ONE_ROW:
-		CGraphic::GetInstance()->DrawTex(
-			m_img->pTex,
-			{ m_cur_frame * m_frame_width, m_play_row * m_frame_height },
-			{ m_frame_width, m_frame_height },
-			m_position,
-			m_center,
-			m_rotation,
-			m_scale
-		);
+		src_pos = { m_cur_frame * m_frame_width, m_play_row * m_frame_height };
 		break;
 	case RM_ONE_COL:
-		CGraphic::GetInstance()->DrawTex(
-			m_img->pTex,
-			{ m_play_col * m_frame_width, m_cur_frame * m_frame_height },
-			{ m_frame_width, m_frame_height },
-			m_position,
-			m_center,
-			m_rotation,
-			m_scale
-		);
+		src_pos = { m_play_col * m_frame_width, m_cur_frame * m_frame_height };
 		break;
 	}
+
+	CGraphic::GetInstance()->DrawTex(
+		m_img->pTex,
+		src_pos,
+		{ m_frame_width, m_frame_height },
+		m_position,
+		m_center,
+		m_rotation,
+		m_scale
+	);
 }
 
 GET_SET_FUN_DEFINE(Image*, CSprite, m_img, Img)
