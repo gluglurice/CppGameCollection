@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\EasyXExtension.cpp" />
     <ClCompile Include="src\Graphic.cpp" />
     <ClCompile Include="src\Utils.cpp" />
@@ -73,6 +74,7 @@
     <ClInclude Include="include\soloud\soloud_wavstream.h" />
     <ClInclude Include="include\tinyxml\tinystr.h" />
     <ClInclude Include="include\tinyxml\tinyxml.h" />
+    <ClInclude Include="include\Utils\Sprite.h" />
     <ClInclude Include="include\Utils\EasyXExtension.h" />
     <ClInclude Include="include\Utils\Graphic.h" />
     <ClInclude Include="include\Utils\Singleton.h" />
