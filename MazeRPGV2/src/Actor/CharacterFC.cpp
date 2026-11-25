@@ -27,11 +27,12 @@ CCharacterFC::CCharacterFC()
 		xml_character->QueryIntAttribute("type", reinterpret_cast<int*>(&character_type));
 
 		D3DXVECTOR3 center(tile_size * scale / 2.0f, tile_size * scale / 2.0f, 0);
-		D3DXVECTOR3 position(0.0f, 0.0f, 0.0f);
+		D3DXVECTOR3 position_logic(0.0f, 0.0f, 0.0f);
+		D3DXVECTOR3 position_render(0.0f, 0.0f, 0.0f);
 		D3DXVECTOR3 rotation(0.0f, 0.0f, 0.0f);
 		D3DXVECTOR3 scale_vec(scale, scale, 1.0f);
 
-		map<CCharacter::State, CSprite*> sprite_map;
+		vector<CSprite*> sprites;
 
 		for (TiXmlElement* xml_sprite = xml_character->FirstChildElement("sprite"); xml_sprite; xml_sprite = xml_sprite->NextSiblingElement("sprite"))
 		{
@@ -39,7 +40,10 @@ CCharacterFC::CCharacterFC()
 			int row_num;
 			int col_num;
 			float scale;
-			CSprite::Direction default_direction;
+			CSprite::Direction direction;
+			CSprite::ReadMode read_mode;
+			int play_row;
+			int play_col;
 			unsigned frame_terminal;
 			unsigned cycle_terminal;
 			wstring img_path;
@@ -48,16 +52,20 @@ CCharacterFC::CCharacterFC()
 			xml_sprite->QueryIntAttribute("row_num", &row_num);
 			xml_sprite->QueryIntAttribute("col_num", &col_num);
 			xml_sprite->QueryFloatAttribute("scale", &scale);
-			xml_sprite->QueryIntAttribute("default_direction", reinterpret_cast<int*>(&default_direction));
+			xml_sprite->QueryIntAttribute("direction", reinterpret_cast<int*>(&direction));
+			xml_sprite->QueryIntAttribute("read_mode", reinterpret_cast<int*>(&read_mode));
+			xml_sprite->QueryIntAttribute("play_row", &play_row);
+			xml_sprite->QueryIntAttribute("play_col", &play_col);
 			xml_sprite->QueryUnsignedAttribute("frame_terminal", &frame_terminal);
 			xml_sprite->QueryUnsignedAttribute("cycle_terminal", &cycle_terminal);
 			img_path = StringToWString(xml_sprite->Attribute("img_path"), "UTF-8");
 
 			Image* img = new Image();
 			CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
-			sprite_map[sprite_state] = new CSprite(img, row_num, col_num, center, position, rotation, scale_vec, default_direction, CSprite::RM_ONE_ROW, 1, 0, frame_terminal, cycle_terminal);
+			int sprite_index = static_cast<int>(sprite_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(direction);
+			sprites.push_back(new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal));
 		}
-		CCharacter* character = new CCharacter(center, position, rotation, scale_vec, tile_size, CActor::D_DOWN, velocity, character_type, CCharacter::S_IDLE, sprite_map);
+		CCharacter* character = new CCharacter(center, position_logic, position_render, rotation, scale_vec, tile_size, CActor::D_DOWN, velocity, character_type, CCharacter::S_IDLE, sprites);
 		m_character_map[character_type] = character;
 	}
 }
@@ -71,16 +79,15 @@ CCharacterFC::~CCharacterFC()
 	m_character_map.clear();
 }
 
-CCharacter* CCharacterFC::CreateCharacter(D3DXVECTOR3 position, CCharacter::Type type)
+CCharacter* CCharacterFC::CreateCharacter(D3DXVECTOR3 position_logic, CCharacter::Type type)
 {
 	CCharacter* character = m_character_map[type];
-	CCharacter::SpriteMap new_sprite_map;
+	vector<CSprite*> new_sprites;
 
-	for (auto& pair : character->GetSpriteMap())
+	for (auto& sprite : character->GetSprites())
 	{
-		CSprite* sprite = pair.second;
-		new_sprite_map[pair.first] = new CSprite(sprite->GetImg(), sprite->GetRowNum(), sprite->GetColNum(), sprite->GetCenter(), sprite->GetPosition(), sprite->GetRotation(), sprite->GetScale(), sprite->GetDefaultDirection(), sprite->GetReadMode(), sprite->GetPlayRow(), sprite->GetPlayCol(), sprite->GetFrameTerminal(), sprite->GetCycleTerminal());
+		new_sprites.push_back(new CSprite(sprite->GetImg(), sprite->GetRowNum(), sprite->GetColNum(), sprite->GetCenter(), sprite->GetPosition(), sprite->GetRotation(), sprite->GetScale(), sprite->GetDirection(), sprite->GetReadMode(), sprite->GetPlayRow(), sprite->GetPlayCol(), sprite->GetFrameTerminal(), sprite->GetCycleTerminal()));
 	}
 
-	return new CCharacter(character->GetCenter(), position, character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), type, character->GetState(), new_sprite_map);
+	return new CCharacter(character->GetCenter(), position_logic, position_logic * character->GetScale().x, character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), type, character->GetState(), new_sprites);
 }

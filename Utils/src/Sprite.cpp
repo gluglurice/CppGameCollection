@@ -2,12 +2,8 @@
 
 CSprite::CSprite() {}
 
-CSprite::CSprite(Image* img, int row_num, int col_num,
-	D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction default_direction,
-	ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal)
-	: m_img(img), m_row_num(row_num), m_col_num(col_num),
-	m_center(center), m_position(position), m_rotation(rotation), m_scale(scale), m_default_direction(default_direction),
-	m_read_mode(read_mode), m_play_row(play_row), m_play_col(play_col), m_frame_terminal(frame_terminal), m_cycle_terminal(cycle_terminal)
+CSprite::CSprite(Image* img, int row_num, int col_num,	D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal)
+	: m_img(img), m_row_num(row_num), m_col_num(col_num),	m_center(center), m_position(position), m_rotation(rotation), m_scale(scale), m_direction(direction), m_read_mode(read_mode), m_play_row(play_row), m_play_col(play_col), m_frame_terminal(frame_terminal), m_cycle_terminal(cycle_terminal)
 {
 	/* 读取帧 */
 	m_play_state = PS_STOP;
@@ -38,31 +34,6 @@ CSprite::~CSprite()
 	{
 		delete m_img;
 		m_img = nullptr;
-	}
-}
-
-void CSprite::SetReadMode(ReadMode read_mode, int play_row, int play_col, int row_num, int col_num)
-{
-	m_read_mode = read_mode;
-	switch (read_mode)
-	{
-	case RM_HORIZONTAL:
-		m_row_num = row_num;
-		m_col_num = col_num;
-		m_frame_count = row_num * col_num;
-		break;
-	case RM_ONE_ROW:
-		m_row_num = 1;
-		m_col_num = col_num;
-		m_play_row = play_row;
-		m_frame_count = col_num;
-		break;
-	case RM_ONE_COL:
-		m_row_num = row_num;
-		m_col_num = 1;
-		m_play_col = play_col;
-		m_frame_count = row_num;
-		break;
 	}
 }
 
@@ -159,7 +130,7 @@ GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_center, Center)
 GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_position, Position)
 GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_rotation, Rotation)
 GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_scale, Scale)
-GET_SET_FUN_DEFINE(CSprite::Direction, CSprite, m_default_direction, DefaultDirection)
+GET_SET_FUN_DEFINE(CSprite::Direction, CSprite, m_direction, Direction)
 
 GET_SET_FUN_DEFINE(float, CSprite, m_frame_width, FrameWidth)
 GET_SET_FUN_DEFINE(float, CSprite, m_frame_height, FrameHeight)

@@ -17,28 +17,25 @@ public:
 	{
 		S_IDLE,
 		S_WALK,
+		S_COUNT,
 	};
-
-using SpriteMap = map<State, CSprite*>;
 
 GET_SET_FUN_DECLAR(Type, m_type, Type)
 GET_SET_FUN_DECLAR(State, m_state, State)
-GET_SET_FUN_DECLAR(SpriteMap, m_sprite_map, SpriteMap)
+GET_SET_FUN_DECLAR(vector<CSprite*>, m_sprites, Sprites)
 
 public:
 	CCharacter();
 
-	CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, int tile_size, Direction direction, float velocity, Type type, State state, SpriteMap sprite_map);
+	CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position_logic, D3DXVECTOR3 position_render, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites);
 
 	~CCharacter();
 
-	void SetSpriteReadMode(State state, CSprite::ReadMode read_mode, int play_row, int play_col, int row_num, int col_num);
-
-	void UpdateState(State state);
+	void UpdateState(State state, Direction direction);
 
 	void Idle();
 
-	void Move(D3DXVECTOR3 offset) override;
+	void Move(Direction direction) override;
 
 	void Destroy() override;
 

@@ -39,7 +39,7 @@ GET_SET_FUN_DECLAR(D3DXVECTOR3, m_center, Center)
 GET_SET_FUN_DECLAR(D3DXVECTOR3, m_position, Position)
 GET_SET_FUN_DECLAR(D3DXVECTOR3, m_rotation, Rotation)
 GET_SET_FUN_DECLAR(D3DXVECTOR3, m_scale, Scale)
-GET_SET_FUN_DECLAR(Direction, m_default_direction, DefaultDirection)
+GET_SET_FUN_DECLAR(Direction, m_direction, Direction)
 
 /* 帧 */
 GET_SET_FUN_DECLAR(float, m_frame_width, FrameWidth)
@@ -60,13 +60,9 @@ GET_SET_FUN_DECLAR(float, m_waited_time, WaitedTime)
 public:
 	CSprite();
 
-	CSprite(Image* img, int row_num = 1, int col_num = 1,
-		D3DXVECTOR3 center = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 rotation = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 scale = D3DXVECTOR3(1, 1, 1), Direction default_direction = D_RIGHT,
-		ReadMode read_mode = RM_HORIZONTAL, int play_row = 0, int play_col = 0, float frame_terminal = 10.0f, float cycle_terminal = 100.0f);
+	CSprite(Image* img, int row_num, int col_num, D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal);
 
 	~CSprite();
-
-	void SetReadMode(ReadMode read_mode, int play_row, int play_col, int row_num, int col_num);
 
 	void Update();
 

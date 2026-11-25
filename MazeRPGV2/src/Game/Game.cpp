@@ -72,9 +72,7 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	CMap* map = CMapFC::GetInstance()->CreateLevelMap(0);
 
 	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(D3DXVECTOR3(96.0f, 280.0f, 0.0f), CCharacter::T_PLAYER);
-	link->SetSpriteReadMode(CCharacter::S_IDLE, CSprite::RM_ONE_ROW, 1, 0, 1, 3);
-	link->SetSpriteReadMode(CCharacter::S_WALK, CSprite::RM_ONE_ROW, 1, 0, 1, 10);
-	link->UpdateState(CCharacter::S_IDLE);
+	link->UpdateState(CCharacter::S_IDLE, CActor::D_DOWN);
 
 	while (true)
 	{ 
@@ -93,16 +91,35 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 		map->Draw();
 		CGraphic::GetInstance()->EndDraw();
 
+		if (m_key_pressed['W'].first)
+		{
+			if (!m_key_pressed['W'].second)
+			{
+				m_key_pressed['W'].second = true;
+				m_key_pressed_count++;
+				link->UpdateState(CCharacter::S_WALK, CActor::D_UP);
+			}
+			link->Move(CCharacter::D_UP);
+		}
+		if (m_key_pressed['S'].first)
+		{
+			if (!m_key_pressed['S'].second)
+			{
+				m_key_pressed['S'].second = true;
+				m_key_pressed_count++;
+				link->UpdateState(CCharacter::S_WALK, CActor::D_DOWN);
+			}
+			link->Move(CCharacter::D_DOWN);
+		}
 		if (m_key_pressed['A'].first)
 		{
 			if (!m_key_pressed['A'].second)
 			{
 				m_key_pressed['A'].second = true;
 				m_key_pressed_count++;
-				link->SetDirection(CCharacter::D_LEFT);
-				link->UpdateState(CCharacter::S_WALK);
+				link->UpdateState(CCharacter::S_WALK, CActor::D_LEFT);
 			}
-			link->Move(D3DXVECTOR3(-1.0f, 0.0f, 0.0f));
+			link->Move(CCharacter::D_LEFT);
 		}
 		if (m_key_pressed['D'].first)
 		{
@@ -110,16 +127,15 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 			{
 				m_key_pressed['D'].second = true;
 				m_key_pressed_count++;
-				link->SetDirection(CCharacter::D_RIGHT);
-				link->UpdateState(CCharacter::S_WALK);
+				link->UpdateState(CCharacter::S_WALK, CActor::D_RIGHT);
 			}
-			link->Move(D3DXVECTOR3(1.0f, 0.0f, 0.0f));
+			link->Move(CCharacter::D_RIGHT);
 		}
 		if (m_key_pressed_count == 0)
 		{
 			if (link->GetState() != CCharacter::S_IDLE)
 			{
-				link->UpdateState(CCharacter::S_IDLE);
+				link->UpdateState(CCharacter::S_IDLE, link->GetDirection());
 			}
 			link->Idle();
 		}

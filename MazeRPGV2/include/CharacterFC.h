@@ -17,5 +17,5 @@ protected:
 public:
 	~CCharacterFC();
 
-	CCharacter* CreateCharacter(D3DXVECTOR3 position, CCharacter::Type type);
+	CCharacter* CreateCharacter(D3DXVECTOR3 position_logic, CCharacter::Type type);
 };
