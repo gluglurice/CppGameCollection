@@ -32,7 +32,8 @@ CCharacterFC::CCharacterFC()
 		D3DXVECTOR3 rotation(0.0f, 0.0f, 0.0f);
 		D3DXVECTOR3 scale_vec(scale, scale, 1.0f);
 
-		vector<CSprite*> sprites;
+		vector<CSprite*> sprites = vector<CSprite*>(static_cast<int>(CCharacter::S_COUNT) * static_cast<int>(CActor::D_COUNT));
+		map<wstring, Image*> img_map;
 
 		for (TiXmlElement* xml_sprite = xml_character->FirstChildElement("sprite"); xml_sprite; xml_sprite = xml_sprite->NextSiblingElement("sprite"))
 		{
@@ -48,6 +49,8 @@ CCharacterFC::CCharacterFC()
 			unsigned cycle_terminal;
 			wstring img_path;
 
+			Image* img;
+
 			xml_sprite->QueryIntAttribute("state", reinterpret_cast<int*>(&sprite_state));
 			xml_sprite->QueryIntAttribute("row_num", &row_num);
 			xml_sprite->QueryIntAttribute("col_num", &col_num);
@@ -60,10 +63,18 @@ CCharacterFC::CCharacterFC()
 			xml_sprite->QueryUnsignedAttribute("cycle_terminal", &cycle_terminal);
 			img_path = StringToWString(xml_sprite->Attribute("img_path"), "UTF-8");
 
-			Image* img = new Image();
-			CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
+			if (img_map.find(img_path) != img_map.end())
+			{
+				img = img_map[img_path];
+			}
+			else
+			{
+				img = new Image();
+				CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
+				img_map[img_path] = img;
+			}
 			int sprite_index = static_cast<int>(sprite_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(direction);
-			sprites.push_back(new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal));
+			sprites[sprite_index] = new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal);
 		}
 		CCharacter* character = new CCharacter(center, position_logic, position_render, rotation, scale_vec, tile_size, CActor::D_DOWN, velocity, character_type, CCharacter::S_IDLE, sprites);
 		m_character_map[character_type] = character;
@@ -74,7 +85,10 @@ CCharacterFC::~CCharacterFC()
 {
 	for (auto& pair : m_character_map)
 	{
-		delete pair.second;
+		if (pair.second)
+		{
+			pair.second->Destroy();
+		}
 	}
 	m_character_map.clear();
 }
