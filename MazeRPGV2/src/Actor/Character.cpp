@@ -2,16 +2,14 @@
 
 CCharacter::CCharacter() {}
 
-CCharacter::CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction direction, State state)
-	: m_center(center), m_position(position), m_rotation(rotation), m_scale(scale), m_direction(direction), m_state(state) {}
+CCharacter::CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, int tile_size, Direction direction, float velocity, Type type, State state, SpriteMap sprite_map)
+	: CActor(center, position, rotation, scale, tile_size, direction, velocity), m_type(type), m_state(state), m_sprite_map(sprite_map) {}
 
-void CCharacter::AddSprite(State state, CSprite* sprite)
+CCharacter::~CCharacter() {}
+
+void CCharacter::SetSpriteReadMode(State state, CSprite::ReadMode read_mode, int play_row, int play_col, int row_num, int col_num)
 {
-	sprite->SetCenter(m_center);
-	sprite->SetPosition(m_position);
-	sprite->SetRotation(m_rotation);
-	sprite->SetScale(m_scale);
-	m_sprite_map[state] = sprite;
+	m_sprite_map[state]->SetReadMode(read_mode, play_row, play_col, row_num, col_num);
 }
 
 void CCharacter::UpdateState(State state)
@@ -39,7 +37,7 @@ void CCharacter::Idle()
 	m_sprite_map[m_state]->Update();
 }
 
-void CCharacter::Move(const D3DXVECTOR3& offset)
+void CCharacter::Move(D3DXVECTOR3 offset)
 {
 	m_position += offset;
 	m_sprite_map[m_state]->SetPosition(m_position);
@@ -47,16 +45,16 @@ void CCharacter::Move(const D3DXVECTOR3& offset)
 	m_sprite_map[m_state]->Update();
 }
 
+void CCharacter::Destroy()
+{
+
+}
+
 void CCharacter::Draw()
 {
 	m_sprite_map[m_state]->Draw();
 }
 
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CCharacter, m_center, Center)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CCharacter, m_position, Position)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CCharacter, m_rotation, Rotation)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CCharacter, m_scale, Scale)
-GET_SET_FUN_DEFINE(CCharacter::Direction, CCharacter, m_direction, Direction)
-
+GET_SET_FUN_DEFINE(CCharacter::Type, CCharacter, m_type, Type)
 GET_SET_FUN_DEFINE(CCharacter::State, CCharacter, m_state, State)
 GET_SET_FUN_DEFINE(CCharacter::SpriteMap, CCharacter, m_sprite_map, SpriteMap)

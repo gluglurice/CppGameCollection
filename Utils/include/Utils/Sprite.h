@@ -53,18 +53,20 @@ GET_SET_FUN_DECLAR(bool, m_is_visible, IsVisible)
 GET_SET_FUN_DECLAR(int, m_cur_frame, CurFrame)
 GET_SET_FUN_DECLAR(int, m_play_row, PlayRow)
 GET_SET_FUN_DECLAR(int, m_play_col, PlayCol)
-GET_SET_FUN_DECLAR(unsigned, m_frame_terminal, FrameTerminal)
-GET_SET_FUN_DECLAR(unsigned, m_cycle_terminal, CycleTerminal)
-GET_SET_FUN_DECLAR(unsigned, m_waited_time, WaitedTime)
+GET_SET_FUN_DECLAR(float, m_frame_terminal, FrameTerminal)
+GET_SET_FUN_DECLAR(float, m_cycle_terminal, CycleTerminal)
+GET_SET_FUN_DECLAR(float, m_waited_time, WaitedTime)
 
 public:
 	CSprite();
 
 	CSprite(Image* img, int row_num = 1, int col_num = 1,
 		D3DXVECTOR3 center = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 rotation = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 scale = D3DXVECTOR3(1, 1, 1), Direction default_direction = D_RIGHT,
-		ReadMode read_mode = RM_HORIZONTAL, int play_row = 0, int play_col = 0);
+		ReadMode read_mode = RM_HORIZONTAL, int play_row = 0, int play_col = 0, float frame_terminal = 10.0f, float cycle_terminal = 100.0f);
 
-	void SetReadMode(ReadMode val, int play_row, int play_col, int row_num, int col_num);
+	~CSprite();
+
+	void SetReadMode(ReadMode read_mode, int play_row, int play_col, int row_num, int col_num);
 
 	void Update();
 

@@ -2,9 +2,18 @@
 
 #include <Sprite.h>
 
+#include "Map.h"
+#include "MapFC.h"
 #include "Character.h"
+#include "CharacterFC.h"
 
 #define PI 3.1415926
+
+const string CGame::GAME_INI_PATH = "config/game_ini.xml";
+
+int CGame::GRAPH_WIDTH;
+int CGame::GRAPH_HEIGHT;
+int CGame::FPS;
 
 map<int, pair<bool, bool>> CGame::m_key_pressed = {
 	{ 'W', make_pair(false, false) },
@@ -34,41 +43,38 @@ LRESULT CGame::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-CGame::CGame() : CSingleton<CGame>() {}
+CGame::CGame()
+{
+	/* 加载游戏配置 */
+	TiXmlDocument xml_doc;
+
+	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
+	{
+		cerr << "打开XML文件失败：" << CGame::GAME_INI_PATH << endl;
+		return;
+	}
+
+	TiXmlElement* xml_root = xml_doc.RootElement();
+
+	xml_root->QueryIntAttribute("graph_width", &GRAPH_WIDTH);
+	xml_root->QueryIntAttribute("graph_height", &GRAPH_HEIGHT);
+	xml_root->QueryIntAttribute("fps", &FPS);
+
+	/* 初始化窗口 */
+	auto hwnd = CGraphic::GetInstance()->InitWindow(&CGame::WndProc, CGame::GRAPH_WIDTH, CGame::GRAPH_HEIGHT);
+	CGraphic::GetInstance()->InitDX(hwnd);
+}
 
 int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
-	auto hwnd = CGraphic::GetInstance()->InitWindow(&CGame::WndProc, 550, 414);
-	CGraphic::GetInstance()->InitDX(hwnd);
-
 	MSG msg;
 
-	Image* img_background = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/img/background/level_0-1.png", *img_background);
+	CMap* map = CMapFC::GetInstance()->CreateLevelMap(0);
 
-	Image* img_character_idle = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/img/character/Link_idle.png", *img_character_idle);
-	CSprite sprite_character_idle(img_character_idle, 3, 3);
-	sprite_character_idle.SetReadMode(CSprite::RM_ONE_ROW, 1, 0, 1, 3);
-	sprite_character_idle.SetDefaultDirection(CSprite::D_LEFT);
-	sprite_character_idle.SetFrameTerminal(3);
-	sprite_character_idle.SetCycleTerminal(200);
-
-	Image* img_character_walk = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/img/character/Link_walk.png", *img_character_walk);
-	CSprite sprite_character_walk(img_character_walk, 3, 10);
-	sprite_character_walk.SetReadMode(CSprite::RM_ONE_ROW, 1, 0, 1, 10);
-	sprite_character_walk.SetDefaultDirection(CSprite::D_LEFT);
-
-	D3DXVECTOR3 center(12.0f, 11.0f, 0.0f);
-	D3DXVECTOR3 pos(48.0f * 2, 280.0f, 0.0f);
-	D3DXVECTOR3 rot(0.0f, 0.0f, 0.0f);
-	D3DXVECTOR3 scale(2.0f, 2.0f, 2.0f);
-
-	CCharacter character(center, pos, rot, scale, CCharacter::Direction::D_LEFT);
-	character.AddSprite(CCharacter::S_IDLE, &sprite_character_idle);
-	character.AddSprite(CCharacter::S_WALK, &sprite_character_walk);
-	character.UpdateState(CCharacter::S_IDLE);
+	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(D3DXVECTOR3(96.0f, 280.0f, 0.0f), CCharacter::T_PLAYER);
+	link->SetSpriteReadMode(CCharacter::S_IDLE, CSprite::RM_ONE_ROW, 1, 0, 1, 3);
+	link->SetSpriteReadMode(CCharacter::S_WALK, CSprite::RM_ONE_ROW, 1, 0, 1, 10);
+	link->UpdateState(CCharacter::S_IDLE);
 
 	while (true)
 	{ 
@@ -83,8 +89,8 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 		}
 
 		CGraphic::GetInstance()->BeginDraw();
-		character.Draw();
-		CGraphic::GetInstance()->DrawTex(*img_background, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), scale);
+		link->Draw();
+		map->Draw();
 		CGraphic::GetInstance()->EndDraw();
 
 		if (m_key_pressed['A'].first)
@@ -93,10 +99,10 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 			{
 				m_key_pressed['A'].second = true;
 				m_key_pressed_count++;
-				character.SetDirection(CCharacter::D_LEFT);
-				character.UpdateState(CCharacter::S_WALK);
+				link->SetDirection(CCharacter::D_LEFT);
+				link->UpdateState(CCharacter::S_WALK);
 			}
-			character.Move(D3DXVECTOR3(-1.0f, 0.0f, 0.0f));
+			link->Move(D3DXVECTOR3(-1.0f, 0.0f, 0.0f));
 		}
 		if (m_key_pressed['D'].first)
 		{
@@ -104,18 +110,18 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 			{
 				m_key_pressed['D'].second = true;
 				m_key_pressed_count++;
-				character.SetDirection(CCharacter::D_RIGHT);
-				character.UpdateState(CCharacter::S_WALK);
+				link->SetDirection(CCharacter::D_RIGHT);
+				link->UpdateState(CCharacter::S_WALK);
 			}
-			character.Move(D3DXVECTOR3(1.0f, 0.0f, 0.0f));
+			link->Move(D3DXVECTOR3(1.0f, 0.0f, 0.0f));
 		}
 		if (m_key_pressed_count == 0)
 		{
-			if (character.GetState() != CCharacter::S_IDLE)
+			if (link->GetState() != CCharacter::S_IDLE)
 			{
-				character.UpdateState(CCharacter::S_IDLE);
+				link->UpdateState(CCharacter::S_IDLE);
 			}
-			character.Idle();
+			link->Idle();
 		}
 	}
 	return 0;

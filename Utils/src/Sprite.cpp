@@ -4,17 +4,15 @@ CSprite::CSprite() {}
 
 CSprite::CSprite(Image* img, int row_num, int col_num,
 	D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction default_direction,
-	ReadMode read_mode, int play_row, int play_col)
+	ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal)
 	: m_img(img), m_row_num(row_num), m_col_num(col_num),
 	m_center(center), m_position(position), m_rotation(rotation), m_scale(scale), m_default_direction(default_direction),
-	m_read_mode(read_mode), m_play_row(play_row), m_play_col(play_col)
+	m_read_mode(read_mode), m_play_row(play_row), m_play_col(play_col), m_frame_terminal(frame_terminal), m_cycle_terminal(cycle_terminal)
 {
 	/* 读取帧 */
 	m_play_state = PS_STOP;
 	m_is_visible = true;
 	m_cur_frame = 0;
-	m_frame_terminal = 10;
-	m_cycle_terminal = 100;
 	m_waited_time = 0;
 
 	/* 帧 */
@@ -34,10 +32,19 @@ CSprite::CSprite(Image* img, int row_num, int col_num,
 	}
 }
 
-void CSprite::SetReadMode(ReadMode val, int play_row, int play_col, int row_num, int col_num)
+CSprite::~CSprite()
 {
-	m_read_mode = val;
-	switch (val)
+	if (m_img)
+	{
+		delete m_img;
+		m_img = nullptr;
+	}
+}
+
+void CSprite::SetReadMode(ReadMode read_mode, int play_row, int play_col, int row_num, int col_num)
+{
+	m_read_mode = read_mode;
+	switch (read_mode)
 	{
 	case RM_HORIZONTAL:
 		m_row_num = row_num;
@@ -67,7 +74,7 @@ void CSprite::Update()
 		m_cur_frame = 0;
 		break;
 	case PS_CYCLE:
-		m_waited_time++;
+		m_waited_time += 1.0f;
 		if (m_waited_time >= m_frame_terminal)
 		{
 			m_cur_frame++;
@@ -75,15 +82,15 @@ void CSprite::Update()
 			{
 				m_cur_frame = 0;
 			}
-			m_waited_time = 0;
+			m_waited_time = 0.0f;
 		}
 		break;
 	case PS_CYCLE_TERMINAL:
-		m_waited_time++;
+		m_waited_time += 1.0f;
 
 		if (m_waited_time >= m_frame_terminal * m_frame_count + m_cycle_terminal)
 		{
-			m_waited_time = 0;
+			m_waited_time = 0.0f;
 		}
 		else if (m_waited_time >= m_frame_terminal && m_waited_time < m_frame_terminal * m_frame_count)
 		{
@@ -95,7 +102,7 @@ void CSprite::Update()
 		}
 		break;
 	case PS_ONCE:
-		m_waited_time++;
+		m_waited_time += 1.0f;
 		if (m_waited_time >= m_frame_terminal)
 		{
 			m_cur_frame++;
@@ -105,7 +112,7 @@ void CSprite::Update()
 				m_play_state = PS_STOP;
 				m_is_visible = false;
 			}
-			m_waited_time = 0;
+			m_waited_time = 0.0f;
 		}
 		break;
 	}
@@ -164,6 +171,6 @@ GET_SET_FUN_DEFINE(CSprite::PlayState, CSprite, m_play_state, PlayState)
 GET_SET_FUN_DEFINE(bool, CSprite, m_is_visible, IsVisible)
 GET_SET_FUN_DEFINE(int, CSprite, m_play_row, PlayRow)
 GET_SET_FUN_DEFINE(int, CSprite, m_play_col, PlayCol)
-GET_SET_FUN_DEFINE(unsigned, CSprite, m_frame_terminal, FrameTerminal)
-GET_SET_FUN_DEFINE(unsigned, CSprite, m_cycle_terminal, CycleTerminal)
-GET_SET_FUN_DEFINE(unsigned, CSprite, m_waited_time, WaitedTime)
+GET_SET_FUN_DEFINE(float, CSprite, m_frame_terminal, FrameTerminal)
+GET_SET_FUN_DEFINE(float, CSprite, m_cycle_terminal, CycleTerminal)
+GET_SET_FUN_DEFINE(float, CSprite, m_waited_time, WaitedTime)
