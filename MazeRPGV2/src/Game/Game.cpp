@@ -44,24 +44,28 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	MSG msg;
 
 	Image* img_background = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/level_0-1.png", *img_background);
+	CGraphic::GetInstance()->LoadTex(L"assets/img/background/level_0-1.png", *img_background);
 
 	Image* img_character_idle = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/character_idle.png", *img_character_idle);
-	CSprite sprite_character_idle(img_character_idle, 1, 2);
-	sprite_character_idle.SetFrameTerminal(20);
+	CGraphic::GetInstance()->LoadTex(L"assets/img/character/Link_idle.png", *img_character_idle);
+	CSprite sprite_character_idle(img_character_idle, 3, 3);
+	sprite_character_idle.SetReadMode(CSprite::RM_ONE_ROW, 1, 0, 1, 3);
+	sprite_character_idle.SetDefaultDirection(CSprite::D_LEFT);
+	sprite_character_idle.SetFrameTerminal(3);
 	sprite_character_idle.SetCycleTerminal(200);
 
 	Image* img_character_walk = new Image();
-	CGraphic::GetInstance()->LoadTex(L"assets/character_walk.png", *img_character_walk);
-	CSprite sprite_character_walk(img_character_walk, 1, 10);
+	CGraphic::GetInstance()->LoadTex(L"assets/img/character/Link_walk.png", *img_character_walk);
+	CSprite sprite_character_walk(img_character_walk, 3, 10);
+	sprite_character_walk.SetReadMode(CSprite::RM_ONE_ROW, 1, 0, 1, 10);
+	sprite_character_walk.SetDefaultDirection(CSprite::D_LEFT);
 
 	D3DXVECTOR3 center(12.0f, 11.0f, 0.0f);
 	D3DXVECTOR3 pos(48.0f * 2, 280.0f, 0.0f);
 	D3DXVECTOR3 rot(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR3 scale(2.0f, 2.0f, 2.0f);
 
-	CCharacter character(center, pos, rot, scale);
+	CCharacter character(center, pos, rot, scale, CCharacter::Direction::D_LEFT);
 	character.AddSprite(CCharacter::S_IDLE, &sprite_character_idle);
 	character.AddSprite(CCharacter::S_WALK, &sprite_character_walk);
 	character.UpdateState(CCharacter::S_IDLE);

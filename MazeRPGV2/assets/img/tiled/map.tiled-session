@@ -1,0 +1,23 @@
+{
+    "activeFile": "map.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "map.tmx": {
+            "scale": 1.5991666666666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.93746743095363,
+                "y": 319.85409067222514
+            }
+        }
+    },
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "map.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "map.tmx"
+    ]
+}

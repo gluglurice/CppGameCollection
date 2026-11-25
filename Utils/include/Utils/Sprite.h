@@ -64,6 +64,8 @@ public:
 		D3DXVECTOR3 center = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 position = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 rotation = D3DXVECTOR3(0, 0, 0), D3DXVECTOR3 scale = D3DXVECTOR3(1, 1, 1), Direction default_direction = D_RIGHT,
 		ReadMode read_mode = RM_HORIZONTAL, int play_row = 0, int play_col = 0);
 
+	void SetReadMode(ReadMode val, int play_row, int play_col, int row_num, int col_num);
+
 	void Update();
 
 	void Draw();

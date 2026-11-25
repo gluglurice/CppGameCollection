@@ -34,6 +34,31 @@ CSprite::CSprite(Image* img, int row_num, int col_num,
 	}
 }
 
+void CSprite::SetReadMode(ReadMode val, int play_row, int play_col, int row_num, int col_num)
+{
+	m_read_mode = val;
+	switch (val)
+	{
+	case RM_HORIZONTAL:
+		m_row_num = row_num;
+		m_col_num = col_num;
+		m_frame_count = row_num * col_num;
+		break;
+	case RM_ONE_ROW:
+		m_row_num = 1;
+		m_col_num = col_num;
+		m_play_row = play_row;
+		m_frame_count = col_num;
+		break;
+	case RM_ONE_COL:
+		m_row_num = row_num;
+		m_col_num = 1;
+		m_play_col = play_col;
+		m_frame_count = row_num;
+		break;
+	}
+}
+
 void CSprite::Update()
 {
 	switch (m_play_state)
