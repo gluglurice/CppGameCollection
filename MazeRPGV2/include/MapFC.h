@@ -22,5 +22,7 @@ public:
 
 	Image GetElemImg(CMap::MapElem elem);
 
-	CMap* CreateLevelMap(int level);
+	CMap* GetLevelMap(int level);
+
+	int GetLevelCount();
 };

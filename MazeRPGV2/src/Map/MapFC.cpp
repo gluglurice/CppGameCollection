@@ -102,7 +102,12 @@ Image CMapFC::GetElemImg(CMap::MapElem elem)
 	return m_elem_imgs_map[elem];
 }
 
-CMap* CMapFC::CreateLevelMap(int level)
+CMap* CMapFC::GetLevelMap(int level)
 {
 	return m_level_maps[level];
+}
+
+int CMapFC::GetLevelCount()
+{
+	return static_cast<int>(m_level_maps.size());
 }

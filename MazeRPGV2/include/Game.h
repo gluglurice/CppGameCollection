@@ -26,9 +26,9 @@ protected:
 	/**
 	 * @brief 按键状态
 	 */
-	static map<int, bool> m_key_pressed;
+	static map<int, vector<bool>> m_key_pressed;
 
-	static unsigned m_key_pressed_count;
+	static unsigned m_moving_key_pressed_count;
 
 	/**
 	 * @brief 窗口消息回调
