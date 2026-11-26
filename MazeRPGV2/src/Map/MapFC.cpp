@@ -1,6 +1,6 @@
 ﻿#include "MapFC.h"
 
-#include <sstream>
+#include <fstream>
 
 #include "Game.h"
 
@@ -39,21 +39,31 @@ CMapFC::CMapFC()
 	for (TiXmlElement* xml_map = xml_maps->FirstChildElement("map"); xml_map; xml_map = xml_map->NextSiblingElement("map"))
 	{
 		CMap* map;
+
+		int row;
+		int col;
+		CVector3D start_position_logic(0.0f, 0.0f, 0.0f);
 		vector<vector<CMap::MapElem>> map_vals;
 
-		int row = 0;
-		for (TiXmlElement* xml_row = xml_map->FirstChildElement("row"); xml_row; xml_row = xml_row->NextSiblingElement("row"))
+		string src_txt_path = xml_map->Attribute("src_txt_path");
+
+		ifstream in_file(src_txt_path, ios::in);
+		if (!in_file)
 		{
-			string cols = xml_row->Attribute("cols");
-			istringstream iss(cols);
-			vector<CMap::MapElem> row_vals;
-			int elem_type;
-			while (iss >> elem_type)
+			cerr << "打开地图文件失败：" << src_txt_path << endl;
+			return;
+		}
+		in_file >> col >> row >> start_position_logic.x >> start_position_logic.y;
+		for (int r = 0; r < row; r++)
+		{
+			vector<CMap::MapElem> map_row;
+			for (int c = 0; c < col; c++)
 			{
-				row_vals.push_back(static_cast<CMap::MapElem>(elem_type));
+				int elem_val;
+				in_file >> elem_val;
+				map_row.push_back(static_cast<CMap::MapElem>(elem_val));
 			}
-			map_vals.push_back(row_vals);
-			row++;
+			map_vals.push_back(map_row);
 		}
 
 		map = new CMap(level, map_vals[0].size(), map_vals.size(), tile_size, scale, map_vals);

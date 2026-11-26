@@ -40,6 +40,7 @@ GET_SET_FUN_DECLAR(int, m_height, Height)
 GET_SET_FUN_DECLAR(int, m_tile_size, TileSize)
 GET_SET_FUN_DECLAR(float, m_scale, Scale)
 GET_SET_FUN_DECLAR(vector<vector<MapElem>>, m_map, Map)
+GET_SET_FUN_DECLAR(CVector3D, m_start_position_logic, StartPositionLogic)
 
 public:
 	CMap();

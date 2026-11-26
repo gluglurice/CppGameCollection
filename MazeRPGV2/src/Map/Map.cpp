@@ -4,7 +4,7 @@
 
 CMap::CMap() {}
 
-CMap::CMap(int level, int width, int height, int tile_size, float scale, const std::vector<std::vector<MapElem>>& map)
+CMap::CMap(int level, int width, int height, int tile_size, float scale, const vector<vector<MapElem>>& map)
 	: m_level(level), m_width(width), m_height(height), m_tile_size(tile_size), m_scale(scale)
 {
 	for (int row = 0; row < height; row++)
@@ -52,4 +52,5 @@ GET_SET_FUN_DEFINE(int, CMap, m_width, Width)
 GET_SET_FUN_DEFINE(int, CMap, m_height, Height)
 GET_SET_FUN_DEFINE(int, CMap, m_tile_size, TileSize)
 GET_SET_FUN_DEFINE(float, CMap, m_scale, Scale)
-GET_SET_FUN_DEFINE(std::vector<std::vector<CMap::MapElem>>, CMap, m_map, Map)
+GET_SET_FUN_DEFINE(vector<vector<CMap::MapElem>>, CMap, m_map, Map)
+GET_SET_FUN_DEFINE(CVector3D, CMap, m_start_position_logic, StartPositionLogic)
