@@ -35,11 +35,12 @@ CShipFC::CShipFC()
 		xml_ship->QueryIntAttribute("shield", &shield);
 		xml_ship->QueryIntAttribute("normal_bullet_type", &normal_bullet_type);
 		xml_ship->QueryIntAttribute("bomb_type", &bomb_type);
-		wstring img_path = StringToWString(xml_ship->Attribute("img_path"), "UTF-8");
+		string img_path = xml_ship->Attribute("img_path");
+		wstring img_path_w(img_path.begin(), img_path.end());
 		img = new Image();
 
 		ship = new CShip(CVector3D(tile_size / 2.0f, tile_size / 2.0f, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CShip::EShipCamp)0, (CShip::EShipType)type, max_hp, max_hp, max_mp, max_mp, atk, firing_rate, def, shield, (CShip::ENormalBulletType)normal_bullet_type, (CShip::EBombType)bomb_type);
-		CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
+		CGraphic::GetInstance()->LoadTex(img_path_w.c_str(), *img);
 		m_ship_map[(CShip::EShipType)type] = make_pair(ship, img);
 	}
 }

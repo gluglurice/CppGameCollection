@@ -47,7 +47,6 @@ CCharacterFC::CCharacterFC()
 			int play_col;
 			unsigned frame_terminal;
 			unsigned cycle_terminal;
-			wstring img_path;
 
 			Image* img;
 
@@ -61,17 +60,18 @@ CCharacterFC::CCharacterFC()
 			xml_sprite->QueryIntAttribute("play_col", &play_col);
 			xml_sprite->QueryUnsignedAttribute("frame_terminal", &frame_terminal);
 			xml_sprite->QueryUnsignedAttribute("cycle_terminal", &cycle_terminal);
-			img_path = StringToWString(xml_sprite->Attribute("img_path"), "UTF-8");
+			string img_path = xml_sprite->Attribute("img_path");
+			wstring img_path_w(img_path.begin(), img_path.end());
 
-			if (img_map.find(img_path) != img_map.end())
+			if (img_map.find(img_path_w) != img_map.end())
 			{
-				img = img_map[img_path];
+				img = img_map[img_path_w];
 			}
 			else
 			{
 				img = new Image();
-				CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
-				img_map[img_path] = img;
+				CGraphic::GetInstance()->LoadTex(img_path_w.c_str(), *img);
+				img_map[img_path_w] = img;
 			}
 			int sprite_index = static_cast<int>(sprite_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(direction);
 			sprites[sprite_index] = new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal);

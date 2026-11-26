@@ -28,9 +28,10 @@ CMapFC::CMapFC()
 		Image elem_img;
 
 		xml_elem->QueryIntAttribute("type", &elem_type);
-		wstring elem_img_path = StringToWString(xml_elem->Attribute("img_path"), "UTF-8");
+		string elem_img_path = xml_elem->Attribute("img_path");
+		wstring elem_img_path_w(elem_img_path.begin(), elem_img_path.end());
 
-		CGraphic::GetInstance()->LoadTex(elem_img_path.c_str(), elem_img);
+		CGraphic::GetInstance()->LoadTex(elem_img_path_w.c_str(), elem_img);
 		m_elem_imgs_map[static_cast<CMap::MapElem>(elem_type)] = elem_img;
 	}
 

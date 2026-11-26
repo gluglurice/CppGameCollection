@@ -18,11 +18,3 @@ void class::Set##name(type val)\
 {\
     member = val;\
 }
-
-/**
- * @brief
- * @param text
- * @param encoding
- * @return
- */
-std::wstring StringToWString(const char* text, std::string encoding = "UTF-8");

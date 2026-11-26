@@ -27,11 +27,12 @@ CNormalBulletFC::CNormalBulletFC()
 		xml_normal_bullet->QueryFloatAttribute("scale", &scale);
 		xml_normal_bullet->QueryFloatAttribute("velocity", &velocity);
 		xml_normal_bullet->QueryIntAttribute("type", &type);
-		wstring img_path = StringToWString(xml_normal_bullet->Attribute("img_path"), "UTF-8");
+		string img_path = xml_normal_bullet->Attribute("img_path");
+		wstring img_path_w(img_path.begin(), img_path.end());
 		img = new Image();
 
 		normal_bullet = new CNormalBullet(CVector3D(tile_size / 2.0f, tile_size / 2.0f, 0), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(scale, scale, scale), tile_size, (CActor::EDirection)0, velocity, (CBullet::EBulletFrom)0, (CNormalBullet::ENormalBulletType)type);
-		CGraphic::GetInstance()->LoadTex(img_path.c_str(), *img);
+		CGraphic::GetInstance()->LoadTex(img_path_w.c_str(), *img);
 		m_normal_bullet_map[(CNormalBullet::ENormalBulletType)type] = make_pair(normal_bullet, img);
 	}
 }

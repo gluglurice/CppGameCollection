@@ -47,7 +47,6 @@ void CItemFC::Init()
 		int id, item_hp, item_mp, item_atk, item_def;
 		std::string item_name;
 
-		std::wstring item_img_path;
 		IMAGE item_img;
 
 		xml_item->QueryIntAttribute("item_type", &item_type);
@@ -57,7 +56,8 @@ void CItemFC::Init()
 		xml_item->QueryIntAttribute("atk", &item_atk);
 		xml_item->QueryIntAttribute("def", &item_def);
 		item_name = xml_item->Attribute("name");
-		item_img_path = StringToWString(xml_item->Attribute("img_path"), CSolution::XML_ENCODING.c_str());
+		std::string item_img_path = xml_item->Attribute("img_path");
+		std::wstring item_img_path_w(item_img_path.begin(), item_img_path.end());
 		switch (static_cast<CItem::EItemType>(item_type))
 		{
 		case CItem::EItemType::IT_DRUG:
