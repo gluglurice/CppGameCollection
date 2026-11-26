@@ -20,3 +20,10 @@ CVector3D CVector3D::Cross(CVector3D& other)
 {
 	return CVector3D(*D3DXVec3Cross(new D3DXVECTOR3(), this, &other));
 }
+
+bool CVector3D::NearlyEqual(const CVector3D& other, float epsilon /*= 1e-5f*/)
+{
+	return std::abs(this->x - other.x) <= epsilon
+		&& std::abs(this->y - other.y) <= epsilon
+		&& std::abs(this->z - other.z) <= epsilon;
+}

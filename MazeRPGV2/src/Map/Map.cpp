@@ -20,6 +20,17 @@ CMap::CMap(int level, int width, int height, int tile_size, float scale, const s
 
 CMap::~CMap() {}
 
+bool CMap::IsWalkable(CVector3D position_logic)
+{
+	if (position_logic.x < 0 || position_logic.x >= m_width || position_logic.y < 0 || position_logic.y >= m_height)
+	{
+		return false;
+	}
+	return m_map[static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_TERRAIN_STEP_1
+		|| m_map[static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_TERRAIN_STEP_2
+		|| m_map[static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_TERRAIN_LAND_0;
+}
+
 void CMap::Draw()
 {
 	for (int row = 0; row < m_height; row++)
@@ -30,7 +41,7 @@ void CMap::Draw()
 			if (elem != CMap::ME_EMPTY)
 			{
 				Image elem_img = CMapFC::GetInstance()->GetElemImg(elem);
-				CGraphic::GetInstance()->DrawTex(elem_img, D3DXVECTOR3(col * m_tile_size * m_scale, row * m_tile_size * m_scale, 0.0f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(m_scale, m_scale, 1.0f));
+				CGraphic::GetInstance()->DrawTex(elem_img, CVector3D(col * m_tile_size * m_scale, row * m_tile_size * m_scale, 0.0f), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(m_scale, m_scale, 1.0f));
 			}
 		}
 	}

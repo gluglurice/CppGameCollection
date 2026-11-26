@@ -13,4 +13,6 @@ public:
 
 	float Dot(CVector3D& other);
 	CVector3D Cross(CVector3D& other);
+
+	bool NearlyEqual(const CVector3D& other, float epsilon = 1e-5f);
 };

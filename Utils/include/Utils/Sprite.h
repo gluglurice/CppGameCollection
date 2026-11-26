@@ -2,6 +2,7 @@
 
 #include <Utils.h>
 #include <Graphic.h>
+#include <Vector3D.h>
 
 class CSprite
 {
@@ -35,10 +36,10 @@ GET_SET_FUN_DECLAR(int, m_row_num, RowNum)
 GET_SET_FUN_DECLAR(int, m_col_num, ColNum)
 
 /* 图像变换 */
-GET_SET_FUN_DECLAR(D3DXVECTOR3, m_center, Center)
-GET_SET_FUN_DECLAR(D3DXVECTOR3, m_position, Position)
-GET_SET_FUN_DECLAR(D3DXVECTOR3, m_rotation, Rotation)
-GET_SET_FUN_DECLAR(D3DXVECTOR3, m_scale, Scale)
+GET_SET_FUN_DECLAR(CVector3D, m_center, Center)
+GET_SET_FUN_DECLAR(CVector3D, m_position, Position)
+GET_SET_FUN_DECLAR(CVector3D, m_rotation, Rotation)
+GET_SET_FUN_DECLAR(CVector3D, m_scale, Scale)
 GET_SET_FUN_DECLAR(Direction, m_direction, Direction)
 
 /* 帧 */
@@ -60,7 +61,7 @@ GET_SET_FUN_DECLAR(float, m_waited_time, WaitedTime)
 public:
 	CSprite();
 
-	CSprite(Image* img, int row_num, int col_num, D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal);
+	CSprite(Image* img, int row_num, int col_num, CVector3D center, CVector3D position, CVector3D rotation, CVector3D scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal);
 
 	~CSprite();
 

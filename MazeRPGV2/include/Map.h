@@ -2,6 +2,7 @@
 
 #include <Utils.h>
 #include <Graphic.h>
+#include <Vector3D.h>
 
 class CMap
 {
@@ -46,6 +47,8 @@ public:
 	CMap(int level, int width, int height, int tile_size, float scale, const vector<vector<MapElem>>& map);
 
 	~CMap();
+
+	bool IsWalkable(CVector3D position_logic);
 
 	void Draw();
 };

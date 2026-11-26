@@ -1,25 +1,31 @@
 ﻿#include "Game.h"
 
-#include <Sprite.h>
-
 #include "Map.h"
 #include "MapFC.h"
 #include "Character.h"
 #include "CharacterFC.h"
 
-#define PI 3.1415926
-
 const string CGame::GAME_INI_PATH = "config/game_ini.xml";
+const float CGame::ONE_SEC = 1000.0f;
 
 int CGame::GRAPH_WIDTH;
 int CGame::GRAPH_HEIGHT;
+int CGame::MAP_TILE_SIZE;
 int CGame::FPS;
+float CGame::SCALE;
 
-map<int, pair<bool, bool>> CGame::m_key_pressed = {
-	{ 'W', make_pair(false, false) },
-	{ 'A', make_pair(false, false) },
-	{ 'S', make_pair(false, false) },
-	{ 'D', make_pair(false, false) },
+vector<CVector3D> CGame::UNIT_VECS = {
+	CVector3D(0.0f, 1.0f, 0.0f),
+	CVector3D(1.0f, 0.0f, 0.0f),
+	CVector3D(0.0f, -1.0f, 0.0f),
+	CVector3D(-1.0f, 0.0f, 0.0f),
+};
+
+map<int, bool> CGame::m_key_pressed = {
+	{ 'W', false },
+	{ 'A', false },
+	{ 'S', false },
+	{ 'D', false },
 };
 
 unsigned CGame::m_key_pressed_count = 0;
@@ -29,12 +35,18 @@ LRESULT CGame::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	switch (msg)
 	{
 	case WM_KEYDOWN:
-		m_key_pressed[wParam].first = true;
+		if (!m_key_pressed[wParam])
+		{
+			m_key_pressed[wParam] = true;
+			m_key_pressed_count++;
+		}
 		break;
 	case WM_KEYUP:
-		m_key_pressed[wParam].first = false;
-		m_key_pressed[wParam].second = false;
-		m_key_pressed_count = m_key_pressed_count > 0 ? m_key_pressed_count - 1 : 0;
+		if (m_key_pressed[wParam])
+		{
+			m_key_pressed[wParam] = false;
+			m_key_pressed_count--;
+		}
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
@@ -59,10 +71,33 @@ CGame::CGame()
 	xml_root->QueryIntAttribute("graph_width", &GRAPH_WIDTH);
 	xml_root->QueryIntAttribute("graph_height", &GRAPH_HEIGHT);
 	xml_root->QueryIntAttribute("fps", &FPS);
+	xml_root->QueryFloatAttribute("scale", &SCALE);
+
+	TiXmlElement* xml_maps = xml_root->FirstChildElement("maps");
+	int map_tile_size;
+	int map_scale;
+	xml_maps->QueryIntAttribute("tile_size", &map_tile_size);
+	xml_maps->QueryIntAttribute("scale", &map_scale);
+	MAP_TILE_SIZE = map_tile_size * map_scale;
 
 	/* 初始化窗口 */
 	auto hwnd = CGraphic::GetInstance()->InitWindow(&CGame::WndProc, CGame::GRAPH_WIDTH, CGame::GRAPH_HEIGHT);
 	CGraphic::GetInstance()->InitDX(hwnd);
+	CGraphic::GetInstance()->m_pDevice->SetRenderState(D3DRS_ZENABLE, false);
+}
+
+bool CGame::CheckMessageQuit(MSG& msg)
+{
+	while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+	{
+		if (msg.message == WM_QUIT)
+		{
+			return true;
+		}
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+	return false;
 }
 
 int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
@@ -70,75 +105,110 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	MSG msg;
 
 	CMap* map = CMapFC::GetInstance()->CreateLevelMap(0);
-
-	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(D3DXVECTOR3(96.0f, 280.0f, 0.0f), CCharacter::T_PLAYER);
+	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(CVector3D(2.0f, 8.0f, 0.0f), CCharacter::T_PLAYER);
 	link->UpdateState(CCharacter::S_IDLE, CActor::D_DOWN);
+	CVector3D target_position_render = link->GetPositionRender();
 
 	while (true)
-	{ 
-		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+	{
+		if (CGame::CheckMessageQuit(msg))
 		{
-			if (msg.message == WM_QUIT)
-			{
-				break;
-			}
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			break;
 		}
 
 		CGraphic::GetInstance()->BeginDraw();
-		link->Draw();
 		map->Draw();
+		link->Draw();
 		CGraphic::GetInstance()->EndDraw();
 
-		if (m_key_pressed['W'].first)
-		{
-			if (!m_key_pressed['W'].second)
-			{
-				m_key_pressed['W'].second = true;
-				m_key_pressed_count++;
-				link->UpdateState(CCharacter::S_WALK, CActor::D_UP);
-			}
-			link->Move(CCharacter::D_UP);
-		}
-		if (m_key_pressed['S'].first)
-		{
-			if (!m_key_pressed['S'].second)
-			{
-				m_key_pressed['S'].second = true;
-				m_key_pressed_count++;
-				link->UpdateState(CCharacter::S_WALK, CActor::D_DOWN);
-			}
-			link->Move(CCharacter::D_DOWN);
-		}
-		if (m_key_pressed['A'].first)
-		{
-			if (!m_key_pressed['A'].second)
-			{
-				m_key_pressed['A'].second = true;
-				m_key_pressed_count++;
-				link->UpdateState(CCharacter::S_WALK, CActor::D_LEFT);
-			}
-			link->Move(CCharacter::D_LEFT);
-		}
-		if (m_key_pressed['D'].first)
-		{
-			if (!m_key_pressed['D'].second)
-			{
-				m_key_pressed['D'].second = true;
-				m_key_pressed_count++;
-				link->UpdateState(CCharacter::S_WALK, CActor::D_RIGHT);
-			}
-			link->Move(CCharacter::D_RIGHT);
-		}
 		if (m_key_pressed_count == 0)
 		{
-			if (link->GetState() != CCharacter::S_IDLE)
-			{
-				link->UpdateState(CCharacter::S_IDLE, link->GetDirection());
-			}
+			link->UpdateState(CCharacter::S_IDLE, link->GetDirection());
 			link->Idle();
 		}
+
+		/* 待机状态 */
+		if (link->GetState() == CCharacter::S_IDLE)
+		{
+			CActor::Direction direction = link->GetDirection();
+			if (m_key_pressed['W'])
+			{
+				direction = CActor::D_UP;
+			}
+			if (m_key_pressed['S'])
+			{
+				direction = CActor::D_DOWN;
+			}
+			if (m_key_pressed['A'])
+			{
+				direction = CActor::D_LEFT;
+			}
+			if (m_key_pressed['D'])
+			{
+				direction = CActor::D_RIGHT;
+			}
+			link->UpdateState(CCharacter::S_IDLE, direction);
+			if (m_key_pressed_count > 0 && map->IsWalkable(link->GetPositionLogic() + CGame::UNIT_VECS[direction]))
+			{
+				link->UpdateState(CCharacter::S_WALK, direction);
+				target_position_render = link->GetPositionRender() + CGame::UNIT_VECS[direction] * MAP_TILE_SIZE;
+			}
+		}
+
+		/* 移动状态 */
+		if (link->GetState() == CCharacter::S_WALK)
+		{
+			if (CGame::CheckMessageQuit(msg))
+			{
+				break;
+			}
+			unsigned tick = clock();
+			while (!link->GetPositionRender().NearlyEqual(target_position_render))
+			{
+				if (clock() - tick >= CGame::ONE_SEC / CGame::FPS)
+				{
+					link->MoveRender(UNIT_VECS[link->GetDirection()] * link->GetVelocity());
+					CGraphic::GetInstance()->BeginDraw();
+					map->Draw();
+					link->Draw();
+					CGraphic::GetInstance()->EndDraw();
+					tick = clock();
+				}
+			}
+			link->MoveLogic(UNIT_VECS[link->GetDirection()]);
+			if (CGame::CheckMessageQuit(msg))
+			{
+				break;
+			}
+
+			CActor::Direction direction = link->GetDirection();
+			if (m_key_pressed['W'])
+			{
+				direction = CActor::D_UP;
+			}
+			if (m_key_pressed['S'])
+			{
+				direction = CActor::D_DOWN;
+			}
+			if (m_key_pressed['A'])
+			{
+				direction = CActor::D_LEFT;
+			}
+			if (m_key_pressed['D'])
+			{
+				direction = CActor::D_RIGHT;
+			}
+			link->UpdateState(CCharacter::S_IDLE, direction);
+			if (m_key_pressed_count > 0 && map->IsWalkable(link->GetPositionLogic() + CGame::UNIT_VECS[direction]))
+			{
+				link->UpdateState(CCharacter::S_WALK, direction);
+				target_position_render = link->GetPositionRender() + CGame::UNIT_VECS[direction] * MAP_TILE_SIZE;
+			}
+		}
 	}
+
+	delete link;
+	delete map;
+
 	return 0;
 }

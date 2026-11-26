@@ -1,9 +1,11 @@
 ﻿#include "Character.h"
 
+#include "Game.h"
+
 CCharacter::CCharacter() {}
 
-CCharacter::CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position_logic, D3DXVECTOR3 position_render, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites)
-	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity), m_type(type), m_state(state), m_sprites(sprites) {}
+CCharacter::CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites)
+	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity), m_type(type), m_state(state), m_sprites(sprites) { }
 
 CCharacter::~CCharacter() {}
 
@@ -25,13 +27,18 @@ void CCharacter::Idle()
 	m_sprites[sprite_index]->Update();
 }
 
-void CCharacter::Move(Direction direction)
+void CCharacter::MoveRender(CVector3D offset)
 {
-	CActor::Move(direction);
+	CActor::MoveRender(offset);
 	int sprite_index = static_cast<int>(m_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(m_direction);
-	m_sprites[sprite_index]->SetPosition(m_position_render);
 	m_sprites[sprite_index]->SetPlayState(CSprite::PS_CYCLE);
+	m_sprites[sprite_index]->SetPosition(m_position_render);
 	m_sprites[sprite_index]->Update();
+}
+
+void CCharacter::MoveLogic(CVector3D offset)
+{
+	CActor::MoveLogic(offset);
 }
 
 void CCharacter::Destroy()

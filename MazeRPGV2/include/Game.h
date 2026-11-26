@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <Graphic.h>
+#include <Vector3D.h>
 
 class CGame : public CSingleton<CGame>
 {
@@ -11,16 +12,20 @@ class CGame : public CSingleton<CGame>
 
 public:
 	static const string GAME_INI_PATH;
+	static const float ONE_SEC;
 
 	static int GRAPH_WIDTH;
 	static int GRAPH_HEIGHT;
+	static int MAP_TILE_SIZE;
 	static int FPS;
+	static float SCALE;
+	static vector<CVector3D> UNIT_VECS;
 
 protected:
 	/**
-	 * @brief 按键状态，first表示按下，second表示按下后是否处理过
+	 * @brief 按键状态
 	 */
-	static map<int, pair<bool, bool>> m_key_pressed;
+	static map<int, bool> m_key_pressed;
 
 	static unsigned m_key_pressed_count;
 
@@ -40,6 +45,8 @@ protected:
 	CGame();
 
 public:
+	bool CheckMessageQuit(MSG& msg);
+
 	/**
 	 * @brief 窗口运行入口
 	 * @param hInstance 

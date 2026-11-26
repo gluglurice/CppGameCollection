@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include <Singleton.h>
-#include <Sprite.h>
 
 #include "Character.h"
 
@@ -17,5 +16,5 @@ protected:
 public:
 	~CCharacterFC();
 
-	CCharacter* CreateCharacter(D3DXVECTOR3 position_logic, CCharacter::Type type);
+	CCharacter* CreateCharacter(CVector3D position_logic, CCharacter::Type type);
 };

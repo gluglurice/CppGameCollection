@@ -2,7 +2,7 @@
 
 CSprite::CSprite() {}
 
-CSprite::CSprite(Image* img, int row_num, int col_num,	D3DXVECTOR3 center, D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal)
+CSprite::CSprite(Image* img, int row_num, int col_num,	CVector3D center, CVector3D position, CVector3D rotation, CVector3D scale, Direction direction, ReadMode read_mode, int play_row, int play_col, float frame_terminal, float cycle_terminal)
 	: m_img(img), m_row_num(row_num), m_col_num(col_num),	m_center(center), m_position(position), m_rotation(rotation), m_scale(scale), m_direction(direction), m_read_mode(read_mode), m_play_row(play_row), m_play_col(play_col), m_frame_terminal(frame_terminal), m_cycle_terminal(cycle_terminal)
 {
 	/* 读取帧 */
@@ -126,10 +126,10 @@ GET_SET_FUN_DEFINE(Image*, CSprite, m_img, Img)
 GET_SET_FUN_DEFINE(int, CSprite, m_row_num, RowNum)
 GET_SET_FUN_DEFINE(int, CSprite, m_col_num, ColNum)
 
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_center, Center)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_position, Position)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_rotation, Rotation)
-GET_SET_FUN_DEFINE(D3DXVECTOR3, CSprite, m_scale, Scale)
+GET_SET_FUN_DEFINE(CVector3D, CSprite, m_center, Center)
+GET_SET_FUN_DEFINE(CVector3D, CSprite, m_position, Position)
+GET_SET_FUN_DEFINE(CVector3D, CSprite, m_rotation, Rotation)
+GET_SET_FUN_DEFINE(CVector3D, CSprite, m_scale, Scale)
 GET_SET_FUN_DEFINE(CSprite::Direction, CSprite, m_direction, Direction)
 
 GET_SET_FUN_DEFINE(float, CSprite, m_frame_width, FrameWidth)

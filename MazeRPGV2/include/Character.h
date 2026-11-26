@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <Sprite.h>
-
 #include "Actor.h"
 
 class CCharacter : public CActor
@@ -27,7 +25,7 @@ GET_SET_FUN_DECLAR(vector<CSprite*>, m_sprites, Sprites)
 public:
 	CCharacter();
 
-	CCharacter(D3DXVECTOR3 center, D3DXVECTOR3 position_logic, D3DXVECTOR3 position_render, D3DXVECTOR3 rotation, D3DXVECTOR3 scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites);
+	CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites);
 
 	~CCharacter();
 
@@ -35,7 +33,9 @@ public:
 
 	void Idle();
 
-	void Move(Direction direction) override;
+	void MoveRender(CVector3D offset) override;
+
+	void MoveLogic(CVector3D offset) override;
 
 	void Destroy() override;
 
