@@ -35,14 +35,14 @@ LRESULT CGame::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	switch (msg)
 	{
 	case WM_KEYDOWN:
-		if (!m_key_pressed[wParam])
+		if (m_key_pressed.find(wParam) != m_key_pressed.end() && !m_key_pressed[wParam])
 		{
 			m_key_pressed[wParam] = true;
 			m_key_pressed_count++;
 		}
 		break;
 	case WM_KEYUP:
-		if (m_key_pressed[wParam])
+		if (m_key_pressed.find(wParam) != m_key_pressed.end() && m_key_pressed[wParam])
 		{
 			m_key_pressed[wParam] = false;
 			m_key_pressed_count--;
@@ -158,10 +158,6 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 		/* 移动状态 */
 		if (link->GetState() == CCharacter::S_WALK)
 		{
-			if (CGame::CheckMessageQuit(msg))
-			{
-				break;
-			}
 			unsigned tick = clock();
 			while (!link->GetPositionRender().NearlyEqual(target_position_render))
 			{
@@ -173,13 +169,10 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 					link->Draw();
 					CGraphic::GetInstance()->EndDraw();
 					tick = clock();
+					CGame::CheckMessageQuit(msg);
 				}
 			}
 			link->MoveLogic(UNIT_VECS[link->GetDirection()]);
-			if (CGame::CheckMessageQuit(msg))
-			{
-				break;
-			}
 
 			CActor::Direction direction = link->GetDirection();
 			if (m_key_pressed['W'])
