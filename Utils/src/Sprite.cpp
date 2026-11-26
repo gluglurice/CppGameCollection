@@ -37,7 +37,7 @@ CSprite::~CSprite()
 	}
 }
 
-void CSprite::Update()
+void CSprite::Update(const float delta_time)
 {
 	switch (m_play_state)
 	{
@@ -45,19 +45,15 @@ void CSprite::Update()
 		m_cur_frame = 0;
 		break;
 	case PS_CYCLE:
-		m_waited_time += 1.0f;
+		m_waited_time += delta_time;
 		if (m_waited_time >= m_frame_terminal)
 		{
-			m_cur_frame++;
-			if (m_cur_frame >= m_frame_count)
-			{
-				m_cur_frame = 0;
-			}
+			m_cur_frame = (m_cur_frame + 1) % m_frame_count;
 			m_waited_time = 0.0f;
 		}
 		break;
 	case PS_CYCLE_TERMINAL:
-		m_waited_time += 1.0f;
+		m_waited_time += delta_time;
 
 		if (m_waited_time >= m_frame_terminal * m_frame_count + m_cycle_terminal)
 		{
@@ -65,15 +61,11 @@ void CSprite::Update()
 		}
 		else if (m_waited_time >= m_frame_terminal && m_waited_time < m_frame_terminal * m_frame_count)
 		{
-			m_cur_frame++;
-			if (m_cur_frame >= m_frame_count)
-			{
-				m_cur_frame = 0;
-			}
+			m_cur_frame = (m_cur_frame + 1) % m_frame_count;
 		}
 		break;
 	case PS_ONCE:
-		m_waited_time += 1.0f;
+		m_waited_time += delta_time;
 		if (m_waited_time >= m_frame_terminal)
 		{
 			m_cur_frame++;

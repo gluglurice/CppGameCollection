@@ -11,7 +11,9 @@ class CMapFC : public CSingleton<CMapFC>
 protected:
 	map<CMap::MapElem, Image> m_elem_imgs_map;
 
-	map<int, CMap*> m_level_map_map;
+	vector<CMap*> m_level_maps_origin;
+
+	vector<CMap*> m_level_maps;
 
 	CMapFC();
 

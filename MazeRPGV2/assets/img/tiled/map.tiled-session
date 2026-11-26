@@ -1,5 +1,5 @@
 {
-    "activeFile": "",
+    "activeFile": "levels/level_0.tmx",
     "expandedProjectPaths": [
         "levels",
         "."
@@ -22,11 +22,27 @@
             "scaleInDock": 1
         },
         "levels/level_0.tmx": {
-            "scale": 4.797499999999999,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 158.9369463262116,
-                "y": 88.69202709744661
+                "x": 160.16666666666663,
+                "y": 150.83333333333331
+            }
+        },
+        "levels/level_1.tmx": {
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 187.16666666666663,
+                "y": 174.16666666666666
+            }
+        },
+        "levels/level_2.tmx": {
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 160,
+                "y": 160
             }
         },
         "map.tmx": {
@@ -47,9 +63,14 @@
     "last.imagePath": "D:/Documents/9artedu/CppGameCollection/MazeRPGV2/assets/img/tiled/tiles/terrain",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "levels/level_0.tmx",
+        "levels/level_1.tmx",
+        "levels/level_2.tmx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
+        "levels/level_2.tmx",
+        "levels/level_1.tmx",
         "levels/level_0.tmx",
         "level_0.tmx",
         "map.tmx",

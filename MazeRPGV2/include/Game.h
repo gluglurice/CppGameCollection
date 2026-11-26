@@ -18,6 +18,7 @@ public:
 	static int GRAPH_HEIGHT;
 	static int MAP_TILE_SIZE;
 	static int FPS;
+	static float DELTA_TIME;
 	static float SCALE;
 	static vector<CVector3D> UNIT_VECS;
 

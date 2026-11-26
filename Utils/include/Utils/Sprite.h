@@ -65,7 +65,7 @@ public:
 
 	~CSprite();
 
-	void Update();
+	void Update(const float delta_time);
 
 	void Draw();
 };

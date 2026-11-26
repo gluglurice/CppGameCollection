@@ -12,6 +12,7 @@ int CGame::GRAPH_WIDTH;
 int CGame::GRAPH_HEIGHT;
 int CGame::MAP_TILE_SIZE;
 int CGame::FPS;
+float CGame::DELTA_TIME;
 float CGame::SCALE;
 
 vector<CVector3D> CGame::UNIT_VECS = {
@@ -71,6 +72,7 @@ CGame::CGame()
 	xml_root->QueryIntAttribute("graph_width", &GRAPH_WIDTH);
 	xml_root->QueryIntAttribute("graph_height", &GRAPH_HEIGHT);
 	xml_root->QueryIntAttribute("fps", &FPS);
+	xml_root->QueryFloatAttribute("delta_time", &DELTA_TIME);
 	xml_root->QueryFloatAttribute("scale", &SCALE);
 
 	TiXmlElement* xml_maps = xml_root->FirstChildElement("maps");
@@ -105,7 +107,7 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	MSG msg;
 
 	CMap* map = CMapFC::GetInstance()->CreateLevelMap(0);
-	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(CVector3D(2.0f, 8.0f, 0.0f), CCharacter::T_PLAYER);
+	CCharacter* link = CCharacterFC::GetInstance()->CreateCharacter(map->GetStartPositionLogic(), CCharacter::T_PLAYER);
 	link->UpdateState(CCharacter::S_IDLE, CActor::D_DOWN);
 	CVector3D target_position_render = link->GetPositionRender();
 

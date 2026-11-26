@@ -24,7 +24,7 @@ void CCharacter::Idle()
 {
 	int sprite_index = static_cast<int>(m_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(m_direction);
 	m_sprites[sprite_index]->SetPlayState(CSprite::PS_CYCLE_TERMINAL);
-	m_sprites[sprite_index]->Update();
+	m_sprites[sprite_index]->Update(CGame::DELTA_TIME);
 }
 
 void CCharacter::MoveRender(CVector3D offset)
@@ -33,7 +33,7 @@ void CCharacter::MoveRender(CVector3D offset)
 	int sprite_index = static_cast<int>(m_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(m_direction);
 	m_sprites[sprite_index]->SetPlayState(CSprite::PS_CYCLE);
 	m_sprites[sprite_index]->SetPosition(m_position_render);
-	m_sprites[sprite_index]->Update();
+	m_sprites[sprite_index]->Update(CGame::DELTA_TIME);
 }
 
 void CCharacter::MoveLogic(CVector3D offset)

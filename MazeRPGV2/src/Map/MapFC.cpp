@@ -43,10 +43,9 @@ CMapFC::CMapFC()
 		int row;
 		int col;
 		CVector3D start_position_logic(0.0f, 0.0f, 0.0f);
-		vector<vector<CMap::MapElem>> map_vals;
-
 		string src_txt_path = xml_map->Attribute("src_txt_path");
 
+		/* 根据 txt 读取地图地形数据 */
 		ifstream in_file(src_txt_path, ios::in);
 		if (!in_file)
 		{
@@ -54,21 +53,29 @@ CMapFC::CMapFC()
 			return;
 		}
 		in_file >> col >> row >> start_position_logic.x >> start_position_logic.y;
-		for (int r = 0; r < row; r++)
+
+		vector<vector<vector<CMap::MapElem>>> map_vals(
+			static_cast<int>(CMap::Layer::L_COUNT),vector<vector<CMap::MapElem>>(
+				row, vector<CMap::MapElem>(
+					col, CMap::ME_EMPTY)));
+
+		for (int layer = 0; layer < static_cast<int>(CMap::Layer::L_COUNT); layer++)
 		{
-			vector<CMap::MapElem> map_row;
-			for (int c = 0; c < col; c++)
+			for (int r = 0; r < row; r++)
 			{
-				int elem_val;
-				in_file >> elem_val;
-				map_row.push_back(static_cast<CMap::MapElem>(elem_val));
+				for (int c = 0; c < col; c++)
+				{
+					int elem_val;
+					in_file >> elem_val;
+					map_vals[layer][r][c] = static_cast<CMap::MapElem>(elem_val);
+				}
 			}
-			map_vals.push_back(map_row);
 		}
 
-		map = new CMap(level, map_vals[0].size(), map_vals.size(), tile_size, scale, map_vals);
+		map = new CMap(level, col, row, tile_size, scale, map_vals, start_position_logic);
 
-		m_level_map_map[level] = map;
+		m_level_maps_origin.push_back(map);
+		m_level_maps.push_back(map);
 		level++;
 	}
 }
@@ -76,11 +83,18 @@ CMapFC::CMapFC()
 CMapFC::~CMapFC()
 {
 	m_elem_imgs_map.clear();
-	for (auto& pair : m_level_map_map)
+
+	for (auto& map : m_level_maps_origin)
 	{
-		delete pair.second;
+		delete map;
 	}
-	m_level_map_map.clear();
+	m_level_maps_origin.clear();
+
+	for (auto& map : m_level_maps)
+	{
+		delete map;
+	}
+	m_level_maps.clear();
 }
 
 Image CMapFC::GetElemImg(CMap::MapElem elem)
@@ -90,5 +104,5 @@ Image CMapFC::GetElemImg(CMap::MapElem elem)
 
 CMap* CMapFC::CreateLevelMap(int level)
 {
-	return new CMap(*m_level_map_map[level]);
+	return m_level_maps[level];
 }

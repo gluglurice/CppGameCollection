@@ -26,7 +26,7 @@ CCharacterFC::CCharacterFC()
 		xml_character->QueryFloatAttribute("velocity", &velocity);
 		xml_character->QueryIntAttribute("type", reinterpret_cast<int*>(&character_type));
 
-		CVector3D center(tile_size * scale / 2.0f, tile_size * scale / 2.0f, 0);
+		CVector3D center(tile_size / 2.0f, tile_size / 2.0f, 0);
 		CVector3D position_logic(0.0f, 0.0f, 0.0f);
 		CVector3D position_render(0.0f, 0.0f, 0.0f);
 		CVector3D rotation(0.0f, 0.0f, 0.0f);
@@ -40,26 +40,24 @@ CCharacterFC::CCharacterFC()
 			CCharacter::State sprite_state;
 			int row_num;
 			int col_num;
-			float scale;
 			CSprite::Direction direction;
 			CSprite::ReadMode read_mode;
 			int play_row;
 			int play_col;
-			unsigned frame_terminal;
-			unsigned cycle_terminal;
+			float frame_terminal;
+			float cycle_terminal;
 
 			Image* img;
 
 			xml_sprite->QueryIntAttribute("state", reinterpret_cast<int*>(&sprite_state));
 			xml_sprite->QueryIntAttribute("row_num", &row_num);
 			xml_sprite->QueryIntAttribute("col_num", &col_num);
-			xml_sprite->QueryFloatAttribute("scale", &scale);
 			xml_sprite->QueryIntAttribute("direction", reinterpret_cast<int*>(&direction));
 			xml_sprite->QueryIntAttribute("read_mode", reinterpret_cast<int*>(&read_mode));
 			xml_sprite->QueryIntAttribute("play_row", &play_row);
 			xml_sprite->QueryIntAttribute("play_col", &play_col);
-			xml_sprite->QueryUnsignedAttribute("frame_terminal", &frame_terminal);
-			xml_sprite->QueryUnsignedAttribute("cycle_terminal", &cycle_terminal);
+			xml_sprite->QueryFloatAttribute("frame_terminal", &frame_terminal);
+			xml_sprite->QueryFloatAttribute("cycle_terminal", &cycle_terminal);
 			string img_path = xml_sprite->Attribute("img_path");
 			wstring img_path_w(img_path.begin(), img_path.end());
 
@@ -103,5 +101,5 @@ CCharacter* CCharacterFC::CreateCharacter(CVector3D position_logic, CCharacter::
 		new_sprites.push_back(new CSprite(sprite->GetImg(), sprite->GetRowNum(), sprite->GetColNum(), sprite->GetCenter(), sprite->GetPosition(), sprite->GetRotation(), sprite->GetScale(), sprite->GetDirection(), sprite->GetReadMode(), sprite->GetPlayRow(), sprite->GetPlayCol(), sprite->GetFrameTerminal(), sprite->GetCycleTerminal()));
 	}
 
-	return new CCharacter(character->GetCenter(), position_logic, position_logic * CGame::MAP_TILE_SIZE + character->GetCenter(), character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), type, character->GetState(), new_sprites);
+	return new CCharacter(character->GetCenter(), position_logic, position_logic * CGame::MAP_TILE_SIZE + CVector3D(CGame::MAP_TILE_SIZE / 2.0f, CGame::MAP_TILE_SIZE / 2.0f, 0.0f), character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), type, character->GetState(), new_sprites);
 }
