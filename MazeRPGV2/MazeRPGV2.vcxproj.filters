@@ -33,6 +33,15 @@
     <ClInclude Include="include\Actor.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\Door.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Item.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Equipment.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Actor\Character.cpp">
@@ -54,6 +63,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Actor\Actor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Door.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Item.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Equipment.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

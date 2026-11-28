@@ -64,7 +64,7 @@ void CSprite::Update(const float delta_time)
 			m_cur_frame = (m_cur_frame + 1) % m_frame_count;
 		}
 		break;
-	case PS_ONCE:
+	case PS_ONCE_DISAPPEAR:
 		m_waited_time += delta_time;
 		if (m_waited_time >= m_frame_terminal)
 		{
@@ -76,6 +76,17 @@ void CSprite::Update(const float delta_time)
 				m_is_visible = false;
 			}
 			m_waited_time = 0.0f;
+		}
+		break;
+	case PS_ONCE_STOP:
+		if (m_cur_frame < m_frame_count - 1)
+		{
+			m_waited_time += delta_time;
+			if (m_waited_time >= m_frame_terminal)
+			{
+				m_cur_frame++;
+				m_waited_time = 0.0f;
+			}
 		}
 		break;
 	}

@@ -147,7 +147,10 @@
     <ClInclude Include="include\Actor.h" />
     <ClInclude Include="include\Character.h" />
     <ClInclude Include="include\CharacterFC.h" />
+    <ClInclude Include="include\Door.h" />
+    <ClInclude Include="include\Equipment.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Item.h" />
     <ClInclude Include="include\Map.h" />
     <ClInclude Include="include\MapFC.h" />
   </ItemGroup>
@@ -155,6 +158,9 @@
     <ClCompile Include="src\Actor\Actor.cpp" />
     <ClCompile Include="src\Actor\Character.cpp" />
     <ClCompile Include="src\Actor\CharacterFC.cpp" />
+    <ClCompile Include="src\Actor\Door.cpp" />
+    <ClCompile Include="src\Actor\Equipment.cpp" />
+    <ClCompile Include="src\Actor\Item.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Map\Map.cpp" />

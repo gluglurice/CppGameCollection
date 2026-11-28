@@ -3,14 +3,14 @@
 	<version>dev-0.1</version>
 	<characters>
 		<character scale="1.5" tile_size="32" velocity="3.0" camp="0">
-			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="1" play_row="0" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
-			<sprite state="0" row_num="4" col_num="3" direction="1" read_mode="1" play_row="1" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
-			<sprite state="0" row_num="4" col_num="3" direction="2" read_mode="1" play_row="2" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
-			<sprite state="0" row_num="4" col_num="3" direction="3" read_mode="1" play_row="3" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
-			<sprite state="1" row_num="4" col_num="10" direction="0" read_mode="1" play_row="0" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
-			<sprite state="1" row_num="4" col_num="10" direction="1" read_mode="1" play_row="1" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
-			<sprite state="1" row_num="4" col_num="10" direction="2" read_mode="1" play_row="2" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
-			<sprite state="1" row_num="4" col_num="10" direction="3" read_mode="1" play_row="3" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
+			<sprite state="1" row_num="4" col_num="3" direction="0" read_mode="1" play_row="0" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
+			<sprite state="1" row_num="4" col_num="3" direction="1" read_mode="1" play_row="1" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
+			<sprite state="1" row_num="4" col_num="3" direction="2" read_mode="1" play_row="2" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
+			<sprite state="1" row_num="4" col_num="3" direction="3" read_mode="1" play_row="3" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
+			<sprite state="2" row_num="4" col_num="10" direction="0" read_mode="1" play_row="0" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
+			<sprite state="2" row_num="4" col_num="10" direction="1" read_mode="1" play_row="1" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
+			<sprite state="2" row_num="4" col_num="10" direction="2" read_mode="1" play_row="2" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
+			<sprite state="2" row_num="4" col_num="10" direction="3" read_mode="1" play_row="3" play_col="0" frame_terminal="0.5" cycle_terminal="10.0" img_path="assets/img/character/Link_walk.png" />
 		</character>
 	</characters>
 	<maps tile_size="16" scale="2.0">

@@ -12,7 +12,8 @@ public:
 		PS_STOP,
 		PS_CYCLE,
 		PS_CYCLE_TERMINAL,
-		PS_ONCE,
+		PS_ONCE_DISAPPEAR,
+		PS_ONCE_STOP,
 	};
 
 	enum ReadMode

@@ -19,6 +19,7 @@ public:
 
 	enum State
 	{
+		S_STILL,
 		S_IDLE,
 		S_MOVE,
 		S_COUNT,
