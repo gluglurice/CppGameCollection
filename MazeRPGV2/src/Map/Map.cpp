@@ -1,11 +1,12 @@
 ﻿#include "Map.h"
 
 #include "MapFC.h"
+#include "Actor.h"
 
 CMap::CMap() {}
 
-CMap::CMap(int level, int width, int height, int tile_size, float scale, vector<vector<vector<MapElem>>>& map, CVector3D start_position_logic)
-	: m_level(level), m_width(width), m_height(height), m_tile_size(tile_size), m_scale(scale), m_start_position_logic(start_position_logic)
+CMap::CMap(int level, int width, int height, int tile_size, float scale, vector<vector<vector<MapElem>>>& map, CVector3D start_position_logic, ObjectsMap objects)
+	: m_level(level), m_width(width), m_height(height), m_tile_size(tile_size), m_scale(scale), m_start_position_logic(start_position_logic), m_objects(objects)
 {
 	for (int layer = 0; layer < static_cast<int>(CMap::Layer::L_COUNT); layer++)
 	{
@@ -38,11 +39,11 @@ bool CMap::IsWalkable(CVector3D position_logic)
 		|| m_map[CMap::L_TERRAIN][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_TERRAIN_40
 		|| m_map[CMap::L_TERRAIN][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_TERRAIN_49;
 	
-	bool is_environment_walkable = m_map[CMap::L_ENVIRONMENT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY;
+	bool is_environment_background_walkable = m_map[CMap::L_ENVIRONMENT_BACKGROUND][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY;
 
 	bool is_object_walkable = m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY;
 
-	return is_environment_walkable && is_object_walkable && is_terrain_walkable;
+	return is_environment_background_walkable && is_object_walkable && is_terrain_walkable;
 }
 
 void CMap::Draw(CMap::Layer layer)
@@ -68,3 +69,4 @@ GET_SET_FUN_DEFINE(int, CMap, m_tile_size, TileSize)
 GET_SET_FUN_DEFINE(float, CMap, m_scale, Scale)
 GET_SET_FUN_DEFINE(vector<vector<vector<CMap::MapElem>>>, CMap, m_map, Map)
 GET_SET_FUN_DEFINE(CVector3D, CMap, m_start_position_logic, StartPositionLogic)
+GET_SET_FUN_DEFINE(CMap::ObjectsMap, CMap, m_objects, Objects)

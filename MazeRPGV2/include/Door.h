@@ -19,7 +19,7 @@ GET_SET_FUN_DECLAR(bool, m_is_open, IsOpen)
 public:
 	CDoor();
 
-	CDoor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, bool is_open);
+	CDoor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Type type, bool is_open);
 
 	~CDoor();
 

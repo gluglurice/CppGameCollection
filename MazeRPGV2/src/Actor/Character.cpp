@@ -1,11 +1,12 @@
 ﻿#include "Character.h"
 
 #include "Game.h"
+#include "Map.h"
 
 CCharacter::CCharacter() {}
 
-CCharacter::CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Camp camp)
-	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_camp(camp) { }
+CCharacter::CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Camp camp, Type type)
+	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_camp(camp), m_type(type) { }
 
 CCharacter::~CCharacter() {}
 
@@ -22,6 +23,16 @@ void CCharacter::UpdateState(State state, Direction direction)
 void CCharacter::Update()
 {
 	CActor::Update();
+}
+
+void CCharacter::DetectCollision(CMap* map, CVector3D position)
+{
+	if (!map->IsWalkable(position))
+	{
+		return;
+	}
+	this->UpdateState(CCharacter::S_MOVE, this->GetDirection());
+	this->SetTargetPositionRender(this->GetPositionRender() + CGame::UNIT_VECS[this->GetDirection()] * CGame::MAP_TILE_SIZE);
 }
 
 void CCharacter::Idle()
@@ -55,3 +66,4 @@ void CCharacter::Draw()
 }
 
 GET_SET_FUN_DEFINE(CCharacter::Camp, CCharacter, m_camp, Camp)
+GET_SET_FUN_DEFINE(CCharacter::Type, CCharacter, m_type, Type)

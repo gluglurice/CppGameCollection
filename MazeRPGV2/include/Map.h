@@ -4,13 +4,16 @@
 #include <Graphic.h>
 #include <Vector3D.h>
 
+class CActor;
+
 class CMap
 {
 public:
 	enum Layer
 	{
 		L_TERRAIN,
-		L_ENVIRONMENT,
+		L_ENVIRONMENT_BACKGROUND,
+		L_ENVIRONMENT_FOREGROUND,
 		L_OBJECT,
 		L_COUNT,
 	};
@@ -54,12 +57,12 @@ public:
 		ME_ENVIRONMENT_60 = 60,
 
 		/* 门 */
-		ME_ENVIRONMENT_10 = 10,
-		ME_ENVIRONMENT_11 = 11,
-		ME_ENVIRONMENT_12 = 12,
-		ME_ENVIRONMENT_46 = 46,
-		ME_ENVIRONMENT_47 = 47,
-		ME_ENVIRONMENT_48 = 48,
+		ME_DOOR_SINGLE_OPEN = 10,
+		ME_DOOR_DOUBLE_LEFT_OPEN = 11,
+		ME_DOOR_DOUBLE_RIGHT_OPEN = 12,
+		ME_DOOR_SINGLE_CLOSED = 46,
+		ME_DOOR_DOUBLE_LEFT_CLOSED = 47,
+		ME_DOOR_DOUBLE_RIGHT_CLOSED = 48,
 
 		/* 障碍物 */
 		ME_ENVIRONMENT_56 = 56,
@@ -68,6 +71,8 @@ public:
 		ME_ENVIRONMENT_82 = 82,
 	};
 
+	using ObjectsMap = map<CVector3D, CActor*>;
+
 GET_SET_FUN_DECLAR(int, m_level, Level)
 GET_SET_FUN_DECLAR(int, m_width, Width)
 GET_SET_FUN_DECLAR(int, m_height, Height)
@@ -75,11 +80,12 @@ GET_SET_FUN_DECLAR(int, m_tile_size, TileSize)
 GET_SET_FUN_DECLAR(float, m_scale, Scale)
 GET_SET_FUN_DECLAR(vector<vector<vector<MapElem>>>, m_map, Map)
 GET_SET_FUN_DECLAR(CVector3D, m_start_position_logic, StartPositionLogic)
+GET_SET_FUN_DECLAR(ObjectsMap, m_objects, Objects)
 
 public:
 	CMap();
 
-	CMap(int level, int width, int height, int tile_size, float scale, vector<vector<vector<MapElem>>>& map, CVector3D start_position_logic);
+	CMap(int level, int width, int height, int tile_size, float scale, vector<vector<vector<MapElem>>>& map, CVector3D start_position_logic, ObjectsMap objects);
 
 	~CMap();
 

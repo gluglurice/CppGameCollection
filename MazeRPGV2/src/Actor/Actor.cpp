@@ -1,6 +1,7 @@
 ﻿#include "Actor.h"
 
 #include "Game.h"
+#include "Map.h"
 
 CActor::CActor() {}
 
@@ -36,6 +37,11 @@ void CActor::UpdateState(State state, Direction direction)
 void CActor::Update()
 {
 	m_sprites[m_cur_sprite]->Update(CGame::DELTA_TIME);
+}
+
+void CActor::DetectCollision(CMap* map, CVector3D position)
+{
+
 }
 
 void CActor::Idle()

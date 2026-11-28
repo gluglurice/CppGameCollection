@@ -148,6 +148,7 @@
     <ClInclude Include="include\Character.h" />
     <ClInclude Include="include\CharacterFC.h" />
     <ClInclude Include="include\Door.h" />
+    <ClInclude Include="include\DoorFC.h" />
     <ClInclude Include="include\Equipment.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Item.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\Actor\Character.cpp" />
     <ClCompile Include="src\Actor\CharacterFC.cpp" />
     <ClCompile Include="src\Actor\Door.cpp" />
+    <ClCompile Include="src\Actor\DoorFC.cpp" />
     <ClCompile Include="src\Actor\Equipment.cpp" />
     <ClCompile Include="src\Actor\Item.cpp" />
     <ClCompile Include="src\main.cpp" />

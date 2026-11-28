@@ -3,6 +3,8 @@
 #include <fstream>
 
 #include "Game.h"
+#include "Door.h"
+#include "DoorFC.h"
 
 CMapFC::CMapFC()
 {
@@ -59,6 +61,9 @@ CMapFC::CMapFC()
 				row, vector<CMap::MapElem>(
 					col, CMap::ME_EMPTY)));
 
+		CMap::ObjectsMap objects;
+		CVector3D object_position_logic(0.0f, 0.0f, 0.0f);
+
 		for (int layer = 0; layer < static_cast<int>(CMap::Layer::L_COUNT); layer++)
 		{
 			for (int r = 0; r < row; r++)
@@ -68,11 +73,39 @@ CMapFC::CMapFC()
 					int elem_val;
 					in_file >> elem_val;
 					map_vals[layer][r][c] = static_cast<CMap::MapElem>(elem_val);
+
+					switch (elem_val)
+					{
+					case CMap::ME_DOOR_SINGLE_OPEN:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_SINGLE, true);
+						break;
+					case CMap::ME_DOOR_SINGLE_CLOSED:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_SINGLE, false);
+						break;
+					case CMap::ME_DOOR_DOUBLE_LEFT_OPEN:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_LEFT, true);
+						break;
+					case CMap::ME_DOOR_DOUBLE_LEFT_CLOSED:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_LEFT, false);
+						break;
+					case CMap::ME_DOOR_DOUBLE_RIGHT_OPEN:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_RIGHT, true);
+						break;
+					case CMap::ME_DOOR_DOUBLE_RIGHT_CLOSED:
+						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
+						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_RIGHT, false);
+						break;
+					}
 				}
 			}
 		}
 
-		map = new CMap(level, col, row, tile_size, scale, map_vals, start_position_logic);
+		map = new CMap(level, col, row, tile_size, scale, map_vals, start_position_logic, objects);
 
 		m_level_maps_origin.push_back(map);
 		m_level_maps.push_back(map);

@@ -5,6 +5,8 @@
 #include <Sprite.h>
 #include <Vector3D.h>
 
+class CMap;
+
 class CActor
 {
 public:
@@ -52,6 +54,8 @@ public:
 	virtual void UpdateState(State state, Direction direction);
 
 	virtual void Update();
+
+	virtual void DetectCollision(CMap* map, CVector3D position);
 
 	virtual void Idle();
 

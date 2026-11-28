@@ -4,8 +4,8 @@
 
 CDoor::CDoor() {}
 
-CDoor::CDoor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, bool is_open)
-	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_is_open(is_open) {}
+CDoor::CDoor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Type type, bool is_open)
+	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_type(type), m_is_open(is_open) {}
 
 CDoor::~CDoor() {}
 
