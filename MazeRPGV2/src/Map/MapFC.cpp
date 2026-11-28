@@ -79,6 +79,7 @@ CMapFC::CMapFC()
 					case CMap::ME_DOOR_SINGLE_OPEN:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
 						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_SINGLE, true);
+						((CDoor*)objects[object_position_logic])->Open();
 						break;
 					case CMap::ME_DOOR_SINGLE_CLOSED:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
@@ -87,6 +88,7 @@ CMapFC::CMapFC()
 					case CMap::ME_DOOR_DOUBLE_LEFT_OPEN:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
 						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_LEFT, true);
+						((CDoor*)objects[object_position_logic])->Open();
 						break;
 					case CMap::ME_DOOR_DOUBLE_LEFT_CLOSED:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
@@ -95,6 +97,7 @@ CMapFC::CMapFC()
 					case CMap::ME_DOOR_DOUBLE_RIGHT_OPEN:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);
 						objects[object_position_logic] = CDoorFC::GetInstance()->CreateDoor(object_position_logic, CDoor::T_DOUBLE_RIGHT, true);
+						((CDoor*)objects[object_position_logic])->Open();
 						break;
 					case CMap::ME_DOOR_DOUBLE_RIGHT_CLOSED:
 						object_position_logic = CVector3D(static_cast<float>(c), static_cast<float>(r), 0.0f);

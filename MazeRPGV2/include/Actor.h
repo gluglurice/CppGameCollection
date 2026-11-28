@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include <Utils.h>
-#include <Graphic.h>
 #include <Sprite.h>
+#include <Graphic.h>
 #include <Vector3D.h>
 
 class CMap;

@@ -198,7 +198,7 @@ void CGame::ListenCharacterMoveEvent()
 					m_character->MoveRender(UNIT_VECS[m_character->GetDirection()] * m_character->GetVelocity());
 					m_character->Update();
 				}
-				DrawAll();
+				Draw();
 				tick = clock();
 				CheckMessage();
 			}
@@ -230,12 +230,17 @@ void CGame::ListenCharacterMoveEvent()
 	}
 }
 
-void CGame::DrawAll()
+void CGame::Update()
+{
+	m_map->Update();
+}
+
+void CGame::Draw()
 {
 	CGraphic::GetInstance()->BeginDraw();
 	m_map->Draw(CMap::L_TERRAIN);
 	m_map->Draw(CMap::L_ENVIRONMENT_BACKGROUND);
-	m_map->Draw(CMap::L_OBJECT);
+	m_map->DrawObjects();
 	m_character->Draw();
 	m_map->Draw(CMap::L_ENVIRONMENT_FOREGROUND);
 	CGraphic::GetInstance()->EndDraw();
@@ -246,7 +251,8 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	while (!m_is_game_quit)
 	{
 		CheckMessage();
-		DrawAll();
+		Update();
+		Draw();
 		ListenLevelChangeEvent();
 		ListenCharacterIdleEvent();
 		ListenCharacterMoveEvent();

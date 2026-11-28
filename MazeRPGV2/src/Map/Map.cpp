@@ -53,6 +53,18 @@ bool CMap::IsWalkable(CVector3D position_logic)
 	return is_environment_background_walkable && is_object_walkable && is_terrain_walkable;
 }
 
+void CMap::Update()
+{
+	for (auto& pair : m_objects)
+	{
+		CActor* actor = pair.second;
+		if (actor)
+		{
+			actor->Update();
+		}
+	}
+}
+
 void CMap::Draw(CMap::Layer layer)
 {
 	for (int row = 0; row < m_height; row++)
@@ -65,6 +77,18 @@ void CMap::Draw(CMap::Layer layer)
 				Image elem_img = CMapFC::GetInstance()->GetElemImg(elem);
 				CGraphic::GetInstance()->DrawTex(elem_img, CVector3D(col * m_tile_size * m_scale, row * m_tile_size * m_scale, 0.0f), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(m_scale, m_scale, 1.0f));
 			}
+		}
+	}
+}
+
+void CMap::DrawObjects()
+{
+	for (auto& pair : m_objects)
+	{
+		CActor* actor = pair.second;
+		if (actor)
+		{
+			actor->Draw();
 		}
 	}
 }

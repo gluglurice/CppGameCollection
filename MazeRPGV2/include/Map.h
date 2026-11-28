@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <Utils.h>
+#include <Sprite.h>
 #include <Graphic.h>
 #include <Vector3D.h>
 
@@ -93,5 +94,9 @@ public:
 
 	bool IsWalkable(CVector3D position_logic);
 
+	void Update();
+
 	void Draw(Layer layer);
+
+	void DrawObjects();
 };
