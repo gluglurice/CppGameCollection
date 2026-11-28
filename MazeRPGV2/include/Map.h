@@ -94,7 +94,9 @@ public:
 
 	bool IsWalkable(CVector3D position_logic);
 
-	void Update();
+	void OpenDoorRender(CVector3D position_logic);
+
+	void OpenDoorLogic(CVector3D position_logic);
 
 	void Draw(Layer layer);
 

@@ -4,6 +4,8 @@
 #include "MapFC.h"
 #include "Character.h"
 #include "CharacterFC.h"
+#include "Door.h"
+#include "DoorFC.h"
 
 const string CGame::GAME_INI_PATH = "config/game_ini.xml";
 const float CGame::ONE_SEC = 1000.0f;
@@ -128,7 +130,7 @@ void CGame::ListenLevelChangeEvent()
 		m_character->SetPositionLogic(m_map->GetStartPositionLogic());
 		CVector3D position_render = m_character->GetPositionLogic() * MAP_TILE_SIZE + CVector3D(MAP_TILE_SIZE / 2.0f, MAP_TILE_SIZE / 2.0f, 0.0f);
 		m_character->SetPositionRender(position_render);
-		m_character->SetDirection(CCharacter::D_UP);
+		m_character->UpdateState(m_character->GetState(), CActor::D_UP);
 	}
 	if (m_key_pressed['K'][0] && !m_key_pressed['K'][1] && m_level < CMapFC::GetInstance()->GetLevelCount() - 1)
 	{
@@ -137,7 +139,7 @@ void CGame::ListenLevelChangeEvent()
 		m_character->SetPositionLogic(m_map->GetStartPositionLogic());
 		CVector3D position_render = m_character->GetPositionLogic() * MAP_TILE_SIZE + CVector3D(MAP_TILE_SIZE / 2.0f, MAP_TILE_SIZE / 2.0f, 0.0f);
 		m_character->SetPositionRender(position_render);
-		m_character->SetDirection(CCharacter::D_UP);
+		m_character->UpdateState(m_character->GetState(), CActor::D_UP);
 	}
 }
 
@@ -230,9 +232,70 @@ void CGame::ListenCharacterMoveEvent()
 	}
 }
 
-void CGame::Update()
+void CGame::ListenDoorOpenEvent()
 {
-	m_map->Update();
+	for (auto& pair : m_map->GetObjects())
+	{
+		CDoor* door = dynamic_cast<CDoor*>(pair.second);
+		CDoor* door_right = nullptr;
+		CDoor* door_left = nullptr;
+		if (!door)
+		{
+			continue;
+		}
+		if (door->GetType() == CDoor::T_DOUBLE_LEFT)
+		{
+			door_right = dynamic_cast<CDoor*>(m_map->GetObjects()[door->GetPositionLogic() + CGame::UNIT_VECS[CActor::D_RIGHT]]);
+		}
+		if (door->GetType() == CDoor::T_DOUBLE_RIGHT)
+		{
+			door_left = dynamic_cast<CDoor*>(m_map->GetObjects()[door->GetPositionLogic() + CGame::UNIT_VECS[CActor::D_LEFT]]);
+		}
+		if (door->GetState() == CActor::S_MOVE)
+		{
+			unsigned tick = clock();
+			int cur_frame = door->GetSprites()[door->GetCurSprite()]->GetCurFrame();
+			int frame_count = door->GetSprites()[door->GetCurSprite()]->GetFrameCount();
+			while (cur_frame < frame_count - 1)
+			{
+				if (clock() - tick >= ONE_SEC / FPS)
+				{
+					door->Update();
+					if (door_right)
+					{
+						door_right->Update();
+					}
+					if (door_left)
+					{
+						door_left->Update();
+					}
+					Draw();
+					tick = clock();
+					CheckMessage();
+					cur_frame = door->GetSprites()[door->GetCurSprite()]->GetCurFrame();
+				}
+			}
+			m_map->OpenDoorLogic(door->GetPositionLogic());
+			if (door_right)
+			{
+				m_map->OpenDoorLogic(door_right->GetPositionLogic());
+			}
+			if (door_left)
+			{
+				m_map->OpenDoorLogic(door_left->GetPositionLogic());
+			}
+
+			door->SetState(CActor::S_STILL);
+			if (door_right)
+			{
+				door_right->SetState(CActor::S_STILL);
+			}
+			if (door_left)
+			{
+				door_left->SetState(CActor::S_STILL);
+			}
+		}
+	}
 }
 
 void CGame::Draw()
@@ -251,11 +314,11 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 	while (!m_is_game_quit)
 	{
 		CheckMessage();
-		Update();
 		Draw();
 		ListenLevelChangeEvent();
 		ListenCharacterIdleEvent();
 		ListenCharacterMoveEvent();
+		ListenDoorOpenEvent();
 	}
 
 	return 0;

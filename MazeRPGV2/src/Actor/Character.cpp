@@ -39,7 +39,8 @@ void CCharacter::DetectCollision(CMap* map, CVector3D position)
 	if (elem_obj == CMap::ME_DOOR_SINGLE_OPEN
 		|| elem_obj == CMap::ME_DOOR_DOUBLE_LEFT_OPEN
 		|| elem_obj == CMap::ME_DOOR_DOUBLE_RIGHT_OPEN
-		|| elem_env_fg == CMap::ME_DOOR_WALL_1)
+		|| elem_env_fg == CMap::ME_DOOR_WALL_1
+		|| elem_env_fg == CMap::ME_DOOR_WALL_2)
 	{
 		this->UpdateState(CCharacter::S_MOVE, this->GetDirection());
 		move_tile_num++;
@@ -49,9 +50,20 @@ void CCharacter::DetectCollision(CMap* map, CVector3D position)
 		{
 			move_tile_num++;
 			position += CGame::UNIT_VECS[this->GetDirection()];
+			if (position.x < 0 || position.x >= map->GetHeight() || position.y < 0 || position.y >= map->GetWidth())
+			{
+				break;
+			}
 		}
 		this->SetTargetPositionRender(this->GetPositionRender() + CGame::UNIT_VECS[this->GetDirection()] * CGame::MAP_TILE_SIZE * move_tile_num);
 		this->SetTargetPositionLogic(this->GetPositionLogic() + CGame::UNIT_VECS[this->GetDirection()] * move_tile_num);
+	}
+
+	else if (elem_obj == CMap::ME_DOOR_SINGLE_CLOSED
+		|| elem_obj == CMap::ME_DOOR_DOUBLE_LEFT_CLOSED
+		|| elem_obj == CMap::ME_DOOR_DOUBLE_RIGHT_CLOSED)
+	{
+		map->OpenDoorRender(position);
 	}
 
 	else

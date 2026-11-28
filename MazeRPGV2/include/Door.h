@@ -25,6 +25,8 @@ public:
 
 	void UpdateCurSprite() override;
 
+	void UpdateState(State state, Direction direction) override;
+
 	void Update() override;
 
 	void Idle() override;

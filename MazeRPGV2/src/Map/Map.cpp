@@ -2,6 +2,8 @@
 
 #include "MapFC.h"
 #include "Actor.h"
+#include "Door.h"
+#include "Game.h"
 
 CMap::CMap() {}
 
@@ -48,20 +50,72 @@ bool CMap::IsWalkable(CVector3D position_logic)
 	bool is_object_walkable = m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY
 		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_SINGLE_OPEN
 		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_LEFT_OPEN
-		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_RIGHT_OPEN;
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_RIGHT_OPEN
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_SINGLE_CLOSED
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_LEFT_CLOSED
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_RIGHT_CLOSED;
 
 	return is_environment_background_walkable && is_object_walkable && is_terrain_walkable;
 }
 
-void CMap::Update()
+void CMap::OpenDoorRender(CVector3D position_logic)
 {
-	for (auto& pair : m_objects)
+	if (m_objects.find(position_logic) == m_objects.end())
 	{
-		CActor* actor = pair.second;
-		if (actor)
-		{
-			actor->Update();
-		}
+		return;
+	}
+	CDoor* door = dynamic_cast<CDoor*>(m_objects[position_logic]);
+	CDoor::Type door_type = door->GetType();
+	switch (door_type)
+	{
+	case CDoor::T_SINGLE:
+	{
+		door->UpdateState(CActor::S_MOVE, door->GetDirection());
+		door->Open();
+		break;
+	}
+	case CDoor::T_DOUBLE_LEFT:
+	{
+		CDoor* door_right = dynamic_cast<CDoor*>(m_objects[position_logic + CGame::UNIT_VECS[CActor::D_RIGHT]]);
+		door->UpdateState(CActor::S_MOVE, door->GetDirection());
+		door_right->UpdateState(CActor::S_MOVE, door_right->GetDirection());
+		door->Open();
+		door_right->Open();
+	}
+		break;
+	case CDoor::T_DOUBLE_RIGHT:
+	{
+		CDoor* door_left = dynamic_cast<CDoor*>(m_objects[position_logic - CGame::UNIT_VECS[CActor::D_LEFT]]);
+		door->UpdateState(CActor::S_MOVE, door->GetDirection());
+		door_left->UpdateState(CActor::S_MOVE, door_left->GetDirection());
+		door->Open();
+		door_left->Open();
+	}
+		break;
+	}
+}
+
+void CMap::OpenDoorLogic(CVector3D position_logic)
+{
+	if (m_objects.find(position_logic) == m_objects.end())
+	{
+		return;
+	}
+	CDoor* door = dynamic_cast<CDoor*>(m_objects[position_logic]);
+	CDoor::Type door_type = door->GetType();
+	switch (door_type)
+	{
+	case CDoor::T_SINGLE:
+		m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] = CMap::ME_DOOR_SINGLE_OPEN;
+		break;
+	case CDoor::T_DOUBLE_LEFT:
+		m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] = CMap::ME_DOOR_DOUBLE_LEFT_OPEN;
+		m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x + 1)] = CMap::ME_DOOR_DOUBLE_RIGHT_OPEN;
+		break;
+	case CDoor::T_DOUBLE_RIGHT:
+		m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x - 1)] = CMap::ME_DOOR_DOUBLE_LEFT_OPEN;
+		m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] = CMap::ME_DOOR_DOUBLE_RIGHT_OPEN;
+		break;
 	}
 }
 

@@ -72,7 +72,7 @@ CDoorFC::CDoorFC()
 				CGraphic::GetInstance()->LoadTex(img_path_w.c_str(), *img);
 				img_map[img_path_w] = img;
 			}
-			int sprite_index = static_cast<int>(sprite_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(direction);
+			int sprite_index = static_cast<int>(sprite_state);
 			sprites[sprite_index] = new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal);
 		}
 		int door_index = static_cast<int>(type);

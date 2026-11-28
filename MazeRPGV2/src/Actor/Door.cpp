@@ -5,13 +5,23 @@
 CDoor::CDoor() {}
 
 CDoor::CDoor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Type type, bool is_open)
-	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_type(type), m_is_open(is_open) {}
+	: CActor(center, position_logic, position_render, rotation, scale, tile_size, direction, velocity, state, sprites), m_type(type), m_is_open(is_open)
+{
+	UpdateCurSprite();
+	m_sprites[m_cur_sprite]->SetIsVisible(true);
+	m_sprites[m_cur_sprite]->SetPosition(m_position_render);
+}
 
 CDoor::~CDoor() {}
 
 void CDoor::UpdateCurSprite()
 {
-	m_cur_sprite = static_cast<int>(m_type);
+	m_cur_sprite = static_cast<int>(m_state);
+}
+
+void CDoor::UpdateState(State state, Direction direction)
+{
+	CActor::UpdateState(state, direction);
 }
 
 void CDoor::Update()

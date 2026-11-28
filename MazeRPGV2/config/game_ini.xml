@@ -67,13 +67,16 @@
 	</maps>
 	<doors>
 		<door scale="2.0" tile_size="16" type="0">
-			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="0" frame_terminal="2.0" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="0" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="2" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="0" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
 		</door>
 		<door scale="2.0" tile_size="16" type="1">
-			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="1" frame_terminal="2.0" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="1" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="2" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="1" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
 		</door>
 		<door scale="2.0" tile_size="16" type="2">
-			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="2" frame_terminal="2.0" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="2" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
+			<sprite state="2" row_num="4" col_num="3" direction="0" read_mode="2" play_row="0" play_col="2" frame_terminal="0.5" cycle_terminal="0.0" img_path="assets/img/object/door.png" />
 		</door>
 	</doors>
 </game>

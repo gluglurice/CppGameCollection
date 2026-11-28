@@ -22,10 +22,6 @@ void CActor::UpdateCurSprite()
 
 void CActor::UpdateState(State state, Direction direction)
 {
-	if (m_state == state && m_direction == direction)
-	{
-		return;
-	}
 	m_sprites[m_cur_sprite]->SetIsVisible(false);
 	m_state = state;
 	m_direction = direction;
