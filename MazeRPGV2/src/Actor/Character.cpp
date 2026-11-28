@@ -19,6 +19,11 @@ void CCharacter::UpdateState(State state, Direction direction)
 	CActor::UpdateState(state, direction);
 }
 
+void CCharacter::Update()
+{
+	CActor::Update();
+}
+
 void CCharacter::Idle()
 {
 	CActor::Idle();
@@ -26,12 +31,17 @@ void CCharacter::Idle()
 
 void CCharacter::MoveRender(CVector3D offset)
 {
-	CActor::MoveRender(offset);
+	if (m_sprites[m_cur_sprite]->GetPlayState() != CSprite::PS_CYCLE)
+	{
+		m_sprites[m_cur_sprite]->SetPlayState(CSprite::PS_CYCLE);
+	}
+	m_position_render += offset;
+	m_sprites[m_cur_sprite]->SetPosition(m_position_render);
 }
 
 void CCharacter::MoveLogic(CVector3D offset)
 {
-	CActor::MoveLogic(offset);
+	m_position_logic += offset;
 }
 
 void CCharacter::Destroy()

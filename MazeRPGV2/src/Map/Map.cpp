@@ -45,20 +45,17 @@ bool CMap::IsWalkable(CVector3D position_logic)
 	return is_environment_walkable && is_object_walkable && is_terrain_walkable;
 }
 
-void CMap::Draw()
+void CMap::Draw(CMap::Layer layer)
 {
-	for (int layer = 0; layer < static_cast<int>(CMap::Layer::L_COUNT); layer++)
+	for (int row = 0; row < m_height; row++)
 	{
-		for (int row = 0; row < m_height; row++)
+		for (int col = 0; col < m_width; col++)
 		{
-			for (int col = 0; col < m_width; col++)
+			CMap::MapElem elem = m_map[layer][row][col];
+			if (elem != CMap::ME_EMPTY)
 			{
-				CMap::MapElem elem = m_map[layer][row][col];
-				if (elem != CMap::ME_EMPTY)
-				{
-					Image elem_img = CMapFC::GetInstance()->GetElemImg(elem);
-					CGraphic::GetInstance()->DrawTex(elem_img, CVector3D(col * m_tile_size * m_scale, row * m_tile_size * m_scale, 0.0f), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(m_scale, m_scale, 1.0f));
-				}
+				Image elem_img = CMapFC::GetInstance()->GetElemImg(elem);
+				CGraphic::GetInstance()->DrawTex(elem_img, CVector3D(col * m_tile_size * m_scale, row * m_tile_size * m_scale, 0.0f), CVector3D(0, 0, 0), CVector3D(0, 0, 0), CVector3D(m_scale, m_scale, 1.0f));
 			}
 		}
 	}

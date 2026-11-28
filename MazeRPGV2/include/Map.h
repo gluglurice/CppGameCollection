@@ -85,5 +85,5 @@ public:
 
 	bool IsWalkable(CVector3D position_logic);
 
-	void Draw();
+	void Draw(Layer layer);
 };

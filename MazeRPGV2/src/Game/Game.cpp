@@ -73,9 +73,9 @@ CGame::CGame()
 	/* 加载游戏配置 */
 	TiXmlDocument xml_doc;
 
-	if (!xml_doc.LoadFile(CGame::GAME_INI_PATH.c_str()))
+	if (!xml_doc.LoadFile(GAME_INI_PATH.c_str()))
 	{
-		cerr << "打开XML文件失败：" << CGame::GAME_INI_PATH << endl;
+		cerr << "打开XML文件失败：" << GAME_INI_PATH << endl;
 		return;
 	}
 
@@ -95,7 +95,7 @@ CGame::CGame()
 	MAP_TILE_SIZE = map_tile_size * map_scale;
 
 	/* 初始化窗口 */
-	auto hwnd = CGraphic::GetInstance()->InitWindow(&CGame::WndProc, CGame::GRAPH_WIDTH, CGame::GRAPH_HEIGHT);
+	auto hwnd = CGraphic::GetInstance()->InitWindow(&WndProc, GRAPH_WIDTH, GRAPH_HEIGHT);
 	CGraphic::GetInstance()->InitDX(hwnd);
 	CGraphic::GetInstance()->m_pDevice->SetRenderState(D3DRS_ZENABLE, false);
 
@@ -126,7 +126,7 @@ void CGame::ListenLevelChangeEvent()
 		m_key_pressed['J'][1] = true;
 		m_map = CMapFC::GetInstance()->GetLevelMap(--m_level);
 		m_character->SetPositionLogic(m_map->GetStartPositionLogic());
-		CVector3D position_render = m_character->GetPositionLogic() * CGame::MAP_TILE_SIZE + CVector3D(CGame::MAP_TILE_SIZE / 2.0f, CGame::MAP_TILE_SIZE / 2.0f, 0.0f);
+		CVector3D position_render = m_character->GetPositionLogic() * MAP_TILE_SIZE + CVector3D(MAP_TILE_SIZE / 2.0f, MAP_TILE_SIZE / 2.0f, 0.0f);
 		m_character->SetPositionRender(position_render);
 		m_character->SetDirection(CCharacter::D_UP);
 	}
@@ -135,7 +135,7 @@ void CGame::ListenLevelChangeEvent()
 		m_key_pressed['K'][1] = true;
 		m_map = CMapFC::GetInstance()->GetLevelMap(++m_level);
 		m_character->SetPositionLogic(m_map->GetStartPositionLogic());
-		CVector3D position_render = m_character->GetPositionLogic() * CGame::MAP_TILE_SIZE + CVector3D(CGame::MAP_TILE_SIZE / 2.0f, CGame::MAP_TILE_SIZE / 2.0f, 0.0f);
+		CVector3D position_render = m_character->GetPositionLogic() * MAP_TILE_SIZE + CVector3D(MAP_TILE_SIZE / 2.0f, MAP_TILE_SIZE / 2.0f, 0.0f);
 		m_character->SetPositionRender(position_render);
 		m_character->SetDirection(CCharacter::D_UP);
 	}
@@ -147,6 +147,7 @@ void CGame::ListenCharacterIdleEvent()
 	{
 		m_character->UpdateState(CCharacter::S_IDLE, m_character->GetDirection());
 		m_character->Idle();
+		m_character->Update();
 	}
 
 	if (m_character->GetState() == CCharacter::S_IDLE)
@@ -169,10 +170,10 @@ void CGame::ListenCharacterIdleEvent()
 			direction = CActor::D_RIGHT;
 		}
 		m_character->UpdateState(CCharacter::S_IDLE, direction);
-		if (m_moving_key_pressed_count > 0 && m_map->IsWalkable(m_character->GetPositionLogic() + CGame::UNIT_VECS[direction]))
+		if (m_moving_key_pressed_count > 0 && m_map->IsWalkable(m_character->GetPositionLogic() + UNIT_VECS[direction]))
 		{
 			m_character->UpdateState(CCharacter::S_MOVE, direction);
-			m_character->SetTargetPositionRender(m_character->GetPositionRender() + CGame::UNIT_VECS[direction] * MAP_TILE_SIZE);
+			m_character->SetTargetPositionRender(m_character->GetPositionRender() + UNIT_VECS[direction] * MAP_TILE_SIZE);
 		}
 	}
 }
@@ -185,23 +186,22 @@ void CGame::ListenCharacterMoveEvent()
 		CVector3D remaining_offset = m_character->GetTargetPositionRender() - m_character->GetPositionRender();
 		while (remaining_offset.Length() >= m_character->GetVelocity())
 		{
-			if (clock() - tick >= CGame::ONE_SEC / CGame::FPS)
+			if (clock() - tick >= ONE_SEC / FPS)
 			{
 				remaining_offset = m_character->GetTargetPositionRender() - m_character->GetPositionRender();
 				if (remaining_offset.Length() < m_character->GetVelocity())
 				{
 					m_character->MoveRender(remaining_offset);
+					m_character->Update();
 				}
 				else
 				{
 					m_character->MoveRender(UNIT_VECS[m_character->GetDirection()] * m_character->GetVelocity());
+					m_character->Update();
 				}
-				CGraphic::GetInstance()->BeginDraw();
-				m_map->Draw();
-				m_character->Draw();
-				CGraphic::GetInstance()->EndDraw();
+				DrawAll();
 				tick = clock();
-				CGame::CheckMessage();
+				CheckMessage();
 			}
 		}
 		m_character->MoveLogic(UNIT_VECS[m_character->GetDirection()]);
@@ -224,10 +224,10 @@ void CGame::ListenCharacterMoveEvent()
 			direction = CActor::D_RIGHT;
 		}
 		m_character->UpdateState(CCharacter::S_IDLE, direction);
-		if (m_moving_key_pressed_count > 0 && m_map->IsWalkable(m_character->GetPositionLogic() + CGame::UNIT_VECS[direction]))
+		if (m_moving_key_pressed_count > 0 && m_map->IsWalkable(m_character->GetPositionLogic() + UNIT_VECS[direction]))
 		{
 			m_character->UpdateState(CCharacter::S_MOVE, direction);
-			m_character->SetTargetPositionRender(m_character->GetPositionRender() + CGame::UNIT_VECS[direction] * MAP_TILE_SIZE);
+			m_character->SetTargetPositionRender(m_character->GetPositionRender() + UNIT_VECS[direction] * MAP_TILE_SIZE);
 		}
 	}
 }
@@ -235,7 +235,9 @@ void CGame::ListenCharacterMoveEvent()
 void CGame::DrawAll()
 {
 	CGraphic::GetInstance()->BeginDraw();
-	m_map->Draw();
+	m_map->Draw(CMap::L_TERRAIN);
+	m_map->Draw(CMap::L_ENVIRONMENT);
+	m_map->Draw(CMap::L_OBJECT);
 	m_character->Draw();
 	CGraphic::GetInstance()->EndDraw();
 }
@@ -244,11 +246,11 @@ int CGame::WinRun(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _I
 {
 	while (!m_is_game_quit)
 	{
-		CGame::CheckMessage();
-		CGame::DrawAll();
-		CGame::ListenLevelChangeEvent();
-		CGame::ListenCharacterIdleEvent();
-		CGame::ListenCharacterMoveEvent();
+		CheckMessage();
+		DrawAll();
+		ListenLevelChangeEvent();
+		ListenCharacterIdleEvent();
+		ListenCharacterMoveEvent();
 	}
 
 	return 0;

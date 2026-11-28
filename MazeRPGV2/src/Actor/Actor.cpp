@@ -8,6 +8,8 @@ CActor::CActor(CVector3D center, CVector3D position_logic, CVector3D position_re
 	: m_center(center), m_position_logic(position_logic), m_position_render(position_render), m_target_position_render(position_render), m_rotation(rotation), m_scale(scale), m_tile_size(tile_size), m_direction(direction), m_velocity(velocity), m_state(state), m_sprites(sprites)
 {
 	UpdateCurSprite();
+	m_sprites[m_cur_sprite]->SetIsVisible(true);
+	m_sprites[m_cur_sprite]->SetPosition(m_position_render);
 }
 
 CActor::~CActor() {}
@@ -19,6 +21,10 @@ void CActor::UpdateCurSprite()
 
 void CActor::UpdateState(State state, Direction direction)
 {
+	if (m_state == state && m_direction == direction)
+	{
+		return;
+	}
 	m_sprites[m_cur_sprite]->SetIsVisible(false);
 	m_state = state;
 	m_direction = direction;
@@ -27,23 +33,17 @@ void CActor::UpdateState(State state, Direction direction)
 	m_sprites[m_cur_sprite]->SetPosition(m_position_render);
 }
 
+void CActor::Update()
+{
+	m_sprites[m_cur_sprite]->Update(CGame::DELTA_TIME);
+}
+
 void CActor::Idle()
 {
-	m_sprites[m_cur_sprite]->SetPlayState(CSprite::PS_CYCLE_TERMINAL);
-	m_sprites[m_cur_sprite]->Update(CGame::DELTA_TIME);
-}
-
-void CActor::MoveRender(CVector3D offset)
-{
-	m_position_render += offset;
-	m_sprites[m_cur_sprite]->SetPlayState(CSprite::PS_CYCLE);
-	m_sprites[m_cur_sprite]->SetPosition(m_position_render);
-	m_sprites[m_cur_sprite]->Update(CGame::DELTA_TIME);
-}
-
-void CActor::MoveLogic(CVector3D offset)
-{
-	m_position_logic += offset;
+	if (m_sprites[m_cur_sprite]->GetPlayState() != CSprite::PS_CYCLE_TERMINAL)
+	{
+		m_sprites[m_cur_sprite]->SetPlayState(CSprite::PS_CYCLE_TERMINAL);
+	}
 }
 
 void CActor::Destroy()
@@ -53,8 +53,7 @@ void CActor::Destroy()
 
 void CActor::Draw()
 {
-	int sprite_index = static_cast<int>(m_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(m_direction);
-	m_sprites[sprite_index]->Draw();
+	m_sprites[m_cur_sprite]->Draw();
 }
 
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_center, Center)

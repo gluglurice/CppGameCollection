@@ -51,11 +51,9 @@ public:
 
 	virtual void UpdateState(State state, Direction direction);
 
+	virtual void Update();
+
 	virtual void Idle();
-
-	virtual void MoveRender(CVector3D offset);
-
-	virtual void MoveLogic(CVector3D offset);
 
 	virtual void Destroy();
 

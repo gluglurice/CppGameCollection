@@ -24,11 +24,13 @@ public:
 
 	void UpdateState(State state, Direction direction) override;
 
+	void Update() override;
+
 	void Idle() override;
 
-	void MoveRender(CVector3D offset) override;
+	void MoveRender(CVector3D offset);
 
-	void MoveLogic(CVector3D offset) override;
+	void MoveLogic(CVector3D offset);
 
 	void Destroy() override;
 
