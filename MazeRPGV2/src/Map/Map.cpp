@@ -41,7 +41,14 @@ bool CMap::IsWalkable(CVector3D position_logic)
 	
 	bool is_environment_background_walkable = m_map[CMap::L_ENVIRONMENT_BACKGROUND][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY;
 
-	bool is_object_walkable = m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY;
+	bool is_environment_foreground_walkable = m_map[CMap::L_ENVIRONMENT_FOREGROUND][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY
+		|| m_map[CMap::L_ENVIRONMENT_FOREGROUND][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_WALL_1
+		|| m_map[CMap::L_ENVIRONMENT_FOREGROUND][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_WALL_2;
+
+	bool is_object_walkable = m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_EMPTY
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_SINGLE_OPEN
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_LEFT_OPEN
+		|| m_map[CMap::L_OBJECT][static_cast<int>(position_logic.y)][static_cast<int>(position_logic.x)] == CMap::ME_DOOR_DOUBLE_RIGHT_OPEN;
 
 	return is_environment_background_walkable && is_object_walkable && is_terrain_walkable;
 }

@@ -6,7 +6,7 @@
 CActor::CActor() {}
 
 CActor::CActor(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, SpritesMap sprites)
-	: m_center(center), m_position_logic(position_logic), m_position_render(position_render), m_target_position_render(position_render), m_rotation(rotation), m_scale(scale), m_tile_size(tile_size), m_direction(direction), m_velocity(velocity), m_state(state), m_sprites(sprites)
+	: m_center(center), m_position_logic(position_logic), m_position_render(position_render), m_target_position_logic(position_logic), m_target_position_render(position_render), m_rotation(rotation), m_scale(scale), m_tile_size(tile_size), m_direction(direction), m_velocity(velocity), m_state(state), m_sprites(sprites)
 {
 	UpdateCurSprite();
 	m_sprites[m_cur_sprite]->SetIsVisible(true);
@@ -65,6 +65,7 @@ void CActor::Draw()
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_center, Center)
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_position_logic, PositionLogic)
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_position_render, PositionRender)
+GET_SET_FUN_DEFINE(CVector3D, CActor, m_target_position_logic, TargetPositionLogic)
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_target_position_render, TargetPositionRender)
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_rotation, Rotation)
 GET_SET_FUN_DEFINE(CVector3D, CActor, m_scale, Scale)

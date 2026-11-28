@@ -32,6 +32,7 @@ public:
 GET_SET_FUN_DECLAR(CVector3D, m_center, Center)
 GET_SET_FUN_DECLAR(CVector3D, m_position_logic, PositionLogic)
 GET_SET_FUN_DECLAR(CVector3D, m_position_render, PositionRender)
+GET_SET_FUN_DECLAR(CVector3D, m_target_position_logic, TargetPositionLogic)
 GET_SET_FUN_DECLAR(CVector3D, m_target_position_render, TargetPositionRender)
 GET_SET_FUN_DECLAR(CVector3D, m_rotation, Rotation)
 GET_SET_FUN_DECLAR(CVector3D, m_scale, Scale)

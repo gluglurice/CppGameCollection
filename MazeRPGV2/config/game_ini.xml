@@ -45,17 +45,20 @@
 			<elem type="58" img_path="assets/img/tiled/tiles/tile_0057.png" />
 			<elem type="60" img_path="assets/img/tiled/tiles/tile_0059.png" />
 			
-			<elem type="10" img_path="assets/img/tiled/tiles/tile_0009.png" />
-			<elem type="11" img_path="assets/img/tiled/tiles/tile_0010.png" />
-			<elem type="12" img_path="assets/img/tiled/tiles/tile_0011.png" />
-			<elem type="46" img_path="assets/img/tiled/tiles/tile_0045.png" />
-			<elem type="47" img_path="assets/img/tiled/tiles/tile_0046.png" />
-			<elem type="48" img_path="assets/img/tiled/tiles/tile_0047.png" />
-			
 			<elem type="56" img_path="assets/img/tiled/tiles/tile_0055.png" />
 			<elem type="68" img_path="assets/img/tiled/tiles/tile_0067.png" />
 			<elem type="69" img_path="assets/img/tiled/tiles/tile_0068.png" />
 			<elem type="82" img_path="assets/img/tiled/tiles/tile_0081.png" />
+			
+			<elem type="10" img_path="assets/img/tiled/tiles/tile_0009.png" />
+			<elem type="11" img_path="assets/img/tiled/tiles/tile_0010.png" />
+			<elem type="12" img_path="assets/img/tiled/tiles/tile_0011.png" />
+			<elem type="133" img_path="assets/img/tiled/tiles/objects/door_wall_1.png" />
+			<elem type="134" img_path="assets/img/tiled/tiles/objects/door_wall_2.png" />
+			
+			<elem type="46" img_path="assets/img/tiled/tiles/tile_0045.png" />
+			<elem type="47" img_path="assets/img/tiled/tiles/tile_0046.png" />
+			<elem type="48" img_path="assets/img/tiled/tiles/tile_0047.png" />
 		</elems>
 		
 		<map src_txt_path="config/levels/level_0.txt" />

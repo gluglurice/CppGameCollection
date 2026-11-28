@@ -203,7 +203,7 @@ void CGame::ListenCharacterMoveEvent()
 				CheckMessage();
 			}
 		}
-		m_character->MoveLogic(UNIT_VECS[m_character->GetDirection()]);
+		m_character->MoveLogic(m_character->GetTargetPositionLogic() - m_character->GetPositionLogic());
 
 		CActor::Direction direction = m_character->GetDirection();
 		if (m_key_pressed['W'][0])
@@ -223,10 +223,9 @@ void CGame::ListenCharacterMoveEvent()
 			direction = CActor::D_RIGHT;
 		}
 		m_character->UpdateState(CCharacter::S_IDLE, direction);
-		if (m_moving_key_pressed_count > 0 && m_map->IsWalkable(m_character->GetPositionLogic() + UNIT_VECS[direction]))
+		if (m_moving_key_pressed_count > 0)
 		{
-			m_character->UpdateState(CCharacter::S_MOVE, direction);
-			m_character->SetTargetPositionRender(m_character->GetPositionRender() + UNIT_VECS[direction] * MAP_TILE_SIZE);
+			m_character->DetectCollision(m_map, m_character->GetPositionLogic() + UNIT_VECS[direction]);
 		}
 	}
 }
@@ -236,9 +235,9 @@ void CGame::DrawAll()
 	CGraphic::GetInstance()->BeginDraw();
 	m_map->Draw(CMap::L_TERRAIN);
 	m_map->Draw(CMap::L_ENVIRONMENT_BACKGROUND);
-	m_map->Draw(CMap::L_ENVIRONMENT_FOREGROUND);
 	m_map->Draw(CMap::L_OBJECT);
 	m_character->Draw();
+	m_map->Draw(CMap::L_ENVIRONMENT_FOREGROUND);
 	CGraphic::GetInstance()->EndDraw();
 }
 

@@ -13,8 +13,8 @@ public:
 	{
 		L_TERRAIN,
 		L_ENVIRONMENT_BACKGROUND,
-		L_ENVIRONMENT_FOREGROUND,
 		L_OBJECT,
+		L_ENVIRONMENT_FOREGROUND,
 		L_COUNT,
 	};
 
@@ -22,16 +22,14 @@ public:
 	{
 		ME_EMPTY = 0,
 
-		/* 可行走 */
-		/* 地面 */
+		/* 地面 可行走 */
 		ME_TERRAIN_37 = 37,
 		ME_TERRAIN_38 = 38,
 		ME_TERRAIN_39 = 39,
 		ME_TERRAIN_40 = 40,
 		ME_TERRAIN_49 = 49,
 
-		/* 不可行走 */
-		/* 墙 */
+		/* 墙 不可行走 */
 		ME_ENVIRONMENT_1 = 1,
 		ME_ENVIRONMENT_2 = 2,
 		ME_ENVIRONMENT_3 = 3,
@@ -56,19 +54,23 @@ public:
 		ME_ENVIRONMENT_58 = 58,
 		ME_ENVIRONMENT_60 = 60,
 
-		/* 门 */
-		ME_DOOR_SINGLE_OPEN = 10,
-		ME_DOOR_DOUBLE_LEFT_OPEN = 11,
-		ME_DOOR_DOUBLE_RIGHT_OPEN = 12,
-		ME_DOOR_SINGLE_CLOSED = 46,
-		ME_DOOR_DOUBLE_LEFT_CLOSED = 47,
-		ME_DOOR_DOUBLE_RIGHT_CLOSED = 48,
-
-		/* 障碍物 */
+		/* 障碍物 不可行走 */
 		ME_ENVIRONMENT_56 = 56,
 		ME_ENVIRONMENT_68 = 68,
 		ME_ENVIRONMENT_69 = 69,
 		ME_ENVIRONMENT_82 = 82,
+
+		/* 门 可行走 */
+		ME_DOOR_SINGLE_OPEN = 10,
+		ME_DOOR_DOUBLE_LEFT_OPEN = 11,
+		ME_DOOR_DOUBLE_RIGHT_OPEN = 12,
+		ME_DOOR_WALL_1 = 133,
+		ME_DOOR_WALL_2 = 134,
+
+		/* 门 不可行走 */
+		ME_DOOR_SINGLE_CLOSED = 46,
+		ME_DOOR_DOUBLE_LEFT_CLOSED = 47,
+		ME_DOOR_DOUBLE_RIGHT_CLOSED = 48,
 	};
 
 	using ObjectsMap = map<CVector3D, CActor*>;

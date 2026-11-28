@@ -31,8 +31,35 @@ void CCharacter::DetectCollision(CMap* map, CVector3D position)
 	{
 		return;
 	}
-	this->UpdateState(CCharacter::S_MOVE, this->GetDirection());
-	this->SetTargetPositionRender(this->GetPositionRender() + CGame::UNIT_VECS[this->GetDirection()] * CGame::MAP_TILE_SIZE);
+
+	CMap::MapElem elem_obj = map->GetMap()[CMap::L_OBJECT][static_cast<int>(position.y)][static_cast<int>(position.x)];
+	CMap::MapElem elem_env_fg = map->GetMap()[CMap::L_ENVIRONMENT_FOREGROUND][static_cast<int>(position.y)][static_cast<int>(position.x)];
+	int move_tile_num = 1;
+
+	if (elem_obj == CMap::ME_DOOR_SINGLE_OPEN
+		|| elem_obj == CMap::ME_DOOR_DOUBLE_LEFT_OPEN
+		|| elem_obj == CMap::ME_DOOR_DOUBLE_RIGHT_OPEN
+		|| elem_env_fg == CMap::ME_DOOR_WALL_1)
+	{
+		this->UpdateState(CCharacter::S_MOVE, this->GetDirection());
+		move_tile_num++;
+		position += CGame::UNIT_VECS[this->GetDirection()];
+		while (map->GetMap()[CMap::L_ENVIRONMENT_FOREGROUND][static_cast<int>(position.y)][static_cast<int>(position.x)] != CMap::ME_EMPTY
+			|| map->GetMap()[CMap::L_OBJECT][static_cast<int>(position.y)][static_cast<int>(position.x)] != CMap::ME_EMPTY)
+		{
+			move_tile_num++;
+			position += CGame::UNIT_VECS[this->GetDirection()];
+		}
+		this->SetTargetPositionRender(this->GetPositionRender() + CGame::UNIT_VECS[this->GetDirection()] * CGame::MAP_TILE_SIZE * move_tile_num);
+		this->SetTargetPositionLogic(this->GetPositionLogic() + CGame::UNIT_VECS[this->GetDirection()] * move_tile_num);
+	}
+
+	else
+	{
+		this->UpdateState(CCharacter::S_MOVE, this->GetDirection());
+		this->SetTargetPositionRender(this->GetPositionRender() + CGame::UNIT_VECS[this->GetDirection()] * CGame::MAP_TILE_SIZE);
+		this->SetTargetPositionLogic(this->GetPositionLogic() + CGame::UNIT_VECS[this->GetDirection()]);
+	}
 }
 
 void CCharacter::Idle()
