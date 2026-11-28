@@ -5,33 +5,26 @@
 class CCharacter : public CActor
 {
 public:
-	enum Type
+	enum Camp
 	{
 		T_PLAYER,
 		T_ENEMY,
 	};
 
-	enum State
-	{
-		S_IDLE,
-		S_WALK,
-		S_COUNT,
-	};
-
-GET_SET_FUN_DECLAR(Type, m_type, Type)
-GET_SET_FUN_DECLAR(State, m_state, State)
-GET_SET_FUN_DECLAR(vector<CSprite*>, m_sprites, Sprites)
+GET_SET_FUN_DECLAR(Camp, m_camp, Camp)
 
 public:
 	CCharacter();
 
-	CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, Type type, State state, vector<CSprite*> sprites);
+	CCharacter(CVector3D center, CVector3D position_logic, CVector3D position_render, CVector3D rotation, CVector3D scale, int tile_size, Direction direction, float velocity, State state, CActor::SpritesMap sprites, Camp camp);
 
 	~CCharacter();
 
-	void UpdateState(State state, Direction direction);
+	void UpdateCurSprite() override;
 
-	void Idle();
+	void UpdateState(State state, Direction direction) override;
+
+	void Idle() override;
 
 	void MoveRender(CVector3D offset) override;
 

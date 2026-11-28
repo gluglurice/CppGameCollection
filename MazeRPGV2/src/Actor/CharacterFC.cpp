@@ -20,11 +20,11 @@ CCharacterFC::CCharacterFC()
 		float scale;
 		int tile_size;
 		float velocity;
-		CCharacter::Type character_type;
+		CCharacter::Camp camp;
 		xml_character->QueryFloatAttribute("scale", &scale);
 		xml_character->QueryIntAttribute("tile_size", &tile_size);
 		xml_character->QueryFloatAttribute("velocity", &velocity);
-		xml_character->QueryIntAttribute("type", reinterpret_cast<int*>(&character_type));
+		xml_character->QueryIntAttribute("camp", reinterpret_cast<int*>(&camp));
 
 		CVector3D center(tile_size / 2.0f, tile_size / 2.0f, 0);
 		CVector3D position_logic(0.0f, 0.0f, 0.0f);
@@ -32,7 +32,7 @@ CCharacterFC::CCharacterFC()
 		CVector3D rotation(0.0f, 0.0f, 0.0f);
 		CVector3D scale_vec(scale, scale, 1.0f);
 
-		vector<CSprite*> sprites = vector<CSprite*>(static_cast<int>(CCharacter::S_COUNT) * static_cast<int>(CActor::D_COUNT));
+		CActor::SpritesMap sprites;
 		map<wstring, Image*> img_map;
 
 		for (TiXmlElement* xml_sprite = xml_character->FirstChildElement("sprite"); xml_sprite; xml_sprite = xml_sprite->NextSiblingElement("sprite"))
@@ -74,8 +74,8 @@ CCharacterFC::CCharacterFC()
 			int sprite_index = static_cast<int>(sprite_state) * static_cast<int>(CActor::Direction::D_COUNT) + static_cast<int>(direction);
 			sprites[sprite_index] = new CSprite(img, row_num, col_num, center, position_render, rotation, scale_vec, direction, read_mode, play_row, play_col, frame_terminal, cycle_terminal);
 		}
-		CCharacter* character = new CCharacter(center, position_logic, position_render, rotation, scale_vec, tile_size, CActor::D_UP, velocity, character_type, CCharacter::S_IDLE, sprites);
-		m_character_map[character_type] = character;
+		CCharacter* character = new CCharacter(center, position_logic, position_render, rotation, scale_vec, tile_size, CActor::D_UP, velocity, CCharacter::S_IDLE, sprites, camp);
+		m_character_map[camp] = character;
 	}
 }
 
@@ -91,16 +91,16 @@ CCharacterFC::~CCharacterFC()
 	m_character_map.clear();
 }
 
-CCharacter* CCharacterFC::CreateCharacter(CVector3D position_logic, CCharacter::Type type)
+CCharacter* CCharacterFC::CreateCharacter(CVector3D position_logic, CCharacter::Camp camp)
 {
-	CCharacter* character = m_character_map[type];
-	vector<CSprite*> new_sprites;
+	CCharacter* character = m_character_map[camp];
+	CActor::SpritesMap new_sprites;
 
-	for (auto& sprite : character->GetSprites())
+	for (auto& pair : character->GetSprites())
 	{
-		new_sprites.push_back(new CSprite(sprite->GetImg(), sprite->GetRowNum(), sprite->GetColNum(), sprite->GetCenter(), sprite->GetPosition(), sprite->GetRotation(), sprite->GetScale(), sprite->GetDirection(), sprite->GetReadMode(), sprite->GetPlayRow(), sprite->GetPlayCol(), sprite->GetFrameTerminal(), sprite->GetCycleTerminal()));
+		new_sprites[pair.first] = new CSprite(pair.second->GetImg(), pair.second->GetRowNum(), pair.second->GetColNum(), pair.second->GetCenter(), pair.second->GetPosition(), pair.second->GetRotation(), pair.second->GetScale(), pair.second->GetDirection(), pair.second->GetReadMode(), pair.second->GetPlayRow(), pair.second->GetPlayCol(), pair.second->GetFrameTerminal(), pair.second->GetCycleTerminal());
 	}
 
 	CVector3D position_render = position_logic * CGame::MAP_TILE_SIZE + CVector3D(CGame::MAP_TILE_SIZE / 2.0f, CGame::MAP_TILE_SIZE / 2.0f, 0.0f);
-	return new CCharacter(character->GetCenter(), position_logic, position_render, character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), type, character->GetState(), new_sprites);
+	return new CCharacter(character->GetCenter(), position_logic, position_render, character->GetRotation(), character->GetScale(), character->GetTileSize(), character->GetDirection(), character->GetVelocity(), character->GetState(), new_sprites, camp);
 }

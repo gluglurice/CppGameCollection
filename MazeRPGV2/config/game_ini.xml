@@ -2,7 +2,7 @@
 	<name>Game</name>
 	<version>dev-0.1</version>
 	<characters>
-		<character scale="1.5" tile_size="32" velocity="2.0" type="0">
+		<character scale="1.5" tile_size="32" velocity="3.0" camp="0">
 			<sprite state="0" row_num="4" col_num="3" direction="0" read_mode="1" play_row="0" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
 			<sprite state="0" row_num="4" col_num="3" direction="1" read_mode="1" play_row="1" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
 			<sprite state="0" row_num="4" col_num="3" direction="2" read_mode="1" play_row="2" play_col="0" frame_terminal="3.0" cycle_terminal="20.0" img_path="assets/img/character/Link_idle.png" />
@@ -58,11 +58,8 @@
 			<elem type="82" img_path="assets/img/tiled/tiles/tile_0081.png" />
 			
 		</elems>
-		<map src_txt_path="config/levels/level_0.txt">
-		</map>
-		<map src_txt_path="config/levels/level_1.txt">
-		</map>
-		<map src_txt_path="config/levels/level_2.txt">
-		</map>
+		<map src_txt_path="config/levels/level_0.txt" />
+		<map src_txt_path="config/levels/level_1.txt" />
+		<map src_txt_path="config/levels/level_2.txt" />
 	</maps>
 </game>
